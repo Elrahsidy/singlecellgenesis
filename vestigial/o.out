@@ -1,0 +1,161 @@
+[t80001] BEGIN
+[tc0001] BEGIN
+[tc0001] Starting Genesis
+[tc0001] Executable:         /home/pol1/pvm3/bin/LINUX64/nxpgenesis
+[t100001] BEGIN
+[t80001] Starting Genesis
+[t80001] Executable:         /home/pol1/pvm3/bin/LINUX64/nxpgenesis
+[tc0001] The diskio library uses the netcdf-version 3.4 library, which is provided
+[tc0001] "as is" under the terms of distribution and usage by UCAR/Unidata.
+[tc0001] Please see src/diskio/interface/netcdf/netcdf-3.4/copyright.html
+[tc0001] for the full notice.
+[tc0001] 
+[tc0001] The kinetics library is copylefted under the LGPL, see kinetics/COPYRIGHT.
+[tc0001] 
+[tc0001] Startup script:     /home/pol1/.psimrc
+[tc0001] SIMPATH=. /usr/local/genesis-2.3/pgenesis/startup /usr/local/genesis-2.3/genesis/startup /usr/local/genesis-2.3/genesis/Scripts/neurokit /usr/local/genesis-2.3/genesis/Scripts/neurokit/prototypes /usr/local/genesis-2.3/pgenesis/bin /usr/local/genesis-2.3/pgenesis/Scripts/orient1 /usr/local/genesis-2.3/pgenesis/Scripts/test
+[tc0001] SIMNOTES=/home/pol1/.notes
+[tc0001] GENESIS_HELP=/usr/local/genesis-2.3/genesis/Doc
+[tc0001] Simulation Script:  Neocortex
+[t80001] The diskio library uses the netcdf-version 3.4 library, which is provided
+[t80001] "as is" under the terms of distribution and usage by UCAR/Unidata.
+[t80001] Please see src/diskio/interface/netcdf/netcdf-3.4/copyright.html
+[t80001] for the full notice.
+[t80001] 
+[t80001] The kinetics library is copylefted under the LGPL, see kinetics/COPYRIGHT.
+[t80001] 
+[t80001] Startup script:     /home/pol1/.psimrc
+[t80001] SIMPATH=. /usr/local/genesis-2.3/pgenesis/startup /usr/local/genesis-2.3/genesis/startup /usr/local/genesis-2.3/genesis/Scripts/neurokit /usr/local/genesis-2.3/genesis/Scripts/neurokit/prototypes /usr/local/genesis-2.3/pgenesis/bin /usr/local/genesis-2.3/pgenesis/Scripts/orient1 /usr/local/genesis-2.3/pgenesis/Scripts/test
+[t80001] SIMNOTES=/home/pol1/.notes
+[t80001] GENESIS_HELP=/usr/local/genesis-2.3/genesis/Doc
+[t80001] Simulation Script:  Neocortex
+[tc0001] changing clock [0] from 1 to 5e-05
+[tc0001] Genesis started at Wed Jun 15 14:53:41 2011
+[t80001] changing clock [0] from 1 to 5e-05
+[tc0001] display =  1
+[t80001] Genesis started at Wed Jun 15 12:53:23 2011
+[tc0001] output =  1
+[t80001] display =  1
+[tc0001] batch =  0
+[t80001] output =  1
+[tc0001] 
+[tc0001] Initializing parallel library version 1.1.1.1
+[tc0001] Enrolling in PVM...ok, tid is c0001
+[t80001] batch =  0
+[t80001] 
+[t80001] Initializing parallel library version 1.1.1.1
+[t80001] Enrolling in PVM...ok, tid is 80001
+[t100001] Starting Genesis
+[t100001] Executable:         /home/pol1/pvm3/bin/LINUX64/nxpgenesis
+[t100001] The diskio library uses the netcdf-version 3.4 library, which is provided
+[t100001] "as is" under the terms of distribution and usage by UCAR/Unidata.
+[t100001] Please see src/diskio/interface/netcdf/netcdf-3.4/copyright.html
+[t100001] for the full notice.
+[t100001] 
+[t100001] The kinetics library is copylefted under the LGPL, see kinetics/COPYRIGHT.
+[t100001] 
+[t100001] Startup script:     /home/pol1/.psimrc
+[t100001] SIMPATH=. /usr/local/genesis-2.3/pgenesis/startup /usr/local/genesis-2.3/genesis/startup /usr/local/genesis-2.3/genesis/Scripts/neurokit /usr/local/genesis-2.3/genesis/Scripts/neurokit/prototypes /usr/local/genesis-2.3/pgenesis/bin /usr/local/genesis-2.3/pgenesis/Scripts/orient1 /usr/local/genesis-2.3/pgenesis/Scripts/test
+[t100001] SIMNOTES=/home/pol1/.notes
+[t100001] GENESIS_HELP=/usr/local/genesis-2.3/genesis/Doc
+[t100001] Simulation Script:  Neocortex
+[t100001] changing clock [0] from 1 to 5e-05
+[t100001] Genesis started at Wed Jun 15 09:06:04 2011
+[t100001] display =  1
+[t100001] output =  1
+[t100001] batch =  0
+[t100001] 
+[t100001] Initializing parallel library version 1.1.1.1
+[t100001] Enrolling in PVM...ok, tid is 100001
+[t80001] mynode = 2, totalnodes = 4, nnodes = 4
+[t80001] I am node 2
+[t80001] Completed startup at Wed Jun 15 12:53:23 2011
+[t80001] /library
+[tc0001] mynode = 1, totalnodes = 4, nnodes = 4
+[tc0001] I am node 1
+[tc0001] Completed startup at Wed Jun 15 14:53:41 2011
+[tc0001] /library
+[t100001] mynode = 3, totalnodes = 4, nnodes = 4
+[t100001] I am node 3
+[t100001] Completed startup at Wed Jun 15 09:06:04 2011
+[t100001] /library
+[t80001] /
+[tc0001] /
+[t80001] reading 'P23RSacell.p'.... 
+[tc0001] reading 'P23RSacell.p'.... 
+[t80001] P23RSacell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t80001] P23RSa Synapse Definitions...
+[tc0001] P23RSacell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t80001] 
+[tc0001] P23RSa Synapse Definitions...
+[t80001] <P23RSbprotodefs.g> line 29
+[tc0001] 
+[t80001] ... <Neocortex> line 344
+[tc0001] <P23RSbprotodefs.g> line 29
+[t80001] * Warning - overwriting an existing element '/library'
+[tc0001] ... <Neocortex> line 344
+[t80001] /library
+[tc0001] * Warning - overwriting an existing element '/library'
+[tc0001] /library
+[t80001] /
+[t80001] reading 'P23RSbcell.p'.... 
+[tc0001] /
+[tc0001] reading 'P23RSbcell.p'.... 
+[t100001] /
+[t100001] reading 'P23RSacell.p'.... 
+[t80001] P23RSbcell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t80001] P23RSb Synapse Definitions...
+[t80001] 
+[tc0001] P23RSbcell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[tc0001] P23RSb Synapse Definitions...
+[tc0001] 
+[t80001] <P23RScprotodefs.g> line 29
+[t80001] ... <Neocortex> line 353
+[t80001] * Warning - overwriting an existing element '/library'
+[t80001] /library
+[tc0001] <P23RScprotodefs.g> line 29
+[tc0001] ... <Neocortex> line 353
+[tc0001] * Warning - overwriting an existing element '/library'
+[tc0001] /library
+[t100001] P23RSacell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t100001] P23RSa Synapse Definitions...
+[t100001] 
+[t80001] /
+[t80001] reading 'P23RSccell.p'.... 
+[tc0001] /
+[tc0001] reading 'P23RSccell.p'.... 
+[t80001] P23RSccell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[tc0001] P23RSccell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t80001] P23RSc Synapse Definitions...
+[tc0001] P23RSc Synapse Definitions...
+[t80001] 
+[tc0001] 
+[t80001] <P23RSdprotodefs.g> line 29
+[t80001] ... <Neocortex> line 362
+[t80001] * Warning - overwriting an existing element '/library'
+[t80001] /library
+[tc0001] <P23RSdprotodefs.g> line 29
+[tc0001] ... <Neocortex> line 362
+[tc0001] * Warning - overwriting an existing element '/library'
+[tc0001] /library
+[t100001] <P23RSbprotodefs.g> line 29
+[t100001] ... <Neocortex> line 344
+[t100001] * Warning - overwriting an existing element '/library'
+[t100001] /library
+[t80001] /
+[t80001] reading 'P23RSdcell.p'.... 
+[tc0001] /
+[tc0001] reading 'P23RSdcell.p'.... 
+[t80001] P23RSdcell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[t80001] P23RSd Synapse Definitions...
+[t80001] 
+[tc0001] P23RSdcell.p read: 74 compartments, 802 channels, 0 shells, 69 others
+[tc0001] P23RSd Synapse Definitions...
+[tc0001] 
+[t80001] <B23FSprotodefs.g> line 27
+[tc0001] <B23FSprotodefs.g> line 27
+[t80001] ... <Neocortex> line 371
+[t80001] * Warning - overwriting an existing element '/library'
+[t80001] /library
+[tc0001] ... <Neocortex> line 371
+[tc0001] * Warning - overwriting an existing element '/library'

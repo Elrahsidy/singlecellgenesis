@@ -1,0 +1,81 @@
+// genesis
+
+// Setting the axonal propagation velocity
+float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
+
+float destlim = {B23FS_I23LTS_destlim}
+
+/*
+ * Usage :
+ * planarconnect source-path destination-path
+ *		 [-relative]
+ *		 [-sourcemask {box,ellipse} x1 y1 x2 y2]
+ *		 [-sourcehole {box,ellipse} x1 y1 x2 y2]
+ *		 [-destmask   {box,ellipse} x1 y1 x2 y2]
+ *		 [-desthole   {box,ellipse} x1 y1 x2 y2]
+ *		 [-probability p]
+ */
+
+echo Making connections from the B23FS cells to the I23LTS cells.
+
+//B23FS - I23LTS GABAa
+
+str s
+
+//Load synapse location array
+
+str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
+
+foreach s ({arglist {locations}})
+
+    rvolumeconnect /B23FSnet/B23FS[]/soma/spk5  \
+	      /I23LTSnet/I23LTS[]/{s}/Inh_ch18B23FSGABAa@all	    \
+	      -relative			    \
+	      -sourcemask box -1 -1  1  1  0  0   \
+	      -destmask   box -{destlim} -{destlim}  {destlim}  {destlim}  0  0   \
+          -probability 0.042
+
+end
+
+echo Setting weights and delays for B23FS->I23LTS connections.
+// assigning delays using the planardelay function
+
+/* 
+ * Usage :
+ * planardelay path 
+ * [-fixed delay]
+ * [-radial propagation_velocity] 
+ * [-uniform range]   (not used here)
+ * [-gaussian sd max] (not used here)
+ * [-exp mid max]     (not used here)
+ * [-absoluterandom]  (not used here)
+ *delay /B23FSnet/B23FS[]/soma/spk5 -radial {CABLE_VEL}
+
+// B23FS - I23LTS GABAa
+
+str s
+
+//Load synapse location array
+
+str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
+
+foreach s ({arglist {locations}})
+
+    syndelay    /I23LTSnet/I23LTS[]/{s}/Inh_ch18B23FSGABAa 0.0001 -add
+
+end
+
+// assigning weights using the planarweight function
+
+/* 
+ * Usage :
+ *  planarweight sourcepath 
+ *          [-fixed weight]
+ *          [-decay decay_rate max_weight min_weight]
+ *          [-uniform range] 
+ *          [-gaussian sd max] 
+ *          [-exponential mid max]
+ *          [-absoluterandom]
+ */
+
+planarweight /B23FSnet/B23FS[]/soma/spk5 -decay {decayrate} {maxwgt} {minwgt}

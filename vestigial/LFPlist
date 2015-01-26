@@ -1,0 +1,467 @@
+B23FSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+B23FSsynapseI.g:echo B23FS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Inh_ch5B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Inh_ch5I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Inh_ch5I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B23FSsynapseI.g:          addmsg /B23FSnet/B23FS[{k}]/{s}/Ex_ch5P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+B5FSsynapseI.g:echo B5FS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Inh_ch10B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Inh_ch10I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Inh_ch10I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+B5FSsynapseI.g:          addmsg /B5FSnet/B5FS[{k}]/{s}/Ex_ch10P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+C23FSsynapseI.g:echo C23FS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Inh_ch15B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Inh_ch15I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Inh_ch15I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C23FSsynapseI.g:          addmsg /C23FSnet/C23FS[{k}]/{s}/Ex_ch15P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+C5FSsynapseI.g:echo C5FS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Inh_ch16B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Inh_ch16I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Inh_ch16I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+C5FSsynapseI.g:          addmsg /C5FSnet/C5FS[{k}]/{s}/Ex_ch16P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+I23LTSsynapseI.g:echo I23LTS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Inh_ch18B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Inh_ch18I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Inh_ch18I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I23LTSsynapseI.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s}/Ex_ch18P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+I5LTSsynapseI.g:echo I5LTS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Inh_ch19B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Inh_ch19I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Inh_ch19I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+I5LTSsynapseI.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s}/Ex_ch19P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+LFPASCIIwrite.g:// LFPASCIIwrite.g
+LFPASCIIwrite.g:do_asc_file ./data/LFP.dat{mynode} LFPmodcent field LFPmodcentfile
+LFPASCIIwrite.g://do_asc_file ./data/LFPsyn.dat{mynode} LFPsynmodcent field LFPsynmodcentfile
+LFP.g:// LFP Calculation from cellular network,taken at specified point.
+LFP.g:echo LFP Calculation Setup !!!!!!!!!!!!!!!!!!!!!
+LFP.g:float LFPx = P23RSa_SEPX*P23RSa_NX/2*sqrtNnodes
+LFP.g:float LFPy = P23RSa_SEPY*P23RSa_NY/2*sqrtNnodes
+LFP.g:float LFPz = 2340e-6
+LFP.g:create efield LFPmodcent
+LFP.g:create efield LFPsynmodcent
+LFP.g:setfield LFPmodcent scale 0.335 x {LFPx} y {LFPy} z {LFPz} 
+LFP.g:setfield LFPsynmodcent scale 0.335 x {LFPx} y {LFPy} z {LFPz} 
+LFP.g:echo P23RS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /P23RSanet/P23RSa[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P23RScnet/P23RSc[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo B23FS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /B23FSnet/B23FS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo P5IB LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /P5IBanet/P5IBa[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo B5FS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /B5FSnet/B5FS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo P6RS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /P6RSanet/P6RSa[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:               addmsg /P6RScnet/P6RSc[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:               addmsg /P6RSdnet/P6RSd[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo C23FS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /C23FSnet/C23FS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo C5FS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /C5FSnet/C5FS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo ST4RS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo I23LTS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /I23LTSnet/I23LTS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo I5LTS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /I5LTSnet/I5LTS[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo P23FRB LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:echo P5RS LFP !!!!!!!!!!!!!!!!
+LFP.g:          addmsg /P5RSanet/P5RSa[{k}]/{s} LFPmodcent CURRENT Im 0.0
+LFP.g:call LFPmodcent RECALC
+LFP.g://call LFPsynmodcent RECALC
+LFPmultiarrayASCIIwrite.g:// LFPmultiarrayASCIIwrite.g
+LFPmultiarrayASCIIwrite.g:echo LFPmultiarrayASCIIwrite
+LFPmultiarrayASCIIwrite.g:     do_asc_file ./data/LFParray{j}.dat{mynode} LFP{j} field LFP{j}file
+LFPmultiarray.g:// LFP Calculation from cellular network,taken at specified point.
+LFPmultiarray.g:echo LFP Calculation Setup !!!!!!!!!!!!!!!!!!!!!
+LFPmultiarray.g:float LFPx = P23RSa_SEPX*P23RSa_NX/2*sqrtNnodes
+LFPmultiarray.g:float LFPy = P23RSa_SEPY*P23RSa_NY/2*sqrtNnodes
+LFPmultiarray.g:float LFPz = 2340e-6
+LFPmultiarray.g:     create efield LFP{j}
+LFPmultiarray.g:     setfield LFP{j} scale 0.335 x {LFPx+(xarrayres*j)} y {LFPy} z {LFPz} 
+LFPmultiarray.g:echo P23RS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /P23RSanet/P23RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P23RSbnet/P23RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P23RScnet/P23RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P23RSdnet/P23RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo B23FS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /B23FSnet/B23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo P5IB LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /P5IBanet/P5IBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P5IBbnet/P5IBb[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P5IBcnet/P5IBc[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P5IBdnet/P5IBd[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo B5FS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /B5FSnet/B5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo P6RS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /P6RSanet/P6RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:               addmsg /P6RSbnet/P6RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:                    addmsg /P6RScnet/P6RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:                    addmsg /P6RSdnet/P6RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo C23FS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /C23FSnet/C23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo C5FS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /C5FSnet/C5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo ST4RS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /ST4RSnet/ST4RS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo I23LTS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /I23LTSnet/I23LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo I5LTS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /I5LTSnet/I5LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo P23FRB LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:echo P5RS LFP !!!!!!!!!!!!!!!!
+LFPmultiarray.g:               addmsg /P5RSanet/P5RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+LFPmultiarray.g:     call LFP{j} RECALC
+Neocortex.g://include LFP.g
+Neocortex.g:include LFPmultiarray.g
+Neocortex.g:    // LFP data write
+Neocortex.g:    //include LFPASCIIwrite.g
+Neocortex.g:    include LFPmultiarrayASCIIwrite.g
+P23FRBasynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P23FRBasynapseI.g:echo P23FRBa Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Inh_ch22B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Inh_ch22C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Inh_ch22C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Inh_ch22I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Inh_ch22I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23FRBasynapseI.g:          addmsg /P23FRBanet/P23FRBa[{k}]/{s}/Ex_ch22P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P23RSasynapseI.g:echo P23RSa Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P23RSasynapseI.g://addmsg /P23RSanet/P23RSa[50]/apobproxLa/Ex_ch1P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Inh_ch1B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Inh_ch1C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Inh_ch1C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Inh_ch1I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Inh_ch1I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSasynapseI.g:          addmsg /P23RSanet/P23RSa[{k}]/{s}/Ex_ch1TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P23RSbsynapseI.g:echo P23RSb Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Inh_ch2B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Inh_ch2C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Inh_ch2C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Inh_ch2I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Inh_ch2I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSbsynapseI.g:          addmsg /P23RSbnet/P23RSb[{k}]/{s}/Ex_ch2TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P23RScsynapseI.g:echo P23RSc Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Inh_ch3B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Inh_ch3C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Inh_ch3C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Inh_ch3I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Inh_ch3I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RScsynapseI.g:          addmsg /P23RScnet/P23RSc[{k}]/{s}/Ex_ch3TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P23RSdsynapseI.g:echo P23RSd Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Inh_ch4B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Inh_ch4C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Inh_ch4C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Inh_ch4I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Inh_ch4I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P23RSdsynapseI.g:          addmsg /P23RSdnet/P23RSd[{k}]/{s}/Ex_ch4TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P5IBasynapseI.g:echo P5IBa Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Inh_ch6B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Inh_ch6C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Inh_ch6C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Inh_ch6I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Inh_ch6I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBasynapseI.g:          addmsg /P5IBanet/P5IBa[{k}]/{s}/Ex_ch6TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P5IBbsynapseI.g:echo P5IBb Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Inh_ch7B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Inh_ch7C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Inh_ch7C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Inh_ch7I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Inh_ch7I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBbsynapseI.g:          addmsg /P5IBbnet/P5IBb[{k}]/{s}/Ex_ch7TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P5IBcsynapseI.g:echo P5IBc Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Inh_ch8B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Inh_ch8C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Inh_ch8C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Inh_ch8I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Inh_ch8I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBcsynapseI.g:          addmsg /P5IBcnet/P5IBc[{k}]/{s}/Ex_ch8TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P5IBdsynapseI.g:echo P5IBd Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Inh_ch9B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Inh_ch9C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Inh_ch9C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Inh_ch9I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Inh_ch9I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P5IBdsynapseI.g:          addmsg /P5IBdnet/P5IBd[{k}]/{s}/Ex_ch9TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P5RSasynapseI.g:echo P5RSa Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Inh_ch23B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Inh_ch23C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Inh_ch23C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Inh_ch23I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Inh_ch23I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P23FRBAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P23FRBNMDA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P5RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P5RSasynapseI.g:          addmsg /P5RSanet/P5RSa[{k}]/{s}/Ex_ch23P5RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P6RSasynapseI.g:echo P6RSa Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Inh_ch11B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Inh_ch11C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Inh_ch11C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Inh_ch11I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Inh_ch11I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSasynapseI.g:          addmsg /P6RSanet/P6RSa[{k}]/{s}/Ex_ch11TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P6RSbsynapseI.g:echo P6RSb Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Inh_ch12B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Inh_ch12C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Inh_ch12C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Inh_ch12I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Inh_ch12I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSbsynapseI.g:          addmsg /P6RSbnet/P6RSb[{k}]/{s}/Ex_ch12TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P6RScsynapseI.g:echo P6RSc Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Inh_ch13B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Inh_ch13C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Inh_ch13C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Inh_ch13I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Inh_ch13I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RScsynapseI.g:          addmsg /P6RScnet/P6RSc[{k}]/{s}/Ex_ch13TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+P6RSdsynapseI.g:echo P6RSd Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Inh_ch14B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Inh_ch14C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Inh_ch14C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Inh_ch14I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Inh_ch14I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+P6RSdsynapseI.g:          addmsg /P6RSdnet/P6RSd[{k}]/{s}/Ex_ch14TCRNMDA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:// LFP Calculation from cellular network,taken at specified point.
+ST4RSsynapseI.g:echo ST4RS Synaptic Currents - LFP Setup !!!!!!!!!!!!!!!!!!!!!
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P23RSAMPA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P23RSNMDA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17B23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P5IBAMPA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P5IBNMDA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17B5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P6RSAMPA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17P6RSNMDA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17C23FSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17C5FSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17ST4RSAMPA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17ST4RSNMDA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17I23LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Inh_ch17I5LTSGABAa LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17TCRAMPA LFPsynmodcent CURRENT Ik 0.0
+ST4RSsynapseI.g:          addmsg /ST4RSnet/ST4RS[{k}]/{s}/Ex_ch17TCRNMDA LFPsynmodcent CURRENT Ik 0.0

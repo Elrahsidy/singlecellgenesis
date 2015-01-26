@@ -1,0 +1,86 @@
+#!/bin/bash
+#
+# 2014-04-16
+#
+# I believe that the stock code runs for about 29 hours.
+# 
+# The random seed is configured in two files: Neocortex.g and orient_sim.g
+#
+# Data output is configured in the .g files within the Genesis_scripts
+# directory. You can change them en masse using sed, or just rm the existing
+# data symlink and make it point somewhere else, e.g. by calling:
+#
+# rm data
+# mkdir data-randseed34523
+# ln -s data-randseed34523 data
+#
+# I'm not sure what the above procedure will do if there is already a running
+# instance of pgenesis. It may fail, or even worse, it may continue to write
+# into the new location.
+#
+# 2014-04-21
+#
+# Just noticed that there is a script called Genesis_scripts/pgenesis_command
+# that would have done the same thing as this script (not sure whether it
+# actually would, due to differing MPI implementations). From the logfiles in
+# that directory, it appears that they were previously running on multiple
+# computers, like I was looking into.
+#
+# 2014-05-12
+#
+# Modified the hardcoded absolute paths so that data are written into a
+# relative data directory. This script checks to see if the data directory is
+# there (and maybe should move the existing data if that directory isn't
+# empty).
+#
+# Seems like there is some stuff in the .g that expects to find things in the
+# local directory, preventing me from running this script anywhere other than
+# "./". This means that mydir is always going to be "./".
+#
+# 2015-01-13
+# 
+# The Neocortex scripts are currently undergoing some major revisions.
+
+date
+
+# Check binary paths
+if [[ ! "`which mpirun 2> /dev/null && which pgenesis`" ]]; then
+	echo "mpirun and/or pgenesis not found. Trying to set the right path for you."
+	export PATH="$PATH:/data2/software/gentoo/usr/bin:/data2/software/genesis-2.3/genesis:/data2/software/genesis-2.3/pgenesis/bin"
+fi
+
+# Checking output paths
+mydir="`dirname "$0"`"
+echo "Running in $mydir"
+if [[ "`find $mydir/data -type f 2>/dev/null`" ]]; then
+	# directory already exists and has files in it
+	oldestfile="`ls -rt $mydir/data | tail -n1`"
+	oldesttime="`find $mydir/data/$oldestfile -printf '%TY%Tm%Td-%TH%TM'`"
+	echo "Moving existing data to $mydir/data-$oldesttime"
+	mv -i "$mydir/data" "$mydir/data-$oldesttime"
+fi
+if [[ ! -d "$mydir/data" ]]; then
+	mkdir "$mydir/data"
+fi
+
+# Hardcode the data directory in all .g files.
+# Not sure if potentially_useless/LFPlist is necessary.
+# I admit that this regexp is pretty damn ugly!
+sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydir/data/\3 \4#" $mydir/config_dataoutput/*write*.g #$mydir/LFPlist
+
+# Checking node numbers
+# Assumes that Nnodes in Neocortex.g is correct
+export num_nodes="`grep "\sNnodes" $mydir/Neocortex.g | sed 's/.* = //'`"
+echo "Running on $num_nodes nodes"
+
+find . -name "*.[pg]" | zip --quiet -@ $mydir/data/scripts_snapshot.zip 
+
+# http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
+# Besides specifying the -nox option when starting genesis to avoid starting
+# XODUS, you also need to use the -notty and -batch options. GENESIS will
+# attempt to read from stdin after the .simrc and command line script are
+# completed.  The -batch option causes genesis to exit rather than try to read
+# stdin.  -notty will avoid doing any terminal setup and cleanup procedures
+# which can also cause this type of behaviour.  You must specify both on the
+# command line (i.e. neither option implies the other).
+nice /data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex > "$mydir/data/`date +%Y%m%d-%H%M`.log" 2>&1
