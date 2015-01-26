@@ -1,9 +1,9 @@
 // genesis
 // ASCIISpikeClasswrite.g
 
-    myzeropadnode = mynode
-    if({mynode < 10})
-        myzeropadnode = "0" @ mynode
+    int myzeropadnode = mynode
+    if({mynode} < 10)
+        myzeropadnode = "0" @ {mynode}
     end
 
     do_classasc_file ./data/P23RSaSPIKE.dat{myzeropadnode} /P23RSanet/P23RSa 1 {P23RSa_NX*P23RSa_NY} state P23RSaSPIKE
