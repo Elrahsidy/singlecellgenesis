@@ -3,8 +3,12 @@
 float SEPX = 25e-6
 float SEPY = 25e-6
 
-float NX = 8
-float NY = 8
+// If this is set to an odd number, some cell types with reduced count
+// proportions (i.e. everything except P23RS[abcd]) can end up with slightly
+// uneven numbers compared to each other. For example, at 5x5 B23FS will end up
+// with 13 in each minicolumn, and B5FS ends up with 12. To be more precise,
+// this will happen if N[XY] is not evenly divisible by 2 and 4.
+float NX = 8 float NY = 8
 
 float	P23RSa_SEPX = SEPX
 float	P23RSa_SEPY = SEPY
