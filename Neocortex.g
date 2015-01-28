@@ -7,6 +7,10 @@ float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
 
+// Number of nodes (CPUs and cortical columns)
+int Nnodes = 25
+int sqrtNnodes = 5
+
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
 // 'random' patterns from one simulation to the next.   Seeding
@@ -69,9 +73,6 @@ int i_am_Q22
 int i_am_Q23
 int i_am_Q24
 int i_am_Q25
-
-int Nnodes = 25
-int sqrtNnodes = 5
 
 // START UP
 paron -parallel -silent 0 -nodes {Nnodes} -output o.out \
