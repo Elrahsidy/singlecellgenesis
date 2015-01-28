@@ -2,7 +2,7 @@
 
 //Overall simulation parameters
 
-float tmax = .001
+float tmax = 15
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
@@ -41,7 +41,7 @@ thalamocortical = 0 // TC flag
 echo Genesis started at {getdate}
 echo "display = " {display}
 echo "output = " {output}
-echo "batch = " {batch}
+//echo "batch = " {batch}
 echo ""
 
 // variables
@@ -109,7 +109,17 @@ i_am_Q23 = {mynode} == 23
 i_am_Q24 = {mynode} == 24
 i_am_Q25 = {mynode} == 25
 
-echo I am node {mynode}
+str myzeropadnode
+if({mynode} == 0)
+    str myzeropadnode = "column00"
+elif({mynode} < 10)
+    str myzeropadnode = {"column0" @ {mynode}}
+else
+    str myzeropadnode = {"column" @ {mynode}}
+end
+
+//echo I am node {mynode}
+echo I am node {myzeropadnode}
 echo Completed startup at {getdate}
 
 // Neocortex - Setup / Global Variables
