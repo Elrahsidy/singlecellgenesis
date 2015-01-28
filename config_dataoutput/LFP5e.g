@@ -11,16 +11,16 @@ echo
 
 float xarrayres = 100e-6 //100 micron resolution
 
-float narraycolumnsf
+float numelecsf
 
-int narraycolumns
+int numelecs
 
-narraycolumnsf = ({P23RSa_SEPX}*{P23RSa_NX}*{sqrtNnodes})/(2*{xarrayres})
+numelecsf = ({P23RSa_SEPX}*{P23RSa_NX}*{sqrtNnodes})/(2*{xarrayres})
 //                     25e-6   *   8       *   4           2 *100e-6 =  4
-//narraycolumns = {trunc {narraycolumnsf}}
-narraycolumns = 4
+//numelecs = {trunc {numelecsf}}
+numelecs = 4
 //            =4
-//echo narraycolumns = {narraycolumns}
+//echo numelecs = {numelecs}
 //echo P23RSa_SEPX = {P23RSa_SEPX}
 //echo P23RSa_NX = {P23RSa_NX}
 //echo sqrtNnodes = {sqrtNnodes}
@@ -38,13 +38,13 @@ float LFPz = 2340e-6
 // dab in the middle and increment height at two 2500-micron (mm) increments. Min z
 // is then 2.34 mm, max is 7.34 mm.
 
-for (j=0; j<narraycolumns; j=j+1)
+for (j=0; j<numelecs; j=j+1)
      create efield LFP{j}
      setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
 end
 
 //                4
-// for (j=0;j<={narraycolumns};j=j+1)
+// for (j=0;j<={numelecs};j=j+1)
 //      create efield LFP{j}
 //      setfield LFP{j} scale 0.335 x {LFPx+(xarrayres*j)} y {LFPy} z {LFPz} 
 // //                                  25e-6+ 
@@ -74,7 +74,7 @@ kmax = P23RSa_NX*P23RSa_NY-1
 
 str locationsP23RS = "soma apdend1 apdend2 apdend3 apdend4aL apdend4bL apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apdend5cLL apdend5aLR apdend5bLR apdend5cLR apdend5aLRR apdend5bLRR apdend5cLRR apdend5aRRR apdend5bRRR apdend5cRRR apdend5aRR apdend5bRR apdend5cRR apdend5aRL apdend5bRL apdend5cRL apdend5aRLL apdend5bRLL apdend5cRLL apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -110,7 +110,7 @@ echo
 
 str locationsB23FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -133,7 +133,7 @@ echo
 
 str locationsP5IB = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12 apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL apdend14bL apdend14cL apdend14dL apobproxLa apobproxLb apobproxLc apobmidLa apobmidLb apobmidLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobmidRa apobmidRb apobmidRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmida basalLmidb basalLmidc basaldeepa basaldeepb basaldeepc basalRsupera basalRsuperb basalRsuperc basalRmida basalRmidb basalRmidc axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -169,7 +169,7 @@ echo
 
 str locationsB5FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -192,7 +192,7 @@ echo
 
 str locationsP6RS = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apobproxLa apobproxLb apobproxLc apobmidLa apobmidLb apobmidLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobmidRa apobmidRb apobmidRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmida basalLmidb basalLmidc basaldeepa basaldeepb basaldeepc basalRsupera basalRsuperb basalRsuperc basalRmida basalRmidb basalRmidc axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -233,7 +233,7 @@ echo
 
 str locationsC23FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -266,7 +266,7 @@ echo
 
 str locationsC5FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -289,7 +289,7 @@ echo
 
 str locationsST4RS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -322,7 +322,7 @@ echo
 
 str locationsI23LTS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -355,7 +355,7 @@ echo
 
 str locationsI5LTS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga distdendNlongb distdendNlongc distdendNlongd distdendNlonge distdendNlongf distdendNlongg distdendNmida distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElonga distdendElongb distdendElongc distdendElongd distdendElonge distdendElongf distdendElongg distdendEmida distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlonga distdendSlongb distdendSlongc distdendSlongd distdendSlonge distdendSlongf distdendSlongg distdendSmida distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlonga distdendWlongb distdendWlongc distdendWlongd distdendWlonge distdendWlongf distdendWlongg distdendWmida distdendWmidb distdendWmidc distdendWshorta distdendWshortb axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -378,7 +378,7 @@ kmax = P23FRBa_NX*P23FRBa_NY-1
 
 str locationsP23FRB = "soma apdend1 apdend2 apdend3 apdend4aL apdend4bL apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apdend5cLL apdend5aLR apdend5bLR apdend5cLR apdend5aLRR apdend5bLRR apdend5cLRR apdend5aRRR apdend5bRRR apdend5cRRR apdend5aRR apdend5bRR apdend5cRR apdend5aRL apdend5bRL apdend5cRL apdend5aRLL apdend5bRLL apdend5cRLL apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -401,7 +401,7 @@ echo
 
 str locationsP5RS = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12 apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL apdend14bL apdend14cL apdend14dL apobproxLa apobproxLb apobproxLc apobmidLa apobmidLb apobmidLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobmidRa apobmidRb apobmidRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmida basalLmidb basalLmidc basaldeepa basaldeepb basaldeepc basalRsupera basalRsuperb basalRsuperc basalRmida basalRmidb basalRmidc axona axonb axonLa axonLb axonRa axonRb"
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      for (k=0;k<={kmax};k=k+1)
 
@@ -415,7 +415,7 @@ for (j=0;j<{narraycolumns};j=j+1)
 
 end
 
-for (j=0;j<{narraycolumns};j=j+1)
+for (j=0;j<{numelecs};j=j+1)
 
      call LFP{j} RECALC
 
