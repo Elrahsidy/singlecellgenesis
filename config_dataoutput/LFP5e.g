@@ -44,7 +44,7 @@ for (j=0; j<numelecs; j=j+1)
 end
 
 //                4
-// for (j=0;j<={numelecs};j=j+1)
+// for (j=0;j<{numelecs};j=j+1)
 //      create efield LFP{j}
 //      setfield LFP{j} scale 0.335 x {LFPx+(xarrayres*j)} y {LFPy} z {LFPz} 
 // //                                  25e-6+ 
