@@ -155,3 +155,14 @@ MPI details. Calls pgenesis Neocortex.g
 I'm a little concerned about the conditionals-- even with display=0 the scripts
 will crash if they can't find probedices.g, etc. Not sure if the conditionals
 statements are wrong, or if Genesis evaluates everything even if it's not run.
+
+########################################
+
+2015-01-28 09:20
+Alfred Yu
+
+Now using git in this directory.
+
+'git log' will show a list of changes.
+
+########################################

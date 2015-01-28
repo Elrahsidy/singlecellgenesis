@@ -8,8 +8,8 @@ floatformat %g
 float refresh_factor = 10.0
 
 // Number of nodes (CPUs and cortical columns)
-int Nnodes = 25
-int sqrtNnodes = 5
+int Nnodes = 4
+int sqrtNnodes = {sqrt {Nnodes}}
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
