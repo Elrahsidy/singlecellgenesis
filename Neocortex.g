@@ -41,12 +41,33 @@ echo "batch = " {batch}
 echo ""
 
 // variables
-int i_am_Q1, i_am_Q2, i_am_Q3, i_am_Q4	// booleans indicating what cells are assigned
-int i_am_Q5, i_am_Q6, i_am_Q7, i_am_Q8  //   to this node
-int i_am_Q9, i_am_Q10,i_am_Q11, i_am_Q12
-int i_am_Q13, i_am_Q14, i_am_Q15, i_am_Q16
-int i_am_Q17, i_am_Q18, i_am_Q19, i_am_Q20
-int i_am_Q21, i_am_Q22, i_am_Q23, i_am_Q24
+
+// booleans indicating what cells are assigned to this node
+int i_am_Q00
+int i_am_Q01
+int i_am_Q02
+int i_am_Q03
+int i_am_Q04
+int i_am_Q05
+int i_am_Q06
+int i_am_Q07
+int i_am_Q08
+int i_am_Q09
+int i_am_Q10
+int i_am_Q11
+int i_am_Q12
+int i_am_Q13
+int i_am_Q14
+int i_am_Q15
+int i_am_Q16
+int i_am_Q17
+int i_am_Q18
+int i_am_Q19
+int i_am_Q20
+int i_am_Q21
+int i_am_Q22
+int i_am_Q23
+int i_am_Q24
 int i_am_Q25
 
 int Nnodes = 25
@@ -60,31 +81,32 @@ paron -parallel -silent 0 -nodes {Nnodes} -output o.out \
 
 // Label nodes (whereami)
 
-i_am_Q1 = {mynode} == 0
-i_am_Q2 = {mynode} == 1
-i_am_Q3 = {mynode} == 2
-i_am_Q4 = {mynode} == 3
-i_am_Q5 = {mynode} == 4
-i_am_Q6 = {mynode} == 5
-i_am_Q7 = {mynode} == 6
-i_am_Q8 = {mynode} == 7
-i_am_Q9 = {mynode} == 8
-i_am_Q10 = {mynode} == 9
-i_am_Q11 = {mynode} == 10
-i_am_Q12 = {mynode} == 11
-i_am_Q13 = {mynode} == 12
-i_am_Q14 = {mynode} == 13
-i_am_Q15 = {mynode} == 14
-i_am_Q16 = {mynode} == 15
-i_am_Q17 = {mynode} == 16
-i_am_Q18 = {mynode} == 17
-i_am_Q19 = {mynode} == 18
-i_am_Q20 = {mynode} == 19
-i_am_Q21 = {mynode} == 20
-i_am_Q22 = {mynode} == 21
-i_am_Q23 = {mynode} == 22
-i_am_Q24 = {mynode} == 23
-i_am_Q25 = {mynode} == 24
+i_am_Q00 = {mynode} == 0
+i_am_Q01 = {mynode} == 1
+i_am_Q02 = {mynode} == 2
+i_am_Q03 = {mynode} == 3
+i_am_Q04 = {mynode} == 4
+i_am_Q05 = {mynode} == 5
+i_am_Q06 = {mynode} == 6
+i_am_Q07 = {mynode} == 7
+i_am_Q08 = {mynode} == 8
+i_am_Q09 = {mynode} == 9
+i_am_Q10 = {mynode} == 10
+i_am_Q11 = {mynode} == 11
+i_am_Q12 = {mynode} == 12
+i_am_Q13 = {mynode} == 13
+i_am_Q14 = {mynode} == 14
+i_am_Q15 = {mynode} == 15
+i_am_Q16 = {mynode} == 16
+i_am_Q17 = {mynode} == 17
+i_am_Q18 = {mynode} == 18
+i_am_Q19 = {mynode} == 19
+i_am_Q20 = {mynode} == 20
+i_am_Q21 = {mynode} == 21
+i_am_Q22 = {mynode} == 22
+i_am_Q23 = {mynode} == 23
+i_am_Q24 = {mynode} == 24
+i_am_Q25 = {mynode} == 25
 
 echo I am node {mynode}
 echo Completed startup at {getdate}
@@ -108,9 +130,9 @@ columntype = 1
 
 include netparams.g
 
-// Central Q1 P23RSa current injection
+// Central Q00 P23RSa current injection
 
-float Q1_P23RSa_centralinj = 0.0
+float Q00_P23RSa_centralinj = 0.0
 
 gridsize = P23RSa_NX*P23RSa_NY
 probedex = gridsize/2
@@ -372,7 +394,7 @@ include config_dataoutput/LFP5e.g
 
 //echo {probedex}
 
-if ( {display == 1} && {i_am_Q1} )
+if ( {display == 1} && {i_am_Q00} )
 
      int posdex=1
 
@@ -438,7 +460,7 @@ end
 
 //Control Routines
 
-if ( {display == 1} && {i_am_Q1} )
+if ( {display == 1} && {i_am_Q00} )
 
 //     make_control
 
