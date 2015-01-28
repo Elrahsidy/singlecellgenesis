@@ -73,6 +73,44 @@ int i_am_Q22
 int i_am_Q23
 int i_am_Q24
 int i_am_Q25
+int i_am_Q26
+int i_am_Q27
+int i_am_Q28
+int i_am_Q29
+int i_am_Q30
+int i_am_Q31
+int i_am_Q32
+int i_am_Q33
+int i_am_Q34
+int i_am_Q35
+int i_am_Q36
+int i_am_Q37
+int i_am_Q38
+int i_am_Q39
+int i_am_Q40
+int i_am_Q41
+int i_am_Q42
+int i_am_Q43
+int i_am_Q44
+int i_am_Q45
+int i_am_Q46
+int i_am_Q47
+int i_am_Q48
+int i_am_Q49
+int i_am_Q50
+int i_am_Q51
+int i_am_Q52
+int i_am_Q53
+int i_am_Q54
+int i_am_Q55
+int i_am_Q56
+int i_am_Q57
+int i_am_Q58
+int i_am_Q59
+int i_am_Q60
+int i_am_Q61
+int i_am_Q62
+int i_am_Q63
 
 // START UP
 paron -parallel -silent 0 -nodes {Nnodes} -output o.out \
@@ -108,6 +146,44 @@ i_am_Q22 = {mynode} == 22
 i_am_Q23 = {mynode} == 23
 i_am_Q24 = {mynode} == 24
 i_am_Q25 = {mynode} == 25
+i_am_Q26 = {mynode} == 26
+i_am_Q27 = {mynode} == 27
+i_am_Q28 = {mynode} == 28
+i_am_Q29 = {mynode} == 29
+i_am_Q30 = {mynode} == 30
+i_am_Q31 = {mynode} == 31
+i_am_Q32 = {mynode} == 32
+i_am_Q33 = {mynode} == 33
+i_am_Q34 = {mynode} == 34
+i_am_Q35 = {mynode} == 35
+i_am_Q36 = {mynode} == 36
+i_am_Q37 = {mynode} == 37
+i_am_Q38 = {mynode} == 38
+i_am_Q39 = {mynode} == 39
+i_am_Q40 = {mynode} == 40
+i_am_Q41 = {mynode} == 41
+i_am_Q42 = {mynode} == 42
+i_am_Q43 = {mynode} == 43
+i_am_Q44 = {mynode} == 44
+i_am_Q45 = {mynode} == 45
+i_am_Q46 = {mynode} == 46
+i_am_Q47 = {mynode} == 47
+i_am_Q48 = {mynode} == 48
+i_am_Q49 = {mynode} == 49
+i_am_Q50 = {mynode} == 50
+i_am_Q51 = {mynode} == 51
+i_am_Q52 = {mynode} == 52
+i_am_Q53 = {mynode} == 53
+i_am_Q54 = {mynode} == 54
+i_am_Q55 = {mynode} == 55
+i_am_Q56 = {mynode} == 56
+i_am_Q57 = {mynode} == 57
+i_am_Q58 = {mynode} == 58
+i_am_Q59 = {mynode} == 59
+i_am_Q60 = {mynode} == 60
+i_am_Q61 = {mynode} == 61
+i_am_Q62 = {mynode} == 62
+i_am_Q63 = {mynode} == 63
 
 str myzeropadnode
 if({mynode} == 0)
