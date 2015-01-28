@@ -6,13 +6,13 @@
 
 int myzeropadnode = {mynode}
 if({mynode} < 10)
-    myzeropadnode = "0{mynode}"
+    myzeropadnode = 0{mynode}
 
     if({mynode} == 0)
-        myzeropadnode = "00{mynode}"
+        myzeropadnode = 00
     end
 end
 
 for (j=0;j<{numelecs};j=j+1)
-    do_asc_file ./data/LFP5.elec{j}.column0{myzeropadnode} LFP{j} field LFP{j}file
+    do_asc_file ./data/LFP5.elec{j}.column{myzeropadnode} LFP{j} field LFP{j}file
 end

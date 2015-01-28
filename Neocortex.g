@@ -2,13 +2,13 @@
 
 //Overall simulation parameters
 
-float tmax = 15
+float tmax = .001
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
 
 // Number of nodes (CPUs and cortical columns)
-int Nnodes = 4
+int Nnodes = 16
 int sqrtNnodes = {sqrt {Nnodes}}
 
 // Seeding the random number generator used later in the input pattern.
@@ -471,6 +471,9 @@ end
 
 check
 reset // This initialises and gets everything ready to go.
+
+// Output entire hierarchy for debugging
+le / -recursive -type
 
 barrier
 step_tmax // Run the sim to time tmax
