@@ -42,7 +42,7 @@ int thalamocortical
 int gaps
 
 gaps = 0   // Gap junction flag
-thalamocortical = 0 // TC flag
+thalamocortical = 1 // TC flag
 
 //int batch = (display == 0)	// we are running interactively
 
