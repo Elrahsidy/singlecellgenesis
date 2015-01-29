@@ -7,9 +7,17 @@ float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
 
-// Number of nodes (CPUs and cortical columns)
+// Number of CPU nodes/cortical columns
 int Nnodes = 16
 int sqrtNnodes = {sqrt {Nnodes}}
+
+// Number of minicolumns per CPU node/cortical column
+float NX = 8
+float NY = 8
+
+// Spacing between minicolumns
+float SEPX = 25e-6
+float SEPY = 25e-6
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
