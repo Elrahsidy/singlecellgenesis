@@ -2,18 +2,19 @@
 
 //Overall simulation parameters
 
-float tmax = 15
+float tmax = 120
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
 
-// Number of CPU nodes/cortical columns
+// Number of CPU nodes (= same as number of cortical columns)
 int Nnodes = 64
 int sqrtNnodes = {sqrt {Nnodes}}
 
-// Number of minicolumns per CPU node/cortical column
-float NX = 2
-float NY = 2
+// Number of minicolumns per cortical column.
+// Each CPU node will simulate NX*NY minicolumns.
+float NX = 4
+float NY = 4
 
 // Spacing between minicolumns
 float SEPX = 25e-6
@@ -566,8 +567,8 @@ end
 check
 reset // This initialises and gets everything ready to go.
 
-// Output entire hierarchy for debugging
-le / -recursive -type
+// Output entire hierarchy for debugging (takes a *huge* amount of disk space!)
+//le / -recursive -type
 
 barrier
 step_tmax // Run the sim to time tmax
