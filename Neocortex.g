@@ -8,12 +8,12 @@ floatformat %g
 float refresh_factor = 10.0
 
 // Number of CPU nodes/cortical columns
-int Nnodes = 16
+int Nnodes = 64
 int sqrtNnodes = {sqrt {Nnodes}}
 
 // Number of minicolumns per CPU node/cortical column
-float NX = 8
-float NY = 8
+float NX = 2
+float NY = 2
 
 // Spacing between minicolumns
 float SEPX = 25e-6
@@ -472,11 +472,11 @@ end
 
 // Create Random Background Inputs
 
-//include synchansSPIKEs.g
+include synchansSPIKEs.g
 
 neuronfrac=0.005
 
-//include randominputdefs.g
+include randominputdefs.g
 
 // Output and diagnostics
 
