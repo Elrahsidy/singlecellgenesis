@@ -73,7 +73,12 @@ sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(
 export num_nodes="`grep "\sNnodes" $mydir/Neocortex.g | sed 's/.* = //'`"
 echo "Running on $num_nodes nodes"
 
-find . -name "*.[pg]" | zip --quiet -@ $mydir/data/scripts_snapshot.zip 
+# Create snapshot of all Genesis scripts and parameters
+find . -name "*.[pg]" | zip --quiet -@ "$mydir"/data/scripts_snapshot.zip 
+
+# Create diff between the current model and an established baseline:
+# Currently, a symlink named /data2/data/Neocortex_sim/Baseline_model
+diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_from_baseline.txt
 
 # http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
 # Besides specifying the -nox option when starting genesis to avoid starting
@@ -83,4 +88,4 @@ find . -name "*.[pg]" | zip --quiet -@ $mydir/data/scripts_snapshot.zip
 # stdin.  -notty will avoid doing any terminal setup and cleanup procedures
 # which can also cause this type of behaviour.  You must specify both on the
 # command line (i.e. neither option implies the other).
-/data2/software/genesis-2.3/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex > "$mydir/data/`date +%Y%m%d-%H%M`.log" 2>&1
+/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex > "$mydir/data/`date +%Y%m%d-%H%M`.log" 2>&1

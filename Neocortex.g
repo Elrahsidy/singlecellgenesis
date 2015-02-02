@@ -8,13 +8,13 @@ floatformat %g
 float refresh_factor = 10.0
 
 // Number of CPU nodes (= same as number of cortical columns)
-int Nnodes = 64
+int Nnodes = 16
 int sqrtNnodes = {sqrt {Nnodes}}
 
 // Number of minicolumns per cortical column.
 // Each CPU node will simulate NX*NY minicolumns.
-float NX = 4
-float NY = 4
+float NX = 8
+float NY = 8
 
 // Spacing between minicolumns
 float SEPX = 25e-6
@@ -542,7 +542,7 @@ if ( {output == 1} )
 
     // probedex and probedex2 ASCII file Vm and Spike writing
 
-    //include config_dataoutput/ASCIIwrite.g
+    include config_dataoutput/ASCIIwrite.g
 
     // Spike Class Output ASCII
 
