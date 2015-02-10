@@ -28,11 +28,10 @@ numelecs = 4
 
 int j
 
-float LFPx = P23RSa_SEPX*P23RSa_NX/2*sqrtNnodes
-float LFPy = P23RSa_SEPY*P23RSa_NY/2*sqrtNnodes
-//              25e-6   *   8     /2*4 = 25e-6
+float LFPx = {P23RSa_SEPX}*(({P23RSa_NX}*{sqrtNnodes})-1)/2
+float LFPy = {P23RSa_SEPY}*(({P23RSa_NY}*{sqrtNnodes})-1)/2
 float LFPz = 2340e-6
-// This is 2.34 mm above the column
+// This is 2.34 mm above the *BOTTOM* of the column
 
 // ayu: Instead of weird 100 micron scaling along x direction, put an LFP smack
 // dab in the middle and increment height at two 2500-micron (mm) increments. Min z
