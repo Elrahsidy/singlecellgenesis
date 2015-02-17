@@ -33,7 +33,7 @@ float LFPz = 3000e-6 // just above column surface
 for (j=0; j<numelecs; j=j+1)
      create efield LFP{j}
      setfield LFP{j} scale 0.335 x {(j % sqrtNnodes)*NX*SEPX} y {(j / sqrtNnodes)*NY*SEPY} z {LFPz}
-     echo Position LFP {j} NA NA NA NA {(j % sqrtNnodes)*NX*SEPX} {(j / sqrtNnodes)*NY*SEPY} {LFPz}
+     echo Position LFP {mynode} NA NA NA NA {(j % sqrtNnodes)*NX*SEPX} {(j / sqrtNnodes)*NY*SEPY} {LFPz}
 end
 
 str s
