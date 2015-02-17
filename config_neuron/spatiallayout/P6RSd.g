@@ -12,6 +12,9 @@ echo Creating P6RSd network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 14
+
 int ydex
 float placer
 
@@ -49,6 +52,8 @@ create neutral /P6RSdnet
 for (j = 0; j < P6RSd_NY; j = j+1)
      for (i = 0; i < P6RSd_NX; i = i+1)
 
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          randseed {newrandseed}
           randzpos = { rand 0 550e-6 }
 
           copy /P6RSd /P6RSdnet/P6RSd[{k}]

@@ -12,6 +12,9 @@ echo Creating ST4RS network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 17
+
 int ydex
 float placer
 
@@ -49,6 +52,8 @@ create neutral /ST4RSnet
 for (j = 0; j < ST4RS_NY; j = j+1)
      for (i = 0; i < ST4RS_NX; i = i+1)
 
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          randseed {newrandseed}
           randzpos = { rand 1262e-6 1602e-6 }
 
           copy /ST4RS /ST4RSnet/ST4RS[{k}]

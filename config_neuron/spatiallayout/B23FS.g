@@ -10,6 +10,9 @@ echo Creating B23FS network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 5
+
 int ydex
 float placer
 
@@ -40,6 +43,7 @@ if ({columntype == 0})
      for (j = 0; j < B23FS_NY; j = j+1)
           for (i = 0; i < B23FS_NX; i = i+1)
 
+               randseed { {trunc {{{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}}+1} @0@ {trunc {{{{originymin}+{B23FS_SEPY}*{i}}/{SEPY}}}+1} @0@ {k} @0@ {typenum} @ {substring {myrandseed} {{strlen {myrandseed}}-2}} }
                randzpos = { rand 1602e-6 2871e-6 }
 
                copy /B23FS /B23FSnet/B23FS[{k}]
@@ -61,8 +65,17 @@ echo Traub B23FS!
           istartdex = j-{trunc {j/2}}*2
 
           for (i = istartdex; i < B23FS_NX; i = i+2)
-              
+
+               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+               randseed {newrandseed}
+               echo randseed {typenum} {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} {myrandseed} {newrandseed}
+
+               // Old myrandseed substring (bad because seeds ending in same two least significant digits will yield same random seed)
+               //@ {substring {myrandseed} {{strlen {myrandseed}}-2}}
+
                randzpos = { rand 1602e-6 2871e-6 }
+               //echo randseedB23FS {trunc {{{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}}} {trunc {{{{originymin}+{B23FS_SEPY}*{i}}/{SEPY}}}} {randzpos}
+               //echo randseednotruncB23FS {mynode} {{{{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}}} {{{{{originymin}+{B23FS_SEPY}*{i}}/{SEPY}}}} {randzpos} {k}
 
                copy /B23FS /B23FSnet/B23FS[{k}]
                position /B23FSnet/B23FS[{k}] \

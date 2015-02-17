@@ -12,6 +12,9 @@ echo Creating P5IBa network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 6
+
 int ydex
 float placer
 
@@ -49,6 +52,8 @@ create neutral /P5IBanet
 for (j = 0; j < P5IBa_NY; j = j+1)
      for (i = 0; i < P5IBa_NX; i = i+1)
 
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          randseed {newrandseed}
           randzpos = { rand 550e-6 1262e-6 }
 
           copy /P5IBa /P5IBanet/P5IBa[{k}]

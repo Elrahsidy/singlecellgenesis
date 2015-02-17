@@ -7,6 +7,9 @@ echo Creating nRT network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 21
+
 int ydex
 float placer
 
@@ -66,7 +69,7 @@ echo Traub nRT!
                  {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
                k=k+1
 
-               echo Position nRT {mynode} {i} {j} {originxmin} {originymin} {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {randzpos}
+               echo Position nRT {mynode} {i} {j} {originxmin} {originymin} {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
 
           end
      end

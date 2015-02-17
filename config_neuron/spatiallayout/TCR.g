@@ -7,12 +7,14 @@ echo Creating TCR network
 float originxmin
 float originymin
 
+// Unique number for each cell type (same as spike number)
+int typenum = 20
+
 int ydex
 float placer
 
 // Note that these cells' positions overlap.  This doesn't cause any
 // problems since we can refer to them as separate groups.
-
 
 int i,j,istartdex
 int k = 0
@@ -66,7 +68,7 @@ echo Traub TCR!
                  {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
                k=k+1
 
-               echo Position TCR {mynode} {i} {j} {originxmin} {originymin} {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {randzpos}
+               echo Position TCR {mynode} {i} {j} {originxmin} {originymin} {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
 
           end
      end

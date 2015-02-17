@@ -1,5 +1,8 @@
 // genesis
 
+// Random number generator: Use SPRNG instead of Numerical Recipes
+setrand -sprng
+
 //Overall simulation parameters
 
 float tmax = 120
@@ -26,7 +29,8 @@ float SEPY = 25e-6
 // without a defined seed gives different results each time you run
 // the simulation.
 
-randseed 34521
+int myrandseed = 34521
+randseed {myrandseed}
 
 // setting the simulation clocks
 
@@ -431,6 +435,11 @@ end
 
 include config_neuron/spatiallayout/P23FRBa.g
 include config_neuron/spatiallayout/P5RSa.g
+
+// Revert to non-node-, typenum-, and minicolumn-dependent random seed (same
+// number across all cores). Adding one so that we're not re-using the same
+// random numbers (even though they were for different things).
+randseed { {myrandseed} + 1 }
 
 barrierall
 
