@@ -40,7 +40,7 @@ float LFPz = 2340e-6
 for (j=0; j<numelecs; j=j+1)
      create efield LFP{j}
      setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
-     echo Position LFP {j} NA NA {LFPx} {LFPy} {LFPz+(2500e-6*j)}
+     echo Position LFP {j} NA NA NA NA {LFPx} {LFPy} {LFPz+(2500e-6*j)}
 end
 
 //                4
