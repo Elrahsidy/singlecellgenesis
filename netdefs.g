@@ -59,7 +59,8 @@ include config_neuron_x_neuron/P23RSa_I23LTS.g
 include config_neuron_x_neuron/P23RSa_I5LTS.g
 include config_neuron_x_neuron/P23RSa_P23FRBa.g
 include config_neuron_x_neuron/P23RSa_P5RSa.g
-include config_neuron/output/P23RSa_output.g
+// Moved to vestigial:
+//include config_neuron/output/P23RSa_output.g
 
 //P23RSb spatial connection scales
 
