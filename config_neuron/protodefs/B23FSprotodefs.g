@@ -1,5 +1,8 @@
 // B23FSprotodefs.g - Definition of prototype elements for Minicol
 
+// ayu: Only B23FSprotodefs.g was missing this:
+/* file for standard compartments */
+include compartments.g
 
 // include the definitions for the functions to create H-H channels
 
