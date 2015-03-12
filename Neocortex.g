@@ -579,5 +579,11 @@ reset // This initialises and gets everything ready to go.
 // Output entire hierarchy for debugging (takes a *huge* amount of disk space!)
 //le / -recursive -type
 
+// List all connections: Takes forever to run!!! Also, only works well on a
+// single node model because multi-node models don't show the targets of
+// node-to-node connections running into /post; this gives me very limited
+// ability to see what's connected to what across columns.
+//include draw_tree
+
 barrier
 step_tmax // Run the sim to time tmax
