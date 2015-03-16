@@ -401,6 +401,8 @@ end
 check
 reset // This initialises and gets everything ready to go.
 
+echo Completed model setup at {getdate}
+
 // Output entire hierarchy for debugging (takes a *huge* amount of disk space!)
 //le / -recursive -type
 
