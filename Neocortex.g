@@ -1,10 +1,6 @@
 // genesis
 
-// Random number generator: Use SPRNG instead of Numerical Recipes
-setrand -sprng
-
 //Overall simulation parameters
-
 float tmax = 120
 float dt = 5.0e-5		// sec
 floatformat %g
@@ -28,12 +24,11 @@ float SEPY = 25e-6
 // 'random' patterns from one simulation to the next.   Seeding
 // without a defined seed gives different results each time you run
 // the simulation.
-
+setrand -sprng // Use SPRNG instead of default Numerical Recipes
 int myrandseed = 34521
 randseed {myrandseed}
 
 // setting the simulation clocks
-
 setclock	0 {dt}		        // sec
 setclock	1 {dt * refresh_factor} // sec
 
@@ -42,12 +37,10 @@ setclock	1 {dt * refresh_factor} // sec
 int display = 0		// display neurons and graphs
 int output = 1		// don't dump neural output to a file
 
-// Thalamocortical and Gaps flags
-int thalamocortical
-int gaps
-
-gaps = 0   // Gap junction flag
-thalamocortical = 1 // TC flag
+// Enable/disable thalamocortical connections
+int thalamocortical = 1
+// Enable/disable gap junctions
+int gaps = 0
 
 //int batch = (display == 0)	// we are running interactively
 
@@ -282,8 +275,8 @@ include config_neuron/spatiallayout/P6RSb.g
 
 if ({columntype == 0})
 
-     include config_neuron/spatiallayout/P6RSc.g
-     include config_neuron/spatiallayout/P6RSd.g
+    include config_neuron/spatiallayout/P6RSc.g
+    include config_neuron/spatiallayout/P6RSd.g
 
 end
 
@@ -294,8 +287,8 @@ include config_neuron/spatiallayout/I23LTS.g
 include config_neuron/spatiallayout/I5LTS.g
 
 if ({thalamocortical == 1})
-     include config_neuron/spatiallayout/TCR.g
-     include config_neuron/spatiallayout/nRT.g
+    include config_neuron/spatiallayout/TCR.g
+    include config_neuron/spatiallayout/nRT.g
 end
 
 include config_neuron/spatiallayout/P23FRBa.g
@@ -303,7 +296,8 @@ include config_neuron/spatiallayout/P5RSa.g
 
 // Revert to non-node-, typenum-, and minicolumn-dependent random seed (same
 // number across all cores). Adding one so that we're not re-using the same
-// random numbers (even though they were for different things).
+// random numbers (just to be safe, even though they were for different
+// things).
 randseed { {myrandseed} + 1 }
 
 barrierall
@@ -338,11 +332,9 @@ echo Made it past netdefs.g! {mynode}
 // Create Gap Junctions
 
 if ({gaps == 1})
-
-     barrierall
-     include Gapdefs.g
-     barrierall
-
+    barrierall
+    include Gapdefs.g
+    barrierall
 end
 
 // Create Random Background Inputs
@@ -361,82 +353,52 @@ include randominputdefs.g
 include config_dataoutput/LFP5e.g
 
 // make the graphs to display 2 selected Minicolumns' somal Vm and pass messages to the graphs
-
-//echo {probedex}
-
 if ( {display == 1} && {{mynode} == 0} )
+    //echo {probedex}
 
-     int posdex=1
+    int posdex=1
+    make_MasterRaster {probedex} {posdex}
+    if ({columntype == 0})
+         include gui/probedices.g
+    end
+    if ({columntype == 1})
+         include gui/probedicesTraub.g
+    end
+    include gui/rasterdefspos1.g
+    
+    posdex=2
+    make_MasterRaster {probedex2} {posdex}
 
-     make_MasterRaster {probedex} {posdex}
-
-     if ({columntype == 0})
- 
-          include gui/probedices.g
-
-     end
-
-     if ({columntype == 1})
-
-          include gui/probedicesTraub.g
-
-     end
-
-     include gui/rasterdefspos1.g
-
-     posdex=2
-
-     make_MasterRaster {probedex2} {posdex}
-
-     if ({columntype == 0})
- 
-          include gui/probedices2.g
-
-     end
-
-     if ({columntype == 1})
-
-          include gui/probedices2Traub.g
-
-     end
-
-     include gui/rasterdefspos2.g
-
+    if ({columntype == 0})
+         include gui/probedices2.g
+    end
+    if ({columntype == 1})
+         include gui/probedices2Traub.g
+    end
+    include gui/rasterdefspos2.g
 end
 
 //Setup messages for Data File writing
-
 if ( {output == 1} )
-
     // LFP data write
-
     include config_dataoutput/LFP5eASCIIwrite.g
 
     // Vm files probedex
 
     // probedex and probedex2 ASCII file Vm and Spike writing
-
     include config_dataoutput/ASCIIwrite.g
 
     // Spike Class Output ASCII
-
     include config_dataoutput/ASCIISpikeClasswrite.g
 
     // Spike Class Output Binary
-
     //include config_dataoutput/BinarySpikeClasswrite.g
-
 end
 
 //Control Routines
-
 if ( {display == 1} && {{mynode} == 0} )
-
-//     make_control
-
+    make_control
 end
-
-//Neoorient
 
 check
 reset // This initialises and gets everything ready to go.
