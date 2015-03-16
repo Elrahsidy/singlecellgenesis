@@ -74,7 +74,6 @@ echo Completed startup at {getdate}
 int probedex
 int probedex2
 int gridsize
-float sqrtgrdsz
 float neuronfrac // Percentage of neurons receiving background
 
 // Flags for minicolumnar architecture
@@ -89,12 +88,11 @@ columntype = 1
 include netparams.g
 
 // Central Q00 P23RSa current injection
-
-float Q00_P23RSa_centralinj = 0.0
+//float Q00_P23RSa_centralinj = 0.0
 
 gridsize = P23RSa_NX*P23RSa_NY
-probedex = gridsize/2
-probedex2 = probedex/2
+probedex = gridsize/2 // For cell types with full density (1 per minicolumn)
+probedex2 = probedex/2 // For cell types with half the density
 
 //===============================
 //      Function Definitions
