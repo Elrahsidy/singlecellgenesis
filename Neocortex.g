@@ -57,146 +57,11 @@ echo "output = " {output}
 //echo "batch = " {batch}
 echo ""
 
-// variables
-
-// booleans indicating what cells are assigned to this node
-int i_am_Q00
-int i_am_Q01
-int i_am_Q02
-int i_am_Q03
-int i_am_Q04
-int i_am_Q05
-int i_am_Q06
-int i_am_Q07
-int i_am_Q08
-int i_am_Q09
-int i_am_Q10
-int i_am_Q11
-int i_am_Q12
-int i_am_Q13
-int i_am_Q14
-int i_am_Q15
-int i_am_Q16
-int i_am_Q17
-int i_am_Q18
-int i_am_Q19
-int i_am_Q20
-int i_am_Q21
-int i_am_Q22
-int i_am_Q23
-int i_am_Q24
-int i_am_Q25
-int i_am_Q26
-int i_am_Q27
-int i_am_Q28
-int i_am_Q29
-int i_am_Q30
-int i_am_Q31
-int i_am_Q32
-int i_am_Q33
-int i_am_Q34
-int i_am_Q35
-int i_am_Q36
-int i_am_Q37
-int i_am_Q38
-int i_am_Q39
-int i_am_Q40
-int i_am_Q41
-int i_am_Q42
-int i_am_Q43
-int i_am_Q44
-int i_am_Q45
-int i_am_Q46
-int i_am_Q47
-int i_am_Q48
-int i_am_Q49
-int i_am_Q50
-int i_am_Q51
-int i_am_Q52
-int i_am_Q53
-int i_am_Q54
-int i_am_Q55
-int i_am_Q56
-int i_am_Q57
-int i_am_Q58
-int i_am_Q59
-int i_am_Q60
-int i_am_Q61
-int i_am_Q62
-int i_am_Q63
-
 // START UP
 paron -parallel -silent 0 -nodes {Nnodes} -output o.out \
 	-executable nxpgenesis
 //setfield /post msg_hang_time 100000	// set a very long timeout in case
 					// we need to do debugging
-
-// Label nodes (whereami)
-
-i_am_Q00 = {mynode} == 0
-i_am_Q01 = {mynode} == 1
-i_am_Q02 = {mynode} == 2
-i_am_Q03 = {mynode} == 3
-i_am_Q04 = {mynode} == 4
-i_am_Q05 = {mynode} == 5
-i_am_Q06 = {mynode} == 6
-i_am_Q07 = {mynode} == 7
-i_am_Q08 = {mynode} == 8
-i_am_Q09 = {mynode} == 9
-i_am_Q10 = {mynode} == 10
-i_am_Q11 = {mynode} == 11
-i_am_Q12 = {mynode} == 12
-i_am_Q13 = {mynode} == 13
-i_am_Q14 = {mynode} == 14
-i_am_Q15 = {mynode} == 15
-i_am_Q16 = {mynode} == 16
-i_am_Q17 = {mynode} == 17
-i_am_Q18 = {mynode} == 18
-i_am_Q19 = {mynode} == 19
-i_am_Q20 = {mynode} == 20
-i_am_Q21 = {mynode} == 21
-i_am_Q22 = {mynode} == 22
-i_am_Q23 = {mynode} == 23
-i_am_Q24 = {mynode} == 24
-i_am_Q25 = {mynode} == 25
-i_am_Q26 = {mynode} == 26
-i_am_Q27 = {mynode} == 27
-i_am_Q28 = {mynode} == 28
-i_am_Q29 = {mynode} == 29
-i_am_Q30 = {mynode} == 30
-i_am_Q31 = {mynode} == 31
-i_am_Q32 = {mynode} == 32
-i_am_Q33 = {mynode} == 33
-i_am_Q34 = {mynode} == 34
-i_am_Q35 = {mynode} == 35
-i_am_Q36 = {mynode} == 36
-i_am_Q37 = {mynode} == 37
-i_am_Q38 = {mynode} == 38
-i_am_Q39 = {mynode} == 39
-i_am_Q40 = {mynode} == 40
-i_am_Q41 = {mynode} == 41
-i_am_Q42 = {mynode} == 42
-i_am_Q43 = {mynode} == 43
-i_am_Q44 = {mynode} == 44
-i_am_Q45 = {mynode} == 45
-i_am_Q46 = {mynode} == 46
-i_am_Q47 = {mynode} == 47
-i_am_Q48 = {mynode} == 48
-i_am_Q49 = {mynode} == 49
-i_am_Q50 = {mynode} == 50
-i_am_Q51 = {mynode} == 51
-i_am_Q52 = {mynode} == 52
-i_am_Q53 = {mynode} == 53
-i_am_Q54 = {mynode} == 54
-i_am_Q55 = {mynode} == 55
-i_am_Q56 = {mynode} == 56
-i_am_Q57 = {mynode} == 57
-i_am_Q58 = {mynode} == 58
-i_am_Q59 = {mynode} == 59
-i_am_Q60 = {mynode} == 60
-i_am_Q61 = {mynode} == 61
-i_am_Q62 = {mynode} == 62
-i_am_Q63 = {mynode} == 63
 
 str myzeropadnode
 if({mynode} == 0)
@@ -499,7 +364,7 @@ include config_dataoutput/LFP5e.g
 
 //echo {probedex}
 
-if ( {display == 1} && {i_am_Q00} )
+if ( {display == 1} && {{mynode} == 0} )
 
      int posdex=1
 
@@ -565,7 +430,7 @@ end
 
 //Control Routines
 
-if ( {display == 1} && {i_am_Q00} )
+if ( {display == 1} && {{mynode} == 0} )
 
 //     make_control
 
