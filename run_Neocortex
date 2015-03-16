@@ -63,10 +63,16 @@ if [[ ! -d "$mydir/data" ]]; then
 	mkdir "$mydir/data"
 fi
 
+# Output log file
+logfile="$mydir/data/$(date +%Y%m%d-%H%M).log"
+
+# Echo any notes passed in on the command line to the log file
+echo "Running as $(whoami) at $(date +%Y%m%d-%H%M)" >> "$logfile"
+echo "$@" >> "$logfile"
+
 # Hardcode the data directory in all .g files.
-# Not sure if potentially_useless/LFPlist is necessary.
 # I admit that this regexp is pretty damn ugly!
-sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydir/data/\3 \4#" $mydir/config_dataoutput/*write*.g #$mydir/LFPlist
+sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydir/data/\3 \4#" $mydir/config_dataoutput/*write*.g
 
 # Checking node numbers
 # Assumes that Nnodes in Neocortex.g is correct
@@ -76,8 +82,8 @@ echo "Running on $num_nodes nodes"
 # Create snapshot of all Genesis scripts and parameters
 find . -name "*.[pg]" | zip --quiet -@ "$mydir"/data/scripts_snapshot.zip 
 
-# Create diff between the current model and an established baseline:
-# Currently, a symlink named /data2/data/Neocortex_sim/Baseline_model
+# Create diff between the current model and an established baseline, which is
+# currently a symlink named /data2/data/Neocortex_sim/Baseline_model
 diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_from_baseline.txt
 
 # http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
@@ -88,4 +94,4 @@ diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_f
 # stdin.  -notty will avoid doing any terminal setup and cleanup procedures
 # which can also cause this type of behaviour.  You must specify both on the
 # command line (i.e. neither option implies the other).
-/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex > "$mydir/data/`date +%Y%m%d-%H%M`.log" 2>&1
+/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
