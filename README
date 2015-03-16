@@ -153,7 +153,7 @@ MPI details. Calls pgenesis Neocortex.g
 ---------------------------
 
 I'm a little concerned about the conditionals-- even with display=0 the scripts
-will crash if they can't find probedices.g, etc. Not sure if the conditionals
+will crash if they can't find probedices.g, etc. Not sure if the conditional
 statements are wrong, or if Genesis evaluates everything even if it's not run.
 
 ########################################
@@ -166,3 +166,19 @@ Now using git in this directory.
 'git log' will show a list of changes.
 
 ########################################
+
+2015-03-16 08:47
+Alfred Yu
+
+Adjusted z placement to be deterministic even when model is spread over a
+different number of computing nodes (merged "improvedrandomheight" branch).
+
+Many other small fixes (see git log).
+
+We are starting to implement long range connections, so I'm cleaning house
+prior to merging a large amount of changes. The structure of these changes is
+yet to be determined because we're balancing ease of implementation vs. future
+flexibility.
+
+########################################
+
