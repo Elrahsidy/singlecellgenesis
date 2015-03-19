@@ -1,7 +1,5 @@
 // genesis
 
-echo I23LTS_raninput
-
 // function for setting random network inputs
 
 if ({columntype == 0})

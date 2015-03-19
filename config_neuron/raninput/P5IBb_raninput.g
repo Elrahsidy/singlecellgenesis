@@ -1,7 +1,5 @@
 // genesis
 
-echo P5IBb_raninput
-
 // function for setting random network inputs
 
     int i,j,dex

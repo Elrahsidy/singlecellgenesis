@@ -1,7 +1,5 @@
 // genesis
 
-echo I5LTS_raninput
-
 // function for setting random network inputs
 
 if ({columntype == 0})

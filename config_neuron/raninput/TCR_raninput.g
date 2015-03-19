@@ -1,7 +1,5 @@
 // genesis
 
-echo TCR_raninput
-
 // function for setting random network inputs
 
 if ({columntype == 0})

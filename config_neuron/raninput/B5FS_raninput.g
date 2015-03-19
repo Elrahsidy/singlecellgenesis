@@ -1,7 +1,5 @@
 // genesis
 
-echo B5FS_raninput
-
 // function for setting random network inputs
 
 if ({columntype == 0})

@@ -1,7 +1,5 @@
 // genesis
 
-echo nRT_raninput
-
 // function for setting random network inputs
 
 if ({columntype == 0})
