@@ -54,10 +54,10 @@ mydir="`dirname "$0"`"
 echo "Running in $mydir"
 if [[ "`find $mydir/data -type f 2>/dev/null`" ]]; then
 	# directory already exists and has files in it
-	oldestfile="`ls -rt $mydir/data | tail -n1`"
-	oldesttime="`find $mydir/data/$oldestfile -printf '%TY%Tm%Td-%TH%TM'`"
+	oldestfile=$(ls -td "$mydir/data/"* | tail -n1)
+	oldesttime=$(find "$mydir/data" -path "$oldestfile" -printf '%TY%Tm%Td-%TH%TM')
 	echo "Moving existing data to $mydir/data-$oldesttime"
-	mv -i "$mydir/data" "$mydir/data-$oldesttime"
+	mv "$mydir/data" "$mydir/data-$oldesttime"
 fi
 if [[ ! -d "$mydir/data" ]]; then
 	mkdir -p "$mydir/data/connections"
@@ -99,7 +99,7 @@ diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_f
 # on non-local or multiple machines.
 
 # Non-interactive (output redirected to log file)
-/data2/software/genesis-2.3/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
+/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
 
 # Interactive (no redirection)
 #/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox $mydir/Neocortex
