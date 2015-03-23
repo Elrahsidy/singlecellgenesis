@@ -18,16 +18,20 @@ str outfile
 // By spike generator (soma):
 // List source properties and outgoing messages
 int thisnode
+//TESTING for (thisnode=3; {thisnode < 4}; thisnode={{thisnode}+1})
+//sleep {{thisnode} * 20} // allow 20 seconds
 for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
-    foreach element ({el /#net/#[]/soma/spk#})
-        if({mynode} == {thisnode})
+    if ({thisnode} == {mynode})
+        echo Listing connections for node {thisnode}
+        foreach element ({el /#net/#[]/soma/spk#})
             outfile = {"data/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
-            echo@{thisnode} Listing connections for node {myzeropadnode} {element}; barrier
-            echo@{thisnode} {myzeropadnode} {element} {getfield@{thisnode} {element} x} {getfield@{thisnode} {element} y} {getfield@{thisnode} {element} z} >> {outfile}; barrier
-            rshowmsg@{thisnode} {element} >> {outfile}; barrier
-            echo@{thisnode} Done listing connections for node {myzeropadnode} {element}; barrier
+            echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} >> {outfile}
+            rshowmsg {element} >> {outfile}
+            //echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} > /dev/null
+            //async rshowmsg {element} > /dev/null
         end
     end
+    barrier
 end
 
 // It's not currently possible to get the synaptic weight for remote
