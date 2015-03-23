@@ -60,7 +60,7 @@ if [[ "`find $mydir/data -type f 2>/dev/null`" ]]; then
 	mv -i "$mydir/data" "$mydir/data-$oldesttime"
 fi
 if [[ ! -d "$mydir/data" ]]; then
-	mkdir "$mydir/data"
+	mkdir -p "$mydir/data/connections"
 fi
 
 # Output log file
@@ -99,7 +99,7 @@ diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_f
 # on non-local or multiple machines.
 
 # Non-interactive (output redirected to log file)
-/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
+/data2/software/genesis-2.3/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
 
 # Interactive (no redirection)
 #/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox $mydir/Neocortex
