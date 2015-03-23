@@ -40,6 +40,10 @@ originymin = {ydex}*ST4RS_NY*ST4RS_SEPY
 
 create neutral /ST4RSnet
 
+// Random orientation
+float randrotation
+addfield /ST4RS rotation
+
 // CREATING THE PLANE OF ST4RS cells
 //createmap /ST4RS /ST4RSnet  \
 //	{ST4RS_NX} {ST4RS_NY} \
@@ -59,6 +63,14 @@ for (j = 0; j < ST4RS_NY; j = j+1)
           copy /ST4RS /ST4RSnet/ST4RS[{k}]
           position /ST4RSnet/ST4RS[{k}] \
             {originxmin + ST4RS_SEPX*i} {originymin + ST4RS_SEPY*j} {randzpos}
+
+          // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+          if ({rotateneurons} == 1)
+              randrotation = {rand 0 6.283185308 }
+              setfield /ST4RSnet/ST4RS[{k}] rotation {randrotation} // save for posterity
+              rotcoord /ST4RSnet/ST4RS[{k}] {randrotation} -z
+          end
+
           k=k+1
 
           echo Position ST4RS {mynode} {i} {j} {originxmin} {originymin} {originxmin + ST4RS_SEPX*i} {originymin + ST4RS_SEPY*j} {randzpos}

@@ -38,6 +38,10 @@ originymin = {ydex}*B23FS_NY*B23FS_SEPY
 
 create neutral /B23FSnet
 
+// Random orientation
+float randrotation
+addfield /B23FS rotation
+
 if ({columntype == 0})
 
      for (j = 0; j < B23FS_NY; j = j+1)
@@ -80,6 +84,14 @@ echo Traub B23FS!
                copy /B23FS /B23FSnet/B23FS[{k}]
                position /B23FSnet/B23FS[{k}] \
                  {originxmin + B23FS_SEPX*i} {originymin + B23FS_SEPY*j} {randzpos}
+
+               // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+               if ({rotateneurons} == 1)
+                   randrotation = {rand 0 6.283185308 }
+                   setfield /B23FSnet/B23FS[{k}] rotation {randrotation} // save for posterity
+                   rotcoord /B23FSnet/B23FS[{k}] {randrotation} -z
+               end
+
                k=k+1
 
                echo Position B23FS {mynode} {i} {j} {originxmin} {originymin} {originxmin + B23FS_SEPX*i} {originymin + B23FS_SEPY*j} {randzpos}

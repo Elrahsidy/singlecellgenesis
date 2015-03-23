@@ -38,6 +38,10 @@ originymin = {ydex}*TCR_NY*TCR_SEPY
 
 create neutral /TCRnet
 
+// Random orientation
+float randrotation
+addfield /TCR rotation
+
 if ({columntype == 0})
 
      for (j = 0; j < TCR_NY; j = j+1)
@@ -66,6 +70,14 @@ echo Traub TCR!
                copy /TCR /TCRnet/TCR[{k}]
                position /TCRnet/TCR[{k}] \
                  {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
+
+               // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+               if ({rotateneurons} == 1)
+                   randrotation = {rand 0 6.283185308 }
+                   setfield /TCRnet/TCR[{k}] rotation {randrotation} // save for posterity
+                   rotcoord /TCRnet/TCR[{k}] {randrotation} -z
+               end
+
                k=k+1
 
                echo Position TCR {mynode} {i} {j} {originxmin} {originymin} {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}

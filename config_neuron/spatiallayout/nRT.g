@@ -39,6 +39,10 @@ originymin = {ydex}*nRT_NY*nRT_SEPY
 
 create neutral /nRTnet
 
+// Random orientation
+float randrotation
+addfield /nRT rotation
+
 if ({columntype == 0})
 
      for (j = 0; j < nRT_NY; j = j+1)
@@ -67,6 +71,14 @@ echo Traub nRT!
                copy /nRT /nRTnet/nRT[{k}]
                position /nRTnet/nRT[{k}] \
                  {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
+
+               // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+               if ({rotateneurons} == 1)
+                   randrotation = {rand 0 6.283185308 }
+                   setfield /nRTnet/nRT[{k}] rotation {randrotation} // save for posterity
+                   rotcoord /nRTnet/nRT[{k}] {randrotation} -z
+               end
+
                k=k+1
 
                echo Position nRT {mynode} {i} {j} {originxmin} {originymin} {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}

@@ -43,6 +43,10 @@ create neutral /P23RSanet
 // Note that these cells' positions overlap.  This doesn't cause any
 // problems since we can refer to them as separate groups.
 
+// Random orientation
+float randrotation
+addfield /P23RSa rotation
+
 for (j = 0; j < P23RSa_NY; j = j+1)
      for (i = 0; i < P23RSa_NX; i = i+1)
 
@@ -53,9 +57,17 @@ for (j = 0; j < P23RSa_NY; j = j+1)
           copy /P23RSa /P23RSanet/P23RSa[{k}]
           position /P23RSanet/P23RSa[{k}] \
             {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos}
+
+          // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+          if ({rotateneurons} == 1)
+              randrotation = { rand 0 6.283185308 }
+              setfield /P23RSanet/P23RSa[{k}] rotation {randrotation} // save for posterity
+              rotcoord /P23RSanet/P23RSa[{k}] {randrotation} -z
+          end
+
           k=k+1
 
-          echo Position P23RSa {mynode} {i} {j} {originxmin} {originymin} {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos}
+          echo Position P23RSa {mynode} {i} {j} {originxmin} {originymin} {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos} {randrotation}
 
      end
 end

@@ -40,6 +40,10 @@ originymin = {ydex}*P23RSb_NY*P23RSb_SEPY
 
 create neutral /P23RSbnet
 
+// Random orientation
+float randrotation
+addfield /P23RSb rotation
+
 // CREATING THE PLANE OF P23RSb cells
 //createmap /P23RSb /P23RSbnet  \
 //	{P23RSb_NX} {P23RSb_NY} \
@@ -59,6 +63,14 @@ for (j = 0; j < P23RSb_NY; j = j+1)
           copy /P23RSb /P23RSbnet/P23RSb[{k}]
           position /P23RSbnet/P23RSb[{k}] \
             {originxmin + P23RSb_SEPX*i} {originymin + P23RSb_SEPY*j} {randzpos}
+
+          // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+          if ({rotateneurons} == 1)
+              randrotation = {rand 0 6.283185308 }
+              setfield /P23RSbnet/P23RSb[{k}] rotation {randrotation} // save for posterity
+              rotcoord /P23RSbnet/P23RSb[{k}] {randrotation} -z
+          end
+
           k=k+1
 
           echo Position P23RSb {mynode} {i} {j} {originxmin} {originymin} {originxmin + P23RSb_SEPX*i} {originymin + P23RSb_SEPY*j} {randzpos}

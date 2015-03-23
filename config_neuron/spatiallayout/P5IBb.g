@@ -40,6 +40,10 @@ originymin = {ydex}*P5IBb_NY*P5IBb_SEPY
 
 create neutral /P5IBbnet
 
+// Random orientation
+float randrotation
+addfield /P5IBb rotation
+
 // CREATING THE PLANE OF P5IBb cells
 //createmap /P5IBb /P5IBbnet  \
 //	{P5IBb_NX} {P5IBb_NY} \
@@ -59,6 +63,14 @@ for (j = 0; j < P5IBb_NY; j = j+1)
           copy /P5IBb /P5IBbnet/P5IBb[{k}]
           position /P5IBbnet/P5IBb[{k}] \
             {originxmin + P5IBb_SEPX*i} {originymin + P5IBb_SEPY*j} {randzpos}
+
+          // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+          if ({rotateneurons} == 1)
+              randrotation = {rand 0 6.283185308 }
+              setfield /P5IBbnet/P5IBb[{k}] rotation {randrotation} // save for posterity
+              rotcoord /P5IBbnet/P5IBb[{k}] {randrotation} -z
+          end
+
           k=k+1
 
           echo Position P5IBb {mynode} {i} {j} {originxmin} {originymin} {originxmin + P5IBb_SEPX*i} {originymin + P5IBb_SEPY*j} {randzpos}

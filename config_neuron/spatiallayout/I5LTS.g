@@ -35,6 +35,10 @@ originymin = {ydex}*I5LTS_NY*I5LTS_SEPY
 
 create neutral /I5LTSnet
 
+// Random orientation
+float randrotation
+addfield /I5LTS rotation
+
 if ({columntype == 0})
 
      for (j = 0; j < I5LTS_NY; j = j+1)
@@ -71,6 +75,14 @@ echo Traub I5LTS!
                copy /I5LTS /I5LTSnet/I5LTS[{k}]
                position /I5LTSnet/I5LTS[{k}] \
                  {originxmin + I5LTS_SEPX*i} {originymin + I5LTS_SEPY*j} {randzpos}
+
+               // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+               if ({rotateneurons} == 1)
+                   randrotation = {rand 0 6.283185308 }
+                   setfield /I5LTSnet/I5LTS[{k}] rotation {randrotation} // save for posterity
+                   rotcoord /I5LTSnet/I5LTS[{k}] {randrotation} -z
+               end
+
                k=k+1
 
                echo Position I5LTS {mynode} {i} {j} {originxmin} {originymin} {originxmin + I5LTS_SEPX*i} {originymin + I5LTS_SEPY*j} {randzpos}

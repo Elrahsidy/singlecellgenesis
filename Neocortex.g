@@ -28,34 +28,37 @@ setrand -sprng // Use SPRNG instead of default Numerical Recipes
 int myrandseed = 34521
 randseed {myrandseed}
 
-// setting the simulation clocks
-setclock	0 {dt}		        // sec
-setclock	1 {dt * refresh_factor} // sec
-
-// Distributed Processing Setup
-
-int display = 0		// display neurons and graphs
-int output = 1		// don't dump neural output to a file
+// Important flags
+int display = 0     // Display neurons and graphs?
+int output = 0      // Dump neural output to a file?
+int drawtree = 0    // Output connectivity info?
 
 // Enable/disable thalamocortical connections
 int thalamocortical = 1
 // Enable/disable gap junctions
 int gaps = 0
 
-//int batch = (display == 0)	// we are running interactively
+// Randomly rotate each neuron along its z (height) axis?
+int rotateneurons = 0
+
+// setting the simulation clocks
+setclock	0 {dt}		        // sec
+setclock	1 {dt * refresh_factor} // sec
 
 echo Genesis started at {getdate}
 echo "display = " {display}
 echo "output = " {output}
-//echo "batch = " {batch}
 echo ""
 
+//////////////////////////////////////////////////////////////////////
+
 // START UP
-paron -parallel -silent 0 -nodes {Nnodes} -output o.out \
+paron -parallel -silent 1 -nodes {Nnodes} -output genesis_o.out \
 	-executable nxpgenesis
 //setfield /post msg_hang_time 100000	// set a very long timeout in case
 					// we need to do debugging
 
+// Zero padded node name for pretty formatting
 str myzeropadnode
 if({mynode} == 0)
     str myzeropadnode = "column00"
@@ -65,7 +68,6 @@ else
     str myzeropadnode = {"column" @ {mynode}}
 end
 
-//echo I am node {mynode}
 echo I am node {myzeropadnode}
 echo Completed startup at {getdate}
 
@@ -335,20 +337,13 @@ if ({gaps == 1})
     barrierall
 end
 
-// Create Random Background Inputs
-
 include synchansSPIKEs.g
 
+// Create Random Background Inputs
 neuronfrac=0.005
-
 include randominputdefs.g
 
 // Output and diagnostics
-
-// Local field potential calculation
-
-//include LFP.g
-include config_dataoutput/LFP5e.g
 
 // make the graphs to display 2 selected Minicolumns' somal Vm and pass messages to the graphs
 if ( {display == 1} && {{mynode} == 0} )
@@ -378,7 +373,8 @@ end
 
 //Setup messages for Data File writing
 if ( {output == 1} )
-    // LFP data write
+    // Local field potential
+    include config_dataoutput/LFP5e.g
     include config_dataoutput/LFP5eASCIIwrite.g
 
     // Vm files probedex
@@ -403,14 +399,19 @@ reset // This initialises and gets everything ready to go.
 
 echo Completed model setup at {getdate}
 
-// Output entire hierarchy for debugging (takes a *huge* amount of disk space!)
-//le / -recursive -type
+barrierall
 
-// List all connections: Takes forever to run!!! Also, only works well on a
-// single node model because multi-node models don't show the targets of
-// node-to-node connections running into /post; this gives me very limited
-// ability to see what's connected to what across columns.
-//include draw_tree
+// List all connections
+// Can take a long time to run!
+// Sometimes, it hangs when run non-interactively. Need to debug this.
+if ({{drawtree} == 1})
+    include draw_tree.g
+end
 
-barrier
-step_tmax // Run the sim to time tmax
+// Testing: turning off parallel to see what it does to connections
+//paroff
+
+// Run the sim to time tmax
+step_tmax
+
+echo Finished running at {getdate}

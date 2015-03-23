@@ -35,6 +35,10 @@ originymin = {ydex}*C5FS_NY*C5FS_SEPY
 
 create neutral /C5FSnet
 
+// Random orientation
+float randrotation
+addfield /C5FS rotation
+
 if ({columntype == 0})
 
      for (j = 0; j < C5FS_NY; j = j+1)
@@ -71,6 +75,14 @@ echo Traub C5FS!
                copy /C5FS /C5FSnet/C5FS[{k}]
                position /C5FSnet/C5FS[{k}] \
                  {originxmin + C5FS_SEPX*i} {originymin + C5FS_SEPY*j} {randzpos}
+
+               // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
+               if ({rotateneurons} == 1)
+                   randrotation = {rand 0 6.283185308 }
+                   setfield /C5FSnet/C5FS[{k}] rotation {randrotation} // save for posterity
+                   rotcoord /C5FSnet/C5FS[{k}] {randrotation} -z
+               end
+
                k=k+1
 
                echo Position C5FS {mynode} {i} {j} {originxmin} {originymin} {originxmin + C5FS_SEPX*i} {originymin + C5FS_SEPY*j} {randzpos}
