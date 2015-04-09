@@ -40,6 +40,16 @@
 # 2015-01-13
 # 
 # The Neocortex scripts are currently undergoing some major revisions.
+#
+# 2015-03-24
+#
+# Current baseline model can be run on 256 nodes. The model setup takes about 2
+# hours, demonstrating the massive communications overhead when setting up
+# connections across so many computers. I only count 1.3 million connections
+# this way, which is quite different from the 5.5 million I counted on 16
+# nodes. Need to double check.
+#
+# Comparison: 7 minutes to set up on 64 nodes (8 machines, 8 cores each).
 
 date
 
@@ -84,7 +94,7 @@ find . -name "*.[pg]" | zip --quiet -@ "$mydir"/data/scripts_snapshot.zip
 
 # Create diff between the current model and an established baseline, which is
 # currently a symlink named /data2/data/Neocortex_sim/Baseline_model
-diff -u /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_from_baseline.txt
+diff -wu /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_from_baseline.txt
 
 # http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
 # Besides specifying the -nox option when starting genesis to avoid starting
