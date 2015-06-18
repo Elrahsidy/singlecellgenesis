@@ -1,7 +1,7 @@
 // genesis
 
 //Overall simulation parameters
-float tmax = 120
+float tmax = 20
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
@@ -30,7 +30,7 @@ randseed {myrandseed}
 
 // Important flags
 int display = 0     // Display neurons and graphs?
-int output = 0      // Dump neural output to a file?
+int output = 1      // Dump neural output to a file?
 int drawtree = 0    // Output connectivity info?
 
 // Enable/disable thalamocortical connections
