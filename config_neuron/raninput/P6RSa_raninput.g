@@ -16,8 +16,14 @@
 
             randneur = { rand 0 1.0 }
 
-            //if ( {randneur <= neuronfrac} )
-            if ( {randneur <= 1.0} )
+			// ayu: Setting this back to the global neuronfrac
+            if ( {randneur <= neuronfrac} )
+			// As provided to us by Pawel Kudela:
+            //if ( {randneur <= 1.0} )
+
+                if ({output}==1)
+                    echo P6RSa {mynode} {i} {j} is receiving random input (randneur=={randneur})
+                end
 
                 dex=(i-1)*P6RSa_NY+(j-1)
 
