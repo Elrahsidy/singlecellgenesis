@@ -56,25 +56,33 @@ date
 # Check binary paths
 if [[ ! "`which mpirun 2> /dev/null && which pgenesis`" ]]; then
 	echo "mpirun and/or pgenesis not found. Trying to set the right path for you."
-	export PATH="$PATH:/data2/software/gentoo/usr/bin:/data2/software/genesis-2.3/genesis:/data2/software/genesis-2.3/pgenesis/bin"
+	export PATH="$PATH:/data2/software/gentoo/usr/bin:/data2/software/genesis-2.4/genesis:/data2/software/genesis-2.4/pgenesis/bin"
 fi
 
 # Checking output paths
 mydir="`dirname "$0"`"
-echo "Running in $mydir"
-if [[ "`find $mydir/data -type f 2>/dev/null`" ]]; then
+mydirwithtime="$mydir/data-`date "+%Y%m%d-%H%M%S.%N" | cut -b1-19`"
+rm "$mydir/data-nextlatest"
+cp -P "$mydir/data-latest" "$mydir/data-nextlatest" 
+rm "$mydir/data-latest"
+ln -s "$mydirwithtime" "$mydir/data-latest"
+echo "Running in $mydir; writing data to $mydirwithtime"
+if [[ "`find $mydirwithtime -type f 2>/dev/null`" ]]; then
+    echo "Data directory already exists. Wait one second and run this script again."
+    exit
 	# directory already exists and has files in it
-	oldestfile=$(ls -td "$mydir/data/"* | tail -n1)
-	oldesttime=$(find "$mydir/data" -path "$oldestfile" -printf '%TY%Tm%Td-%TH%TM')
-	echo "Moving existing data to $mydir/data-$oldesttime"
-	mv "$mydir/data" "$mydir/data-$oldesttime"
+	#oldestfile=$(ls -td "$mydir/data/"* | tail -n1)
+	#oldesttime=$(find "$mydir/data" -path "$oldestfile" -printf '%TY%Tm%Td-%TH%TM')
+	#echo "Moving existing data to $mydir/data-$oldesttime"
+	#mv "$mydir/data" "$mydir/data-$oldesttime"
 fi
-if [[ ! -d "$mydir/data" ]]; then
-	mkdir -p "$mydir/data/connections"
+if [[ ! -d "$mydirwithtime" ]]; then
+	mkdir -p "$mydirwithtime/connections"
+	mkdir -p "$mydir/data/connections" 2>/dev/null
 fi
 
 # Output log file
-logfile="$mydir/data/$(date +%Y%m%d-%H%M).log"
+logfile="$mydirwithtime/$(date +%Y%m%d-%H%M).log"
 
 # Echo any notes passed in on the command line to the log file
 echo "Running as $(whoami) at $(date +%Y%m%d-%H%M)" >> "$logfile"
@@ -82,7 +90,7 @@ echo "$@" >> "$logfile"
 
 # Hardcode the data directory in all .g files.
 # I admit that this regexp is pretty damn ugly!
-sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydir/data/\3 \4#" $mydir/config_dataoutput/*write*.g
+sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydirwithtime/\3 \4#" $mydir/config_dataoutput/*write*.g
 
 # Checking node numbers
 # Assumes that Nnodes in Neocortex.g is correct
@@ -90,11 +98,11 @@ export num_nodes="`grep "\sNnodes" $mydir/Neocortex.g | sed 's/.* = //'`"
 echo "Running on $num_nodes nodes"
 
 # Create snapshot of all Genesis scripts and parameters
-find . -name "*.[pg]" | zip --quiet -@ "$mydir"/data/scripts_snapshot.zip 
+#find "$mydir"  -path "data*" -prune -o -name "*.[pg]" -print | zip --quiet -@ "$mydirwithtime"/scripts_snapshot.zip 
 
 # Create diff between the current model and an established baseline, which is
 # currently a symlink named /data2/data/Neocortex_sim/Baseline_model
-diff -wu /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_from_baseline.txt
+#diff -wu /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydirwithtime"/diff_from_baseline.txt
 
 # http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
 # Besides specifying the -nox option when starting genesis to avoid starting
@@ -106,10 +114,11 @@ diff -wu /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydir"/data/diff_
 # command line (i.e. neither option implies the other).
 
 # ayu: Use /data2/software/genesis-2.3/pgenesis/bin/pgenesis.distributed to run
-# on non-local or multiple machines.
+# on non-local or multiple hosts. The hosts are hardcoded into that script (so
+# modify it if you need to use a different selection of hosts).
 
 # Non-interactive (output redirected to log file)
-/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
+/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex >> "$logfile" 2>&1
 
 # Interactive (no redirection)
-#/data2/software/genesis-2.3/pgenesis/bin/pgenesis -nox $mydir/Neocortex
+#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox $mydir/Neocortex
