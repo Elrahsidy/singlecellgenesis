@@ -37,6 +37,7 @@ foreach s ({arglist {locations}})
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
           -probability 0.07692*{P5IBc_P23FRBa_prob}
 
 end
@@ -56,6 +57,7 @@ foreach s ({arglist {locations}})
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
           -probability 0.07692*{P5IBc_P23FRBa_prob}
 
 end

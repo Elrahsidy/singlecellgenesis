@@ -33,6 +33,7 @@ foreach s ({arglist {locations}})
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
           -probability 0.14300*{B5FS_P6RSd_prob}
 
 end

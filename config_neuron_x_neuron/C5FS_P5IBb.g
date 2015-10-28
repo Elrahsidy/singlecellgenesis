@@ -25,6 +25,7 @@ rvolumeconnect /C5FSnet/C5FS[]/soma/spk16  \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
           -probability 1.0*{C5FS_P5IBb_prob}
 
 echo Setting weights and delays for C5FS->P5IBb connections.
