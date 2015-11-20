@@ -28,6 +28,7 @@ str locations = "apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for TCR->P5IBc connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P5IBc_axdelayCV} -add -gaussian {TCR_P5IBc_axdelaystdev} {TCR_P5IBc_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P5IBc_axdelayCV} -add
 
 //TCR - P5IBc NMDA
 
@@ -84,7 +87,8 @@ str locations = "apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRNMDA {TCR_P5IBc_syndelay} -add -gaussian {TCR_P5IBc_syndelaystdev} {TCR_P5IBc_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRNMDA {TCR_P5IBc_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "apdend13 apdend14aR apdend14bR apdend14cR apdend14dR apdend14aL
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRAMPA {TCR_P5IBc_syndelay} -add -gaussian {TCR_P5IBc_syndelaystdev} {TCR_P5IBc_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P5IBcnet/P5IBc[]/{s}/Ex_ch8TCRAMPA {TCR_P5IBc_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}
 
 

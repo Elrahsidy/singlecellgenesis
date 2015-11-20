@@ -28,6 +28,7 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /nRTnet/nRT[]/soma/spk21  \
 	      /TCRnet/TCR[]/{s}/Inh_ch20nRTGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for nRT->TCR connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /nRTnet/nRT[]/soma/spk21 -fixed  {nRT_TCR_axdelayCV} -add -gaussian {nRT_TCR_axdelaystdev} {nRT_TCR_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /nRTnet/nRT[]/soma/spk21 -fixed  {nRT_TCR_axdelayCV} -add
 
 // nRT - TCR GABAa
 
@@ -64,7 +66,8 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
-    syndelay    /TCRnet/TCR[]/{s}/Inh_ch20nRTGABAa {nRT_TCR_syndelay} -add -gaussian {nRT_TCR_syndelaystdev} {nRT_TCR_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /TCRnet/TCR[]/{s}/Inh_ch20nRTGABAa {nRT_TCR_syndelay} -add
 
 end
 
@@ -81,6 +84,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
 //volumeweight /nRTnet/nRT[]/soma/spk21 -fixed 0.50
 

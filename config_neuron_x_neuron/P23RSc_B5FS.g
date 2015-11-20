@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
 	      /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
 	      /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P23RSc->B5FS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P23RScnet/P23RSc[]/soma/spk3 -radial  {P23RSc_B5FS_axdelayCV} -add -gaussian {P23RSc_B5FS_axdelaystdev} {P23RSc_B5FS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P23RScnet/P23RSc[]/soma/spk3 -radial  {P23RSc_B5FS_axdelayCV} -add
 
 // P23RSc - B5FS AMPA
 
@@ -84,7 +87,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSAMPA {P23RSc_B5FS_syndelay} -add -gaussian {P23RSc_B5FS_syndelaystdev} {P23RSc_B5FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSAMPA {P23RSc_B5FS_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSNMDA {P23RSc_B5FS_syndelay} -add -gaussian {P23RSc_B5FS_syndelaystdev} {P23RSc_B5FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10P23RSNMDA {P23RSc_B5FS_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P23RScnet/P23RSc[]/soma/spk3 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 //volumeweight /P23RScnet/P23RSc[]/soma/spk3 -fixed 0.50
 

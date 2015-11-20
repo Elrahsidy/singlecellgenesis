@@ -28,6 +28,7 @@ str locations = "apdend6 apdend7 apdend8 apdend9 apdend10"
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "apdend6 apdend7 apdend8 apdend9 apdend10"
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for TCR->P6RSc connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P6RSc_axdelayCV} -add -gaussian {TCR_P6RSc_axdelaystdev} {TCR_P6RSc_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P6RSc_axdelayCV} -add
 
 //TCR - P6RSc NMDA
 
@@ -84,7 +87,8 @@ str locations = "apdend6 apdend7 apdend8 apdend9 apdend10"
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRAMPA {TCR_P6RSc_syndelay} -add -gaussian {TCR_P6RSc_syndelaystdev} {TCR_P6RSc_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRAMPA {TCR_P6RSc_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "apdend6 apdend7 apdend8 apdend9 apdend10"
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRNMDA {TCR_P6RSc_syndelay} -add -gaussian {TCR_P6RSc_syndelaystdev} {TCR_P6RSc_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P6RScnet/P6RSc[]/{s}/Ex_ch13TCRNMDA {TCR_P6RSc_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}
 
 

@@ -20,6 +20,7 @@ echo Making connections from the C23FS cells to the P5IBd cells.
 
 // C23FS - P5IBd GABAa
 
+barrierall //ayu
 rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
 	      /P5IBdnet/P5IBd[]/axona/Inh_ch9C23FSGABAa@all	    \
 	      -relative			    \
@@ -42,11 +43,13 @@ echo Setting weights and delays for C23FS->P5IBd connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /C23FSnet/C23FS[]/soma/spk15 -radial  {C23FS_P5IBd_axdelayCV} -add -gaussian {C23FS_P5IBd_axdelaystdev} {C23FS_P5IBd_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /C23FSnet/C23FS[]/soma/spk15 -radial  {C23FS_P5IBd_axdelayCV} -add
 
 //C23FS - P5IBd GABAa
 
-syndelay    /P5IBdnet/P5IBd[]/axona/Inh_ch9C23FSGABAa {C23FS_P5IBd_syndelay} -add -gaussian {C23FS_P5IBd_syndelaystdev} {C23FS_P5IBd_syndelaymaxdev}
+barrierall //ayu
+syndelay    /P5IBdnet/P5IBd[]/axona/Inh_ch9C23FSGABAa {C23FS_P5IBd_syndelay} -add
 
 // assigning weights using the volumeweight function
 
@@ -61,6 +64,7 @@ syndelay    /P5IBdnet/P5IBd[]/axona/Inh_ch9C23FSGABAa {C23FS_P5IBd_syndelay} -ad
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /C23FSnet/C23FS[]/soma/spk15 -decay {C23FSdecayrate} {C23FSmaxwgt} {C23FSminwgt}
 
 

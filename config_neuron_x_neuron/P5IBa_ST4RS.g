@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBNMDA@all	    \
 	      -relative			    \
@@ -84,7 +86,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBAMPA {P5IBa_ST4RS_syndelay} -add -gaussian {P5IBa_ST4RS_syndelaystdev} {P5IBa_ST4RS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBAMPA {P5IBa_ST4RS_syndelay} -add
 
 end
 
@@ -98,7 +101,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBNMDA {P5IBa_ST4RS_syndelay} -add -gaussian {P5IBa_ST4RS_syndelaystdev} {P5IBa_ST4RS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBNMDA {P5IBa_ST4RS_syndelay} -add
 
 end
 

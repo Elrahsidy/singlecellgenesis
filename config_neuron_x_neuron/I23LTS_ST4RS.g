@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNlongd distdendNlonge dis
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /I23LTSnet/I23LTS[]/soma/spk18  \
 	      /ST4RSnet/ST4RS[]/{s}/Inh_ch17I23LTSGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for I23LTS->ST4RS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_ST4RS_axdelayCV} -add -gaussian {I23LTS_ST4RS_axdelaystdev} {I23LTS_ST4RS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_ST4RS_axdelayCV} -add
 
 //I23LTS - ST4RS GABAa
 
@@ -64,7 +66,8 @@ str locations = "distdendNlongb distdendNlongc distdendNlongd distdendNlonge dis
 
 foreach s ({arglist {locations}})
 
-    syndelay    /ST4RSnet/ST4RS[]/{s}/Inh_ch17I23LTSGABAa {I23LTS_ST4RS_syndelay} -add -gaussian {I23LTS_ST4RS_syndelaystdev} {I23LTS_ST4RS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /ST4RSnet/ST4RS[]/{s}/Inh_ch17I23LTSGABAa {I23LTS_ST4RS_syndelay} -add
 
 end
 
@@ -81,6 +84,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /I23LTSnet/I23LTS[]/soma/spk18 -decay {I23LTSdecayrate} {I23LTSmaxwgt} {I23LTSminwgt}
 
 

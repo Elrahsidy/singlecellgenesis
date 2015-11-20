@@ -28,6 +28,7 @@ str locations = "soma basalLsupera basalLmida basalRsupera basalRmida basaldeepa
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /B5FSnet/B5FS[]/soma/spk10  \
 	      /P6RScnet/P6RSc[]/{s}/Inh_ch13B5FSGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for B5FS->P6RSc connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /B5FSnet/B5FS[]/soma/spk10 -radial  {B5FS_P6RSc_axdelayCV} -add -gaussian {B5FS_P6RSc_axdelaystdev} {B5FS_P6RSc_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /B5FSnet/B5FS[]/soma/spk10 -radial  {B5FS_P6RSc_axdelayCV} -add
 
 //B5FS - P6RSc GABAa
 
@@ -64,7 +66,8 @@ str locations = "soma basalLsupera basalLmida basalRsupera basalRmida basaldeepa
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P6RScnet/P6RSc[]/{s}/Inh_ch13B5FSGABAa {B5FS_P6RSc_syndelay} -add -gaussian {B5FS_P6RSc_syndelaystdev} {B5FS_P6RSc_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P6RScnet/P6RSc[]/{s}/Inh_ch13B5FSGABAa {B5FS_P6RSc_syndelay} -add
 
 end
 
@@ -81,6 +84,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /B5FSnet/B5FS[]/soma/spk10 -decay {B5FSdecayrate} {B5FSmaxwgt} {B5FSminwgt}
 
 

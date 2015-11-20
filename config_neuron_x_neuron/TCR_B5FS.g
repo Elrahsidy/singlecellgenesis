@@ -28,6 +28,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for TCR->B5FS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_B5FS_axdelayCV} -add -gaussian {TCR_B5FS_axdelaystdev} {TCR_B5FS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_B5FS_axdelayCV} -add
 
 // TCR - B5FS AMPA
 
@@ -84,7 +87,8 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
-    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10TCRAMPA {TCR_B5FS_syndelay} -add -gaussian {TCR_B5FS_syndelaystdev} {TCR_B5FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10TCRAMPA {TCR_B5FS_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
-    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10TCRNMDA {TCR_B5FS_syndelay} -add -gaussian {TCR_B5FS_syndelaystdev} {TCR_B5FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /B5FSnet/B5FS[]/{s}/Ex_ch10TCRNMDA {TCR_B5FS_syndelay} -add
 
 end
 
@@ -115,4 +120,5 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}

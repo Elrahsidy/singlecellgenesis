@@ -29,6 +29,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBAMPA@all	    \
 	      -relative			    \
@@ -49,6 +50,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBNMDA@all	    \
 	      -relative			    \
@@ -86,7 +88,8 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBAMPA {P5IBa_P6RSa_syndelay} -add -gaussian {P5IBa_P6RSa_syndelaystdev} {P5IBa_P6RSa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBAMPA {P5IBa_P6RSa_syndelay} -add
 
 end
 
@@ -100,7 +103,8 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBAMPA {P5IBa_P6RSa_syndelay} -add -gaussian {P5IBa_P6RSa_syndelaystdev} {P5IBa_P6RSa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P6RSanet/P6RSa[]/{s}/Ex_ch11P5IBAMPA {P5IBa_P6RSa_syndelay} -add
 
 end
 

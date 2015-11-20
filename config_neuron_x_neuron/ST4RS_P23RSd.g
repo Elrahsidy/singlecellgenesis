@@ -29,6 +29,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23RSdnet/P23RSd[]/{s}/Ex_ch4ST4RSAMPA@all	    \
 	      -relative			    \
@@ -49,6 +50,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23RSdnet/P23RSd[]/{s}/Ex_ch4ST4RSNMDA@all	    \
 	      -relative			    \
@@ -73,7 +75,8 @@ echo Setting weights and delays for ST4RS->P23RSd connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23RSd_axdelayCV} -add -gaussian {ST4RS_P23RSd_axdelaystdev} {ST4RS_P23RSd_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23RSd_axdelayCV} -add
 
 //ST4RS - P23RSd AMPA
 
@@ -85,7 +88,8 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSdnet/P23RSd[]/basalLsupera/Ex_ch4ST4RSAMPA {ST4RS_P23RSd_syndelay} -add -gaussian {ST4RS_P23RSd_syndelaystdev} {ST4RS_P23RSd_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSdnet/P23RSd[]/basalLsupera/Ex_ch4ST4RSAMPA {ST4RS_P23RSd_syndelay} -add
 
 end
 
@@ -99,7 +103,8 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSdnet/P23RSd[]/basalLsupera/Ex_ch4ST4RSNMDA {ST4RS_P23RSd_syndelay} -add -gaussian {ST4RS_P23RSd_syndelaystdev} {ST4RS_P23RSd_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSdnet/P23RSd[]/basalLsupera/Ex_ch4ST4RSNMDA {ST4RS_P23RSd_syndelay} -add
 
 end
 
@@ -116,6 +121,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}
 
 

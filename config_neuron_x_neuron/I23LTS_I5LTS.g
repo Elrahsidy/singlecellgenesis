@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /I23LTSnet/I23LTS[]/soma/spk18  \
 	      /I5LTSnet/I5LTS[]/{s}/Inh_ch19I23LTSGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for I23LTS->I5LTS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_I5LTS_axdelayCV} -add -gaussian {I23LTS_I5LTS_axdelaystdev} {I23LTS_I5LTS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_I5LTS_axdelayCV} -add
 
 //I23LTS - I5LTS GABAa
 
@@ -64,7 +66,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /I5LTSnet/I5LTS[]/{s}/Inh_ch19I23LTSGABAa {I23LTS_I5LTS_syndelay} -add -gaussian {I23LTS_I5LTS_syndelaystdev} {I23LTS_I5LTS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /I5LTSnet/I5LTS[]/{s}/Inh_ch19I23LTSGABAa {I23LTS_I5LTS_syndelay} -add
 
 end
 
@@ -81,6 +84,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /I23LTSnet/I23LTS[]/soma/spk18 -decay {I23LTSdecayrate} {I23LTSmaxwgt} {I23LTSminwgt}
 
 

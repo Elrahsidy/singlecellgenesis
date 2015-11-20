@@ -28,6 +28,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /nRTnet/nRT[]/{s}/Ex_ch21TCRAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /nRTnet/nRT[]/{s}/Ex_ch21TCRNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for TCR->nRT connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_nRT_axdelayCV} -add -gaussian {TCR_nRT_axdelaystdev} {TCR_nRT_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_nRT_axdelayCV} -add
 
 // TCR - nRT AMPA
 
@@ -84,7 +87,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21TCRAMPA {TCR_nRT_syndelay} -add -gaussian {TCR_nRT_syndelaystdev} {TCR_nRT_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21TCRAMPA {TCR_nRT_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21TCRNMDA {TCR_nRT_syndelay} -add -gaussian {TCR_nRT_syndelaystdev} {TCR_nRT_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21TCRNMDA {TCR_nRT_syndelay} -add
 
 end
 
@@ -115,4 +120,5 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}

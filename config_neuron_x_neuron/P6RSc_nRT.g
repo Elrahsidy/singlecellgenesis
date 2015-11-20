@@ -28,6 +28,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RScnet/P6RSc[]/soma/spk13  \
 	      /nRTnet/nRT[]/{s}/Ex_ch21P6RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RScnet/P6RSc[]/soma/spk13  \
 	      /nRTnet/nRT[]/{s}/Ex_ch21P6RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P6RSc->nRT connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P6RScnet/P6RSc[]/soma/spk13 -radial  {P6RSc_nRT_axdelayCV} -add -gaussian {P6RSc_nRT_axdelaystdev} {P6RSc_nRT_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P6RScnet/P6RSc[]/soma/spk13 -radial  {P6RSc_nRT_axdelayCV} -add
 
 // P6RSc - nRT AMPA
 
@@ -84,7 +87,8 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
-    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21P6RSAMPA {P6RSc_nRT_syndelay} -add -gaussian {P6RSc_nRT_syndelaystdev} {P6RSc_nRT_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21P6RSAMPA {P6RSc_nRT_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 
 foreach s ({arglist {locations}})
 
-    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21P6RSNMDA {P6RSc_nRT_syndelay} -add -gaussian {P6RSc_nRT_syndelaystdev} {P6RSc_nRT_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /nRTnet/nRT[]/{s}/Ex_ch21P6RSNMDA {P6RSc_nRT_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P6RScnet/P6RSc[]/soma/spk13 -decay {P6RSdecayrate} {P6RSmaxwgt} {P6RSminwgt}
 //volumeweight /P6RSanet/P6RSa[]/soma/spk11 -fixed 0.50
 

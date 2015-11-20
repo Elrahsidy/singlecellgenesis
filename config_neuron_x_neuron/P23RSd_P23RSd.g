@@ -28,6 +28,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSdnet/P23RSd[]/soma/spk4  \
 	      /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSdnet/P23RSd[]/soma/spk4  \
 	      /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P23RSd->P23RSd connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P23RSdnet/P23RSd[]/soma/spk4 -radial  {P23RSd_P23RSd_axdelayCV} -add -gaussian {P23RSd_P23RSd_axdelaystdev} {P23RSd_P23RSd_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P23RSdnet/P23RSd[]/soma/spk4 -radial  {P23RSd_P23RSd_axdelayCV} -add
 
 //P23RSd - P23RSd AMPA
 
@@ -84,7 +87,8 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSAMPA {P23RSd_P23RSd_syndelay} -add -gaussian {P23RSd_P23RSd_syndelaystdev} {P23RSd_P23RSd_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSAMPA {P23RSd_P23RSd_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSNMDA {P23RSd_P23RSd_syndelay} -add -gaussian {P23RSd_P23RSd_syndelaystdev} {P23RSd_P23RSd_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSdnet/P23RSd[]/{s}/Ex_ch4P23RSNMDA {P23RSd_P23RSd_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P23RSdnet/P23RSd[]/soma/spk4 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 
 

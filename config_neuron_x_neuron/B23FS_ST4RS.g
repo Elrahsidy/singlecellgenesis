@@ -28,6 +28,7 @@ str locations = "soma proxdendN proxdendE proxdendS proxdendW"
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /B23FSnet/B23FS[]/soma/spk5  \
 	      /ST4RSnet/ST4RS[]/{s}/Inh_ch17B23FSGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for B23FS->ST4RS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_ST4RS_axdelayCV} -add -gaussian {B23FS_ST4RS_axdelaystdev} {B23FS_ST4RS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_ST4RS_axdelayCV} -add
 
 // B23FS - ST4RS GABAa
 
@@ -64,7 +66,8 @@ str locations = "soma proxdendN proxdendE proxdendS proxdendW"
 
 foreach s ({arglist {locations}})
 
-    syndelay    /ST4RSnet/ST4RS[]/{s}/Inh_ch17B23FSGABAa {B23FS_ST4RS_syndelay} -add -gaussian {B23FS_ST4RS_syndelaystdev} {B23FS_ST4RS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /ST4RSnet/ST4RS[]/{s}/Inh_ch17B23FSGABAa {B23FS_ST4RS_syndelay} -add
 
 end
 
@@ -80,6 +83,7 @@ end
  *          [-exponential mid max]
  *          [-absoluterandom]
  */
+barrierall //ayu
 rvolumeweight /B23FSnet/B23FS[]/soma/spk5 -decay {B23FSdecayrate} {B23FSmaxwgt} {B23FSminwgt}
 //volumeweight /B23FSnet/B23FS[]/soma/spk5 -fixed 0.50
 

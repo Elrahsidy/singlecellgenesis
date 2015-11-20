@@ -29,6 +29,7 @@ str locations = "distdendNlonga distdendNlongb distdendNlongc distdendNlongd dis
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /nRTnet/nRT[]/soma/spk21  \
 	      /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa@all	    \
 	      -relative			    \
@@ -53,7 +54,8 @@ echo Setting weights and delays for nRT->nRT connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /nRTnet/nRT[]/soma/spk21 -radial  {nRT_nRT_axdelayCV} -add -gaussian {nRT_nRT_axdelaystdev} {nRT_nRT_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /nRTnet/nRT[]/soma/spk21 -radial  {nRT_nRT_axdelayCV} -add
 
 //nRT - nRT GABAa
 
@@ -66,7 +68,8 @@ str locations = "distdendNlonga distdendNlongb distdendNlongc distdendNlongd dis
 
 foreach s ({arglist {locations}})
 
-    syndelay    /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa {nRT_nRT_syndelay} -add -gaussian {nRT_nRT_syndelaystdev} {nRT_nRT_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa {nRT_nRT_syndelay} -add
 
 end
 
@@ -83,6 +86,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
 
 

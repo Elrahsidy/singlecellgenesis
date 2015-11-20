@@ -28,6 +28,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
 	      /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
 	      /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P23FRBa->P23RSb connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P23FRBanet/P23FRBa[]/soma/spk22 -radial  {P23FRBa_P23RSb_axdelayCV} -add -gaussian {P23FRBa_P23RSb_axdelaystdev} {P23FRBa_P23RSb_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P23FRBanet/P23FRBa[]/soma/spk22 -radial  {P23FRBa_P23RSb_axdelayCV} -add
 
 //P23FRBa - P23RSb AMPA
 
@@ -84,7 +87,8 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBAMPA {P23FRBa_P23RSb_syndelay} -add -gaussian {P23FRBa_P23RSb_syndelaystdev} {P23FRBa_P23RSb_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBAMPA {P23FRBa_P23RSb_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBNMDA {P23FRBa_P23RSb_syndelay} -add -gaussian {P23FRBa_P23RSb_syndelaystdev} {P23FRBa_P23RSb_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSbnet/P23RSb[]/{s}/Ex_ch2P23FRBNMDA {P23FRBa_P23RSb_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P23FRBanet/P23FRBa[]/soma/spk22 -decay {P23FRBdecayrate} {P23FRBmaxwgt} {P23FRBminwgt}
 
 

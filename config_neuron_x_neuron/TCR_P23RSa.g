@@ -28,6 +28,7 @@ str locations = "apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apden
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apden
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for TCR->P23RSa connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P23RSa_axdelayCV} -add -gaussian {TCR_P23RSa_axdelaystdev} {TCR_P23RSa_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /TCRnet/TCR[]/soma/spk20 -fixed  {TCR_P23RSa_axdelayCV} -add
 
 //TCR - P23RSa NMDA
 
@@ -84,7 +87,8 @@ str locations = "apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apden
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRAMPA {TCR_P23RSa_syndelay} -add -gaussian {TCR_P23RSa_syndelaystdev} {TCR_P23RSa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRAMPA {TCR_P23RSa_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apden
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRNMDA {TCR_P23RSa_syndelay} -add -gaussian {TCR_P23RSa_syndelaystdev} {TCR_P23RSa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSanet/P23RSa[]/{s}/Ex_ch1TCRNMDA {TCR_P23RSa_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}
 
 

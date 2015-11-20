@@ -29,6 +29,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RSdnet/P6RSd[]/soma/spk14  \
 	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSAMPA@all	    \
 	      -relative			    \
@@ -49,6 +50,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RSdnet/P6RSd[]/soma/spk14  \
 	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSNMDA@all	    \
 	      -relative			    \
@@ -74,7 +76,8 @@ echo Setting weights and delays for P6RSd->P5IBb connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P6RSdnet/P6RSd[]/soma/spk14 -radial  {P6RSd_P5IBb_axdelayCV} -add -gaussian {P6RSd_P5IBb_axdelaystdev} {P6RSd_P5IBb_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P6RSdnet/P6RSd[]/soma/spk14 -radial  {P6RSd_P5IBb_axdelayCV} -add
 
 //P6RSd - P5IBb AMPA
 
@@ -86,7 +89,8 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSAMPA {P6RSd_P5IBb_syndelay} -add -gaussian {P6RSd_P5IBb_syndelaystdev} {P6RSd_P5IBb_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSAMPA {P6RSd_P5IBb_syndelay} -add
 
 end
 
@@ -100,7 +104,8 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSNMDA {P6RSd_P5IBb_syndelay} -add -gaussian {P6RSd_P5IBb_syndelaystdev} {P6RSd_P5IBb_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P5IBbnet/P5IBb[]/{s}/Ex_ch7P6RSNMDA {P6RSd_P5IBb_syndelay} -add
 
 end
 
@@ -117,6 +122,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P6RSdnet/P6RSd[]/soma/spk14 -decay {P6RSdecayrate} {P6RSmaxwgt} {P6RSminwgt}
 
 

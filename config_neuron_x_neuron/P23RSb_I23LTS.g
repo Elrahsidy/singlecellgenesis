@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSbnet/P23RSb[]/soma/spk2  \
 	      /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSbnet/P23RSb[]/soma/spk2  \
 	      /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P23RSb->I23LTS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P23RSbnet/P23RSb[]/soma/spk2 -radial  {P23RSb_I23LTS_axdelayCV} -add -gaussian {P23RSb_I23LTS_axdelaystdev} {P23RSb_I23LTS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P23RSbnet/P23RSb[]/soma/spk2 -radial  {P23RSb_I23LTS_axdelayCV} -add
 
 // P23RSb - I23LTS AMPA
 
@@ -84,7 +87,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSAMPA {P23RSb_I23LTS_syndelay} -add -gaussian {P23RSb_I23LTS_syndelaystdev} {P23RSb_I23LTS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSAMPA {P23RSb_I23LTS_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSNMDA {P23RSb_I23LTS_syndelay} -add -gaussian {P23RSb_I23LTS_syndelaystdev} {P23RSb_I23LTS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /I23LTSnet/I23LTS[]/{s}/Ex_ch18P23RSNMDA {P23RSb_I23LTS_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P23RSbnet/P23RSb[]/soma/spk2 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 //volumeweight /P23RSanet/P23RSa[]/soma/spk1 -fixed 0.50
 

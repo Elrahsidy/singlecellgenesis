@@ -28,6 +28,7 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
 	      /TCRnet/TCR[]/{s}/Ex_ch20P6RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
 	      /TCRnet/TCR[]/{s}/Ex_ch20P6RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P6RSb->TCR connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P6RSbnet/P6RSb[]/soma/spk12 -fixed  {P6RSb_TCR_axdelayCV} -add -gaussian {P6RSb_TCR_axdelaystdev} {P6RSb_TCR_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P6RSbnet/P6RSb[]/soma/spk12 -fixed  {P6RSb_TCR_axdelayCV} -add
 
 // P6RSb - TCR AMPA
 
@@ -84,7 +87,8 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
-    syndelay    /TCRnet/TCR[]/{s}/Ex_ch20P6RSAMPA {P6RSb_TCR_syndelay} -add -gaussian {P6RSb_TCR_syndelaystdev} {P6RSb_TCR_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /TCRnet/TCR[]/{s}/Ex_ch20P6RSAMPA {P6RSb_TCR_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 
 foreach s ({arglist {locations}})
 
-    syndelay    /TCRnet/TCR[]/{s}/Ex_ch20P6RSNMDA {P6RSb_TCR_syndelay} -add -gaussian {P6RSb_TCR_syndelaystdev} {P6RSb_TCR_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /TCRnet/TCR[]/{s}/Ex_ch20P6RSNMDA {P6RSb_TCR_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P6RSbnet/P6RSb[]/soma/spk12 -decay {P6RSdecayrate} {P6RSmaxwgt} {P6RSminwgt}
 //volumeweight /P6RSanet/P6RSa[]/soma/spk11 -fixed 0.50
 

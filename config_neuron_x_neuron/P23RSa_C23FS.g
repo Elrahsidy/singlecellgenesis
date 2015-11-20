@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P23RSa->C23FS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P23RSanet/P23RSa[]/soma/spk1 -radial  {P23RSa_C23FS_axdelayCV} -add -gaussian {P23RSa_C23FS_axdelaystdev} {P23RSa_C23FS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P23RSanet/P23RSa[]/soma/spk1 -radial  {P23RSa_C23FS_axdelayCV} -add
 
 // P23RSa - C23FS AMPA
 
@@ -84,7 +87,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSAMPA {P23RSa_C23FS_syndelay} -add -gaussian {P23RSa_C23FS_syndelaystdev} {P23RSa_C23FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSAMPA {P23RSa_C23FS_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSNMDA {P23RSa_C23FS_syndelay} -add -gaussian {P23RSa_C23FS_syndelaystdev} {P23RSa_C23FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /C23FSnet/C23FS[]/{s}/Ex_ch15P23RSNMDA {P23RSa_C23FS_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P23RSanet/P23RSa[]/soma/spk1 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 //volumeweight /P23RSanet/P23RSa[]/soma/spk1 -fixed 0.50
 

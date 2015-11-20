@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /B23FSnet/B23FS[]/soma/spk5  \
 	      /C23FSnet/C23FS[]/{s}/Inh_ch15B23FSGABAa@all	    \
 	      -relative			    \
@@ -52,7 +53,8 @@ echo Setting weights and delays for B23FS->C23FS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_C23FS_axdelayCV} -add -gaussian {B23FS_C23FS_axdelaystdev} {B23FS_C23FS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_C23FS_axdelayCV} -add
 
 // B23FS - C23FS GABAa
 
@@ -64,7 +66,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /C23FSnet/C23FS[]/{s}/Inh_ch15B23FSGABAa {B23FS_C23FS_syndelay} -add -gaussian {B23FS_C23FS_syndelaystdev} {B23FS_C23FS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /C23FSnet/C23FS[]/{s}/Inh_ch15B23FSGABAa {B23FS_C23FS_syndelay} -add
 
 end
 
@@ -81,4 +84,5 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /B23FSnet/B23FS[]/soma/spk5 -decay {B23FSdecayrate} {B23FSmaxwgt} {B23FSminwgt}

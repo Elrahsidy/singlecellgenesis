@@ -20,6 +20,7 @@ echo Making connections from the C23FS cells to the P5IBb cells.
 
 // C23FS - P5IBb GABAa
 
+barrierall //ayu
 rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
 	      /P5IBbnet/P5IBb[]/axona/Inh_ch7C23FSGABAa@all	    \
 	      -relative			    \
@@ -46,7 +47,8 @@ volumedelay /C23FSnet/C23FS[]/soma/spk15 -radial  {C23FS_P5IBb_axdelayCV} -add -
 
 //C23FS - P5IBb GABAa
 
-syndelay    /P5IBbnet/P5IBb[]/axona/Inh_ch7C23FSGABAa {C23FS_P5IBb_syndelay} -add -gaussian {C23FS_P5IBb_syndelaystdev} {C23FS_P5IBb_syndelaymaxdev}
+barrierall //ayu
+syndelay    /P5IBbnet/P5IBb[]/axona/Inh_ch7C23FSGABAa {C23FS_P5IBb_syndelay} -add
 
 // assigning weights using the volumeweight function
 

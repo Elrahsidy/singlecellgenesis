@@ -29,6 +29,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22ST4RSAMPA@all	    \
 	      -relative			    \
@@ -49,6 +50,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22ST4RSNMDA@all	    \
 	      -relative			    \
@@ -73,7 +75,8 @@ echo Setting weights and delays for ST4RS->P23FRBa connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23FRBa_axdelayCV} -add -gaussian {ST4RS_P23FRBa_axdelaystdev} {ST4RS_P23FRBa_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23FRBa_axdelayCV} -add
 
 //ST4RS - P23FRBa AMPA
 
@@ -85,7 +88,8 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23FRBanet/P23FRBa[]/basalLsupera/Ex_ch22ST4RSAMPA {ST4RS_P23FRBa_syndelay} -add -gaussian {ST4RS_P23FRBa_syndelaystdev} {ST4RS_P23FRBa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23FRBanet/P23FRBa[]/basalLsupera/Ex_ch22ST4RSAMPA {ST4RS_P23FRBa_syndelay} -add
 
 end
 
@@ -99,7 +103,8 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23FRBanet/P23FRBa[]/basalLsupera/Ex_ch22ST4RSNMDA {ST4RS_P23FRBa_syndelay} -add -gaussian {ST4RS_P23FRBa_syndelaystdev} {ST4RS_P23FRBa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23FRBanet/P23FRBa[]/basalLsupera/Ex_ch22ST4RSNMDA {ST4RS_P23FRBa_syndelay} -add
 
 end
 
@@ -116,6 +121,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}
 
 

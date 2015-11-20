@@ -28,6 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBAMPA@all	    \
 	      -relative			    \
@@ -48,6 +49,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBNMDA@all	    \
 	      -relative			    \
@@ -72,7 +74,8 @@ echo Setting weights and delays for P5IBa->I5LTS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /P5IBanet/P5IBa[]/soma/spk6 -radial  {P5IBa_I5LTS_axdelayCV} -add -gaussian {P5IBa_I5LTS_axdelaystdev} {P5IBa_I5LTS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /P5IBanet/P5IBa[]/soma/spk6 -radial  {P5IBa_I5LTS_axdelayCV} -add
 
 // P5IBa - I5LTS AMPA
 
@@ -84,7 +87,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBAMPA {P5IBa_I5LTS_syndelay} -add -gaussian {P5IBa_I5LTS_syndelaystdev} {P5IBa_I5LTS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBAMPA {P5IBa_I5LTS_syndelay} -add
 
 end
 
@@ -98,7 +102,8 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    syndelay    /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBNMDA {P5IBa_I5LTS_syndelay} -add -gaussian {P5IBa_I5LTS_syndelaystdev} {P5IBa_I5LTS_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBNMDA {P5IBa_I5LTS_syndelay} -add
 
 end
 
@@ -115,6 +120,7 @@ end
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /P5IBanet/P5IBa[]/soma/spk6 -decay {P5IBdecayrate} {P5IBmaxwgt} {P5IBminwgt}
 //volumeweight /P5IBanet/P5IBa[]/soma/spk6 -fixed 0.50
 

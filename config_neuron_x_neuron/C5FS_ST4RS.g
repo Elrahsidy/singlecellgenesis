@@ -20,6 +20,7 @@ echo Making connections from the C5FS cells to the ST4RS cells.
 
 // C5FS - ST4RS GABAa
 
+barrierall //ayu
 rvolumeconnect /C5FSnet/C5FS[]/soma/spk16  \
 	      /ST4RSnet/ST4RS[]/axona/Inh_ch17C5FSGABAa@all	    \
 	      -relative			    \
@@ -42,11 +43,13 @@ echo Setting weights and delays for C5FS->ST4RS connections.
  * [-absoluterandom]  (not used here)
  */
 
-rvolumedelay /C5FSnet/C5FS[]/soma/spk16 -radial  {C5FS_ST4RS_axdelayCV} -add -gaussian {C5FS_ST4RS_axdelaystdev} {C5FS_ST4RS_axdelaymaxdev}
+barrierall //ayu
+rvolumedelay /C5FSnet/C5FS[]/soma/spk16 -radial  {C5FS_ST4RS_axdelayCV} -add
 
 //C5FS - ST4RS GABAa
 
-syndelay    /ST4RSnet/ST4RS[]/axona/Inh_ch17C5FSGABAa {C5FS_ST4RS_syndelay} -add -gaussian {C5FS_ST4RS_syndelaystdev} {C5FS_ST4RS_syndelaymaxdev}
+barrierall //ayu
+syndelay    /ST4RSnet/ST4RS[]/axona/Inh_ch17C5FSGABAa {C5FS_ST4RS_syndelay} -add
 
 // assigning weights using the volumeweight function
 
@@ -61,6 +64,7 @@ syndelay    /ST4RSnet/ST4RS[]/axona/Inh_ch17C5FSGABAa {C5FS_ST4RS_syndelay} -add
  *          [-absoluterandom]
  */
 
+barrierall //ayu
 rvolumeweight /C5FSnet/C5FS[]/soma/spk16 -decay {C5FSdecayrate} {C5FSmaxwgt} {C5FSminwgt}
 
 

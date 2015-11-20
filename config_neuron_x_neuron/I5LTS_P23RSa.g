@@ -29,6 +29,7 @@ str locations = "basalLsuperb basalLsuperc basalLmidsuperb basalLmidsuperc basal
 
 foreach s ({arglist {locations}})
 
+    barrierall //ayu
     rvolumeconnect /I5LTSnet/I5LTS[]/soma/spk19  \
 	      /P23RSanet/P23RSa[]/{s}/Inh_ch1I5LTSGABAa@all	    \
 	      -relative			    \
@@ -65,7 +66,8 @@ str locations = "basalLsuperb basalLsuperc basalLmidsuperb basalLmidsuperc basal
 
 foreach s ({arglist {locations}})
 
-    syndelay    /P23RSanet/P23RSa[]/{s}/Inh_ch1I5LTSGABAa {I5LTS_P23RSa_syndelay} -add -gaussian {I5LTS_P23RSa_syndelaystdev} {I5LTS_P23RSa_syndelaymaxdev}
+    barrierall //ayu
+    syndelay    /P23RSanet/P23RSa[]/{s}/Inh_ch1I5LTSGABAa {I5LTS_P23RSa_syndelay} -add
 
 end
 
