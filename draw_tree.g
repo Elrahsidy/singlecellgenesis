@@ -23,14 +23,26 @@ str outfile
 int thisnode
 for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
     if ({thisnode} == {mynode})
-        echo Listing connections for node {thisnode}
+
+		// Synaptic connections to other neurons
+        echo Listing connections for node {mynode}
         foreach element ({el /#net/#[]/soma/spk#})
-            outfile = {"data/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
-            echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} >> {outfile}
+            outfile = {"data-latest/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
+            echo {mynode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} >> {outfile}
             rshowmsg {element} >> {outfile}
             //echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} > /dev/null
             //async rshowmsg {element} > /dev/null
         end
+        
+		// Get random spike connections too
+		echo Listing random connections for node {mynode}
+		foreach element ({el /randomspike#})
+			outfile = {"data-latest/connections/" @ {myzeropadnode} @ {strsub {strsub {element} randomspike randomspike_ -all} / _ -all} @ ".txt"}
+			echo {getsyndest {element} 0} {getfield {getsyndest {element} 0}/../.. x} {getfield {getsyndest {element} 0}/../.. y} {getfield {getsyndest {element} 0}/../.. z} {element} {getfield {getsyndest {element} 0} synapse[0].weight} >> {outfile}
+			rshowmsg {element} >> {outfile}
+			//echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} > /dev/null
+			//async rshowmsg {element} > /dev/null
+		end
     end
     barrier
 end
@@ -38,3 +50,4 @@ end
 // It's not currently possible to get the synaptic weight for remote
 // connections, e.g.:
 // echo {getfield@1 /C23FSnet/C23FS/distdendSmidb/Ex_ch15P23RSAMPA synapse[7].weight}
+// This is because they're all routed through the /post object.
