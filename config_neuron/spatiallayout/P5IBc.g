@@ -56,7 +56,7 @@ addfield /P5IBc rotation
 for (j = 0; j < P5IBc_NY; j = j+1)
      for (i = 0; i < P5IBc_NX; i = i+1)
 
-          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{P5IBc_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{P5IBc_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
           randzpos = { rand 550e-6 1262e-6 }
 
@@ -68,7 +68,7 @@ for (j = 0; j < P5IBc_NY; j = j+1)
           if ({rotateneurons} == 1)
               randrotation = {rand 0 6.283185308 }
               setfield /P5IBcnet/P5IBc[{k}] rotation {randrotation} // save for posterity
-              rotcoord /P5IBcnet/P5IBc[{k}] {randrotation} -z
+              rotcoord /P5IBcnet/P5IBc[{k}] {randrotation} -z -center {originxmin + P5IBc_SEPX*i} {originymin + P5IBc_SEPY*j} {randzpos}
           end
 
           k=k+1

@@ -56,7 +56,7 @@ addfield /P23RSb rotation
 for (j = 0; j < P23RSb_NY; j = j+1)
      for (i = 0; i < P23RSb_NX; i = i+1)
 
-          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{P23RSb_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{P23RSb_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
           randzpos = { rand 1602e-6 2871e-6 }
 
@@ -68,7 +68,7 @@ for (j = 0; j < P23RSb_NY; j = j+1)
           if ({rotateneurons} == 1)
               randrotation = {rand 0 6.283185308 }
               setfield /P23RSbnet/P23RSb[{k}] rotation {randrotation} // save for posterity
-              rotcoord /P23RSbnet/P23RSb[{k}] {randrotation} -z
+              rotcoord /P23RSbnet/P23RSb[{k}] {randrotation} -z -center {originxmin + P23RSb_SEPX*i} {originymin + P23RSb_SEPY*j} {randzpos}
           end
 
           k=k+1

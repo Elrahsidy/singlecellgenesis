@@ -75,7 +75,7 @@ echo Traub TCR!
                if ({rotateneurons} == 1)
                    randrotation = {rand 0 6.283185308 }
                    setfield /TCRnet/TCR[{k}] rotation {randrotation} // save for posterity
-                   rotcoord /TCRnet/TCR[{k}] {randrotation} -z
+                   rotcoord /TCRnet/TCR[{k}] {randrotation} -z -center {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
                end
 
                k=k+1

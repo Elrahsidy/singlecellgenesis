@@ -47,7 +47,7 @@ if ({columntype == 0})
      for (j = 0; j < I23LTS_NY; j = j+1)
           for (i = 0; i < I23LTS_NX; i = i+1)
 
-               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{I23LTS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{I23LTS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
                randzpos = { rand 1602e-6 2871e-6 }
 
@@ -71,7 +71,7 @@ echo Traub I23LTS!
 
           for (i = istartdex; i < I23LTS_NX; i = i+2)
               
-               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{I23LTS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{I23LTS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
                randzpos = { rand 1602e-6 2871e-6 }
 
@@ -83,7 +83,7 @@ echo Traub I23LTS!
                if ({rotateneurons} == 1)
                    randrotation = {rand 0 6.283185308 }
                    setfield /I23LTSnet/I23LTS[{k}] rotation {randrotation} // save for posterity
-                   rotcoord /I23LTSnet/I23LTS[{k}] {randrotation} -z
+                   rotcoord /I23LTSnet/I23LTS[{k}] {randrotation} -z -center {originxmin + I23LTS_SEPX*i} {originymin + I23LTS_SEPY*j} {randzpos}
                end
 
                k=k+1

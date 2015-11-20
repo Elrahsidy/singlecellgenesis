@@ -44,7 +44,7 @@ if ({columntype == 0})
      for (j = 0; j < C5FS_NY; j = j+1)
           for (i = 0; i < C5FS_NX; i = i+1)
 
-               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{C5FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{C5FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
                randzpos = { rand 550e-6 1262e-6 }
 
@@ -68,7 +68,7 @@ echo Traub C5FS!
 
           for (i = istartdex; i < C5FS_NX; i = i+2)
               
-               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+               int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{C5FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{C5FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
                randzpos = { rand 550e-6 1262e-6 }
 
@@ -80,7 +80,7 @@ echo Traub C5FS!
                if ({rotateneurons} == 1)
                    randrotation = {rand 0 6.283185308 }
                    setfield /C5FSnet/C5FS[{k}] rotation {randrotation} // save for posterity
-                   rotcoord /C5FSnet/C5FS[{k}] {randrotation} -z
+                   rotcoord /C5FSnet/C5FS[{k}] {randrotation} -z -center {originxmin + C5FS_SEPX*i} {originymin + C5FS_SEPY*j} {randzpos}
                end
 
                k=k+1

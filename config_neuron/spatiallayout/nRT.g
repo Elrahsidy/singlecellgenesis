@@ -76,7 +76,7 @@ echo Traub nRT!
                if ({rotateneurons} == 1)
                    randrotation = {rand 0 6.283185308 }
                    setfield /nRTnet/nRT[{k}] rotation {randrotation} // save for posterity
-                   rotcoord /nRTnet/nRT[{k}] {randrotation} -z
+                   rotcoord /nRTnet/nRT[{k}] {randrotation} -z -center {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
                end
 
                k=k+1

@@ -56,7 +56,7 @@ addfield /ST4RS rotation
 for (j = 0; j < ST4RS_NY; j = j+1)
      for (i = 0; i < ST4RS_NX; i = i+1)
 
-          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{ST4RS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{ST4RS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
           randzpos = { rand 1262e-6 1602e-6 }
 
@@ -68,7 +68,7 @@ for (j = 0; j < ST4RS_NY; j = j+1)
           if ({rotateneurons} == 1)
               randrotation = {rand 0 6.283185308 }
               setfield /ST4RSnet/ST4RS[{k}] rotation {randrotation} // save for posterity
-              rotcoord /ST4RSnet/ST4RS[{k}] {randrotation} -z
+              rotcoord /ST4RSnet/ST4RS[{k}] {randrotation} -z -center {originxmin + ST4RS_SEPX*i} {originymin + ST4RS_SEPY*j} {randzpos}
           end
 
           k=k+1

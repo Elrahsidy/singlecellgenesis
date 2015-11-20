@@ -89,7 +89,7 @@ echo Traub B23FS!
                if ({rotateneurons} == 1)
                    randrotation = {rand 0 6.283185308 }
                    setfield /B23FSnet/B23FS[{k}] rotation {randrotation} // save for posterity
-                   rotcoord /B23FSnet/B23FS[{k}] {randrotation} -z
+                   rotcoord /B23FSnet/B23FS[{k}] {randrotation} -z -center {originxmin + B23FS_SEPX*i} {originymin + B23FS_SEPY*j} {randzpos}
                end
 
                k=k+1

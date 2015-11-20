@@ -56,21 +56,22 @@ addfield /P23FRBa rotation
 for (j = 0; j < P23FRBa_NY; j = j+1)
      for (i = 0; i < P23FRBa_NX; i = i+1)
 
-          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{B23FS_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{B23FS_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
+          int newrandseed = {{ {typenum} @0@ {trunc {{{originxmin}+{P23FRBa_SEPX}*{i}}/{SEPX}}} @0@ {trunc {{{originymin}+{P23FRBa_SEPY}*{j}}/{SEPY}}} } + {myrandseed}}
           randseed {newrandseed}
           randzpos = { rand 1602e-6 2871e-6 }
 
           copy /P23FRBa /P23FRBanet/P23FRBa[{k}]
           position /P23FRBanet/P23FRBa[{k}] \
             {originxmin + P23FRBa_SEPX*i} {originymin + P23FRBa_SEPY*j} {randzpos}
-          k=k+1
 
           // Rotate about z-axis ("twirl" in GENESIS cellsheet terminology)
           if ({rotateneurons} == 1)
               randrotation = { rand 0 6.283185308 }
               setfield /P23FRBanet/P23FRBa[{k}] rotation {randrotation} // save for posterity
-              rotcoord /P23FRBanet/P23FRBa[{k}] {randrotation} -z
+              rotcoord /P23FRBanet/P23FRBa[{k}] {randrotation} -z -center {originxmin + P23FRBa_SEPX*i} {originymin + P23FRBa_SEPY*j} {randzpos}
           end
+
+          k=k+1
 
           echo Position P23FRBa {mynode} {i} {j} {originxmin} {originymin} {originxmin + P23FRBa_SEPX*i} {originymin + P23FRBa_SEPY*j} {randzpos}
 
