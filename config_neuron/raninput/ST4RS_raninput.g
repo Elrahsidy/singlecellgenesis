@@ -20,6 +20,10 @@
 
                 dex=(i-1)*ST4RS_NY+(j-1)
 
+                if ({output}==1)
+                    echo ST4RS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /ST4RSnet/ST4RS[{dex}]/distdendNlonga
 
                 make_Ex_chSPIKEAMPA

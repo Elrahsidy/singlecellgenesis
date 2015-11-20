@@ -20,6 +20,10 @@
 
                 dex=(i-1)*P23FRBa_NY+(j-1)
 
+                if ({output}==1)
+                    echo P23FRBa {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /P23FRBanet/P23FRBa[{dex}]/apdend3
 
                 make_Ex_chSPIKEAMPA

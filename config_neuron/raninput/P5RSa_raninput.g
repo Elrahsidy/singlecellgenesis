@@ -20,6 +20,10 @@
 
                 dex=(i-1)*P5RSa_NY+(j-1)
 
+                if ({output}==1)
+                    echo P5RSa {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /P5RSanet/P5RSa[{dex}]/apdend3
 
                 make_Ex_chSPIKEAMPA

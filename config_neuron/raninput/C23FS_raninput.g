@@ -22,6 +22,10 @@ if ({columntype == 0})
 
                 dex=(i-1)*C23FS_NY+(j-1)
 
+                if ({output}==1)
+                    echo C23FS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /C23FSnet/C23FS[{dex}]/distdendNlonga
 
                 make_Ex_chSPIKEAMPA
@@ -68,6 +72,10 @@ if ({columntype == 1})
             randneur = { rand 0 1.0 }
 
             if ( {randneur <= neuronfrac} )
+
+                if ({output}==1)
+                    echo C23FS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
 
                 ce /C23FSnet/C23FS[{k}]/distdendNlonga
 

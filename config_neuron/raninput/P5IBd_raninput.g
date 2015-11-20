@@ -20,6 +20,10 @@
 
                 dex=(i-1)*P5IBd_NY+(j-1)
 
+                if ({output}==1)
+                    echo P5IBd {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /P5IBdnet/P5IBd[{dex}]/apdend3
 
                 make_Ex_chSPIKEAMPA

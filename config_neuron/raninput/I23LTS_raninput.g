@@ -22,6 +22,10 @@ if ({columntype == 0})
 
                 dex=(i-1)*I23LTS_NY+(j-1)
 
+                if ({output}==1)
+                    echo I23LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
+
                 ce /I23LTSnet/I23LTS[{dex}]/distdendNlonga
 
                 make_Ex_chSPIKEAMPA
@@ -68,6 +72,10 @@ if ({columntype == 1})
             randneur = { rand 0 1.0 }
 
             if ( {randneur <= neuronfrac} )
+
+                if ({output}==1)
+                    echo I23LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                end
 
                 ce /I23LTSnet/I23LTS[{k}]/distdendNlonga
 
