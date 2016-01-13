@@ -28,10 +28,7 @@
 //*set_compt_param     ELEAK	-0.0594
 // Actually, after Cunningham et al. PNAS 2004;101:7152-7157, will maintain
 // leakage potential at ELEAK   -0.07
-soma  none  0   0  20 15.0    Ca_s5       -44.38e12     NaF5            600   \
-                              KDR5       1000                                 \
-                              KA5          10                                 \
-                              CaH5          1           KCs5            250
+soma	none	0	0	20	15.0	Ca_s5	-44.38e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCs5	250
 
 
 //*set_compt_param        ELEAK   -0.075
@@ -42,28 +39,16 @@ soma  none  0   0  20 15.0    Ca_s5       -44.38e12     NaF5            600   \
 //PROXIMAL DENDRITE COMPARTMENTS ***************************************
 
 // proxdendN   Cunningham et al., PNAS  2004;101:7152-7157
-proxdendN  soma  0  0  40 2.12  Ca_d5 -156.99e12        NaF5     600   \
-                                KDR5       1000   \
-                                KA5          10   \
-                                CaH5          1         KCd5     250   
+proxdendN	soma	0	0	40	2.12	Ca_d5	-156.99e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
                               
 // proxdendE   Cunningham et al., PNAS  2004;101:7152-7157
-proxdendE  soma  40  0 0 2.12    Ca_d5 -156.99e12         NaF5     600   \
-                                 KDR5       1000   \
-                                 KA5          10   \
-                                 CaH5          1          KCd5     250   
+proxdendE	soma	40	0	0	2.12	Ca_d5	-156.99e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // proxdendS   Cunningham et al., PNAS  2004;101:7152-7157
-proxdendS  soma  0  0  -40 2.12 Ca_d5 -156.99e12         NaF5     600   \
-                                KDR5       1000   \
-                                KA5          10   \
-                                CaH5          1          KCd5     250   
+proxdendS	soma	0	0	-40	2.12	Ca_d5	-156.99e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // proxdendW   Cunningham et al., PNAS  2004;101:7152-7157
-proxdendW  soma  -40 0 0 2.12    Ca_d5 -156.99e12         NaF5     600   \
-                                 KDR5       1000   \
-                                 KA5          10   \
-                                 CaH5          1          KCd5     250   
+proxdendW	soma	-40	0	0	2.12	Ca_d5	-156.99e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 *set_compt_param	RM	2.50  //0.33333 (2.50)
 *set_compt_param	RA	2.00  //0.3 (2.00)
@@ -73,297 +58,153 @@ proxdendW  soma  -40 0 0 2.12    Ca_d5 -156.99e12         NaF5     600   \
 
 //North DISTAL DENDRITE COMPARTMENTS ***************************************
 // distdendNlonga   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlonga  proxdendN  -6.84  11.8 37.6 1.34  Ca_d5 -248.37e12        NaF5     600   \
-                                                  KDR5       1000   \
-                                                  KA5          10   \
-                                                  CaH5          1         KCd5     250   
+distdendNlonga	proxdendN	-6.84	11.8	37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendNlongb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlongb  distdendNlonga  -6.84 11.8 37.6 1.34    Ca_d5 -248.37e12        NaF5     600   \
-                                                        KDR5       1000   \
-                                                        KA5          10   \
-                                                        CaH5          1         KCd5     250   
+distdendNlongb	distdendNlonga	-6.84	11.8	37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendNlongc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlongc  distdendNlongb  -6.84 11.8 37.6 1.34    Ca_d5 -248.37e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250  
+distdendNlongc	distdendNlongb	-6.84	11.8	37.6	1.34	Ca_d5	-248.37e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNlongd   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlongd  distdendNlongc  -6.84 11.8 37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendNlongd	distdendNlongc	-6.84	11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNlonge   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlonge  distdendNlongd  -6.84 11.8 37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendNlonge	distdendNlongd	-6.84	11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNlongf   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlongf  distdendNlonge  -6.84 11.8 37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendNlongf	distdendNlonge	-6.84	11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNlongg   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNlongg  distdendNlongf  -6.84 11.8 37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendNlongg	distdendNlongf	-6.84	11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNmida   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNmida  proxdendN  6.84  -11.8  37.6  1.34   Ca_d5 -248.37e12        NaF5     600   \
-                                                    KDR5       1000   \
-                                                    KA5          10   \
-                                                    CaH5          1         KCd5     250   
+distdendNmida	proxdendN	6.84	-11.8	37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendNmidb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNmidb  distdendNmida  6.84 -11.8  37.6  0.84     Ca_d5 -396.21e12        NaF5     600   \
-                                                         KDR5       1000   \
-                                                         KA5          10   \
-                                                         CaH5          1         KCd5     250   
+distdendNmidb	distdendNmida	6.84	-11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendNmidc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNmidc  distdendNmidb  6.84 -11.8 37.6  0.84      Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendNmidc	distdendNmidb	6.84	-11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendNshorta   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNshorta  distdendNlonga   6.84  -11.8  37.6  0.84  Ca_d5 -396.21e12        NaF5     600   \
-                                                           KDR5       1000   \
-                                                           KA5          10   \
-                                                           CaH5          1         KCd5     250   
+distdendNshorta	distdendNlonga	6.84	-11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendNshortb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendNshortb  distdendNshorta 6.84 -11.8 37.6  0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendNshortb	distdendNshorta	6.84	-11.8	37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 //East DISTAL DENDRITE COMPARTMENTS ***************************************
 // distdendElonga   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElonga  proxdendE  32.5  18.8 13.68 1.34  Ca_d5 -248.37e12        NaF5     600   \
-                                                  KDR5       1000   \
-                                                  KA5          10   \
-                                                  CaH5          1         KCd5     250   
+distdendElonga	proxdendE	32.5	18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendElongb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElongb  distdendElonga  32.5 18.8 13.68 1.34   Ca_d5 -248.37e12        NaF5     600   \
-                                                       KDR5       1000   \
-                                                       KA5          10   \
-                                                       CaH5          1         KCd5     250   
+distdendElongb	distdendElonga	32.5	18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendElongc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElongc  distdendElongb  32.5 18.8 13.68 1.34   Ca_d5 -248.37e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendElongc	distdendElongb	32.5	18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendElongd   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElongd  distdendElongc  32.5 18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendElongd	distdendElongc	32.5	18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendElonge   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElonge  distdendElongd  32.5 18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendElonge	distdendElongd	32.5	18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendElongf   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElongf  distdendElonge  32.5 18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendElongf	distdendElonge	32.5	18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendElongg   Cunningham et al., PNAS  2004;101:7152-7157
-distdendElongg  distdendElongf  32.5 18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendElongg	distdendElongf	32.5	18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 
 // distdendEmida   Cunningham et al., PNAS  2004;101:7152-7157
-distdendEmida  proxdendE  32.5 18.8 -13.68 1.34   Ca_d5 -248.37e12        NaF5     600   \
-                                                  KDR5       1000   \
-                                                  KA5          10   \
-                                                  CaH5          1         KCd5     250   
+distdendEmida	proxdendE	32.5	18.8	-13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendEmidb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendEmidb  distdendEmida 32.5 18.8 -13.68  0.84    Ca_d5 -396.21e12        NaF5     600   \
-                                                       KDR5       1000   \
-                                                       KA5          10   \
-                                                       CaH5          1         KCd5     250   
+distdendEmidb	distdendEmida	32.5	18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendEmidc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendEmidc  distdendEmidb  32.5 18.8 -13.68  0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                       KDR5        100   \
-                                                       KA5          10   \
-                                                       CaH5          2         KCd5     250   
+distdendEmidc	distdendEmidb	32.5	18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendEshorta   Cunningham et al., PNAS  2004;101:7152-7157
-distdendEshorta  distdendElonga   32.5  18.8  -13.68 0.84 Ca_d5 -396.21e12        NaF5     600   \
-                                                          KDR5       1000   \
-                                                          KA5          10   \
-                                                          CaH5          1         KCd5     250   
+distdendEshorta	distdendElonga	32.5	18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendEshortb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendEshortb  distdendEshorta 32.5 18.8 -13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendEshortb	distdendEshorta	32.5	18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 //South DISTAL DENDRITE COMPARTMENTS ***************************************
 // distdendSlonga   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlonga  proxdendS  6.84  -11.8  -37.6 1.34  Ca_d5 -248.37e12        NaF5     600   \
-                                                    KDR5       1000   \
-                                                    KA5          10   \
-                                                    CaH5          1         KCd5     250   
+distdendSlonga	proxdendS	6.84	-11.8	-37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendSlongb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlongb  distdendSlonga  6.84 -11.8 -37.6 1.34    Ca_d5 -248.37e12        NaF5     600   \
-                                                         KDR5       1000   \
-                                                         KA5          10   \
-                                                         CaH5          1         KCd5     250   
+distdendSlongb	distdendSlonga	6.84	-11.8	-37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendSlongc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlongc  distdendSlongb  6.84 -11.8 -37.6 1.34    Ca_d5 -248.37e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSlongc	distdendSlongb	6.84	-11.8	-37.6	1.34	Ca_d5	-248.37e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendSlongd   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlongd  distdendSlongc  6.84 -11.8 -37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSlongd	distdendSlongc	6.84	-11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendSlonge   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlonge  distdendSlongd  6.84 -11.8 -37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSlonge	distdendSlongd	6.84	-11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendSlongf   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlongf  distdendSlonge  6.84 -11.8 -37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSlongf	distdendSlonge	6.84	-11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendSlongg   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSlongg  distdendSlongf  6.84 -11.8 -37.6 0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSlongg	distdendSlongf	6.84	-11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 
 // distdendSmida   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSmida  proxdendS  -6.84  11.8 -37.6 1.34   Ca_d5 -248.37e12        NaF5     600   \
-                                                   KDR5       1000   \
-                                                   KA5          10   \
-                                                   CaH5          1         KCd5     250   
+distdendSmida	proxdendS	-6.84	11.8	-37.6	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendSmidb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSmidb  distdendSmida  -6.84 11.8  -37.6 0.84    Ca_d5 -396.21e12        NaF5     600   \
-                                                        KDR5       1000   \
-                                                        KA5          10   \
-                                                        CaH5          1         KCd5     250   
+distdendSmidb	distdendSmida	-6.84	11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendSmidc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSmidc  distdendSmidb  -6.84 11.8 -37.6  0.84    Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendSmidc	distdendSmidb	-6.84	11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendSshorta   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSshorta  distdendSlonga   -6.84  11.8  -37.6 0.84  Ca_d5 -396.21e12        NaF5     600   \
-                                                           KDR5       1000   \
-                                                           KA5          10   \
-                                                           CaH5          1         KCd5     250   
+distdendSshorta	distdendSlonga	-6.84	11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendSshortb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendSshortb  distdendSshorta -6.84 11.8 -37.6 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendSshortb	distdendSshorta	-6.84	11.8	-37.6	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 //West DISTAL DENDRITE COMPARTMENTS ***************************************
 // distdendWlonga   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlonga  proxdendW -32.5  -18.8 13.68 1.34  Ca_d5 -248.37e12        NaF5     600   \
-                                                   KDR5       1000   \
-                                                   KA5          10   \
-                                                   CaH5          1         KCd5     250   
+distdendWlonga	proxdendW	-32.5	-18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendWlongb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlongb  distdendWlonga -32.5  -18.8 13.68 1.34   Ca_d5 -248.37e12        NaF5     600   \
-                                                         KDR5       1000   \
-                                                         KA5          10   \
-                                                         CaH5          1         KCd5     250   
+distdendWlongb	distdendWlonga	-32.5	-18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendWlongc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlongc  distdendWlongb -32.5  -18.8 13.68 1.34   Ca_d5 -248.37e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendWlongc	distdendWlongb	-32.5	-18.8	13.68	1.34	Ca_d5	-248.37e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWlongd   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlongd  distdendWlongc -32.5  -18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendWlongd	distdendWlongc	-32.5	-18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWlonge   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlonge  distdendWlongd -32.5  -18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendWlonge	distdendWlongd	-32.5	-18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWlongf   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlongf  distdendWlonge -32.5  -18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendWlongf	distdendWlonge	-32.5	-18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWlongg   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWlongg  distdendWlongf -32.5  -18.8 13.68 0.84   Ca_d5 -396.21e12        NaF5     100   \
-                                                         KDR5        100   \
-                                                         KA5          10   \
-                                                         CaH5          2         KCd5     250   
+distdendWlongg	distdendWlongf	-32.5	-18.8	13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWmida   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWmida  proxdendW  -32.5 -18.8 -13.68 1.34  Ca_d5 -248.37e12        NaF5     600   \
-                                                   KDR5       1000   \
-                                                   KA5          10   \
-                                                   CaH5          1         KCd5     250   
+distdendWmida	proxdendW	-32.5	-18.8	-13.68	1.34	Ca_d5	-248.37e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendWmidb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWmidb  distdendWmida -32.5 -18.8 -13.68  0.84   Ca_d5 -396.21e12        NaF5     600   \
-                                                        KDR5       1000   \
-                                                        KA5          10   \
-                                                        CaH5          1         KCd5     250   
+distdendWmidb	distdendWmida	-32.5	-18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendWmidc   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWmidc  distdendWmidb  -32.5 -18.8 -13.68  0.84  Ca_d5 -396.21e12        NaF5     100   \
-                                                        KDR5        100   \
-                                                        KA5          10   \
-                                                        CaH5          2         KCd5     250   
+distdendWmidc	distdendWmidb	-32.5	-18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 // distdendWshorta   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWshorta  distdendWlonga   -32.5  -18.8 -13.68 0.84 Ca_d5 -396.21e12        NaF5     600   \
-                                                           KDR5       1000   \
-                                                           KA5          10   \
-                                                           CaH5          1         KCd5     250   
+distdendWshorta	distdendWlonga	-32.5	-18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	600	KDR5	1000	KA5	10	CaH5	1	KCd5	250	
 
 // distdendWshortb   Cunningham et al., PNAS  2004;101:7152-7157
-distdendWshortb  distdendWshorta -32.5 -18.8 -13.68 0.84  Ca_d5 -396.21e12        NaF5     100   \
-                                                          KDR5        100   \
-                                                          KA5          10   \
-                                                          CaH5          2         KCd5     250   
+distdendWshortb	distdendWshorta	-32.5	-18.8	-13.68	0.84	Ca_d5	-396.21e12	NaF5	100	KDR5	100	KA5	10	CaH5	2	KCd5	250	
 
 //		Specifying constants for axonal compartment
 
@@ -374,36 +215,24 @@ distdendWshortb  distdendWshorta -32.5 -18.8 -13.68 0.84  Ca_d5 -396.21e12      
   
 // axona Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axona  soma  0  0 -25  1.8      NaF5       4000   \
-                                KDR5       4000   \
-                                KA5          10   
+axona	soma	0	0	-25	1.8	NaF5	4000	KDR5	4000	KA5	10	
 
 // axonb Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axonb  axona  0  0 -50  1.4     NaF5       4000   \
-                                KDR5       4000   \
-                                KA5          10   
+axonb	axona	0	0	-50	1.4	NaF5	4000	KDR5	4000	KA5	10	
 
 // axonLa Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axonLa  axonb  -8.7  0 -49.2  1.2    NaF5       4000   \
-                                     KDR5       4000   \
-                                     KA5          10
+axonLa	axonb	-8.7	0	-49.2	1.2	NaF5	4000	KDR5	4000	KA5	10
 
 // axonLb Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axonLb  axonLa  -8.7  0 -49.2  1.0   NaF5       4000   \
-                                     KDR5       4000   \
-                                     KA5          10    
+axonLb	axonLa	-8.7	0	-49.2	1.0	NaF5	4000	KDR5	4000	KA5	10	
 
 // axonRa Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axonRa  axonb   8.7  0 -49.2  1.2    NaF5       4000   \
-                                     KDR5       4000   \
-                                     KA5          10
+axonRa	axonb	8.7	0	-49.2	1.2	NaF5	4000	KDR5	4000	KA5	10
 
 // axonRb Fig 1. Traub et al., J Neurophysiol 2003;89:909-921
 // Differs from Traub et al., in that axon is vertical
-axonRb  axonRa   8.7  0 -49.2  1.0   NaF5       4000   \
-                                     KDR5       4000   \
-                                     KA5          10  
+axonRb	axonRa	8.7	0	-49.2	1.0	NaF5	4000	KDR5	4000	KA5	10	
