@@ -1,7 +1,7 @@
 // genesis
 
 //Overall simulation parameters
-float tmax = 20
+float tmax = 10
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
@@ -12,12 +12,25 @@ int sqrtNnodes = {sqrt {Nnodes}}
 
 // Number of minicolumns per cortical column.
 // Each CPU node will simulate NX*NY minicolumns.
-float NX = 8
-float NY = 8
+float NX = 2
+float NY = 2
 
 // Spacing between minicolumns
 float SEPX = 25e-6
 float SEPY = 25e-6
+
+// Number of regions (separate cortical patches)
+//
+// I haven't really tested what happens when this isn't a square number; it
+// seems to work but might do weird things. Setting it greater than one will
+// enable long-range connections.
+int Nregions = 1
+
+// regionspacing controls the extra spacing between two different regions,
+// above and beyond {SEPX}. regionspacing = 0.0 means a separation of {SEPX}
+// between minicolumns in adjacent regions. regionspacing = {SEPX} means there
+// is 2*{SEPX} separation.
+float regionspacing = {SEPX}*{NX}*10
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
@@ -31,7 +44,7 @@ randseed {myrandseed}
 // Important flags
 int display = 0     // Display neurons and graphs?
 int output = 1      // Dump neural output to a file?
-int drawtree = 0    // Output connectivity info?
+int drawtree = 1    // Output connectivity info?
 
 // Enable/disable thalamocortical connections
 int thalamocortical = 1
@@ -39,7 +52,7 @@ int thalamocortical = 1
 int gaps = 0
 
 // Randomly rotate each neuron along its z (height) axis?
-int rotateneurons = 0
+int rotateneurons = 1
 
 // setting the simulation clocks
 setclock	0 {dt}		        // sec
@@ -53,8 +66,10 @@ echo ""
 //////////////////////////////////////////////////////////////////////
 
 // START UP
-paron -parallel -silent 1 -nodes {Nnodes} -output genesis_o.out \
-	-executable nxpgenesis
+paron -parallel -silent 0 -nodes {Nnodes} -nice 10 -output genesis_o.out \
+	-executable pgenesis
+barrier
+setfield /post remote_info 0 // save remote message info (see BoG, pg. 377)
 //setfield /post msg_hang_time 100000	// set a very long timeout in case
 					// we need to do debugging
 
@@ -95,6 +110,63 @@ include netparams.g
 gridsize = P23RSa_NX*P23RSa_NY
 probedex = gridsize/2 // For cell types with full density (1 per minicolumn)
 probedex2 = probedex/2 // For cell types with half the density
+
+// Region setup
+Nregions = {min {Nnodes} {Nregions}}
+int Nnodesperregion = {max 1 {{Nnodes} / {Nregions}}}
+int sqrtNnodesperregion = {round {sqrt {Nnodesperregion}}}
+int sqrtNregions = {sqrt {Nregions}}
+int myxnum = {{mynode} % {sqrtNnodes}}
+int myynum = {{mynode} / {sqrtNnodes}}
+int myregion, thisregion
+int minx, maxx, miny, maxy
+str regionnodes = ""
+str distantnodes = ""
+for (thisregion = 0; thisregion < Nregions; thisregion = thisregion + 1)
+	minx = {thisregion % {sqrtNregions}} * {sqrtNnodesperregion}
+	miny = {thisregion / {sqrtNregions}} * {sqrtNnodesperregion}
+	maxx = minx + {{sqrtNnodesperregion}-1}
+	maxy = miny + {{sqrtNnodesperregion}-1}
+	//echo "thisregion = " {thisregion} "minx = " {minx} "maxx = " {maxx} "miny = " {miny} "maxy = " {maxy} 
+
+	// If this node belongs to this region
+	if ({{myxnum} >= {minx}} & {{myynum} >= {miny}} & {{myxnum} <= {maxx}} & {{myynum} <= {maxy}})
+		myregion = {thisregion}
+		
+		// Set list of regionnodes for later connectivity purposes
+		int i,j
+		for (i=minx; i<=maxx; i=i+1) 
+			for (j=miny; j<=maxy; j=j+1) 
+				if ({regionnodes}=="") // first regionnode
+					regionnodes = {{{j}*{sqrtNnodes}}+{i}}
+				else
+					regionnodes = {regionnodes} @ "," @ {{{j}*{sqrtNnodes}}+{i}}
+				end
+			end
+		end
+		// Set list of distantnodes for later connectivity purposes
+		int nodex, nodey
+		for (i=0; i<Nnodes; i=i+1) 
+			nodex = {{i} % {sqrtNnodes}}
+			nodey = {{i} / {sqrtNnodes}}
+			if ({nodex < minx} | {nodex > maxx} | {nodey < miny} | {nodey > maxy})
+				if ({distantnodes}=="") // first distantnode
+					distantnodes = {i}
+				else
+					distantnodes = {distantnodes} @ "," @ {i}
+				end
+			end
+		end
+
+		echo "Region " {thisregion} " regionnodes=" {regionnodes} " distantnodes=" {distantnodes}
+
+	end
+end
+float regionoffsetx = {{regionspacing} * {{myregion}%{sqrtNregions}}}
+float regionoffsety = {{regionspacing} * {{myregion}/{sqrtNregions}}}
+
+
+//echo "mynode = " {mynode} " myregion = " {myregion} " regionoffsetx = " {regionoffsetx} " regionoffsety = " {regionoffsety}
 
 //===============================
 //      Function Definitions
@@ -290,7 +362,7 @@ if ({thalamocortical == 1})
     include config_neuron/spatiallayout/TCR.g
     include config_neuron/spatiallayout/nRT.g
 end
-
+ 
 include config_neuron/spatiallayout/P23FRBa.g
 include config_neuron/spatiallayout/P5RSa.g
 
@@ -304,11 +376,11 @@ barrierall
 
 // Synaptic weight decay parameters and delays
 
-// ayu: synapticprobsbase.g is not an appropriate substitution for
-// synapticprobsTraub.g because every neurontype_x_neurontype probability is
-// set to 1. It was probably used for testing. Moving to vestigial/.
+// ayu: In synapticprobsbase.g every neurontype_x_neurontype probability is set
+// to 1 but then each connection script in config_neuron_x_neuron has its own
+// hardcoded multiplier (not sure where those numbers come from. Need to fix
+// this ASAP (check Traub for the correct values).
 //include synapticprobsbase.g
-
 barrierall
 include synapticprobsTraub.g
 barrierall
@@ -323,7 +395,9 @@ barrierall
 
 //Establish Wiring
 
+echo Starting: include netdefs.g at {getdate}
 include netdefs.g
+echo Finished: include netdefs.g at {getdate}
 
 barrierall
 
@@ -331,16 +405,16 @@ echo Made it past netdefs.g! {mynode}
 
 // Create Gap Junctions
 
-if ({gaps == 1})
-    barrierall
-    include Gapdefs.g
-    barrierall
-end
+//if ({gaps == 1})
+//    barrierall
+//    include Gapdefs.g
+//    barrierall
+//end
 
 include synchansSPIKEs.g
 
 // Create Random Background Inputs
-neuronfrac=0.005
+neuronfrac=1
 include randominputdefs.g
 
 // Output and diagnostics
@@ -412,6 +486,22 @@ end
 //paroff
 
 // Run the sim to time tmax
-step_tmax
-
+echo Started running at {getdate}
+//step_tmax
+while ({{getstat -time} < tmax}) 
+	//echo {getstat -time}
+	barrier
+	step
+	barrier
+//	//int newrandseed = {10000*{mynode+1}} + {{myrandseed} + {getstat -step}}
+//	//randseed newrandseed
+//	int newrandseed = {getstat -step}
+//	randseed {newrandseed}
+//	if ({mynode} == 0) 
+//		echo {newrandseed} steprand at {getstat -time} =	{rand 0 1}
+//		//echo steprand = {rand 0 1}
+//	end
+end
 echo Finished running at {getdate}
+
+paroff
