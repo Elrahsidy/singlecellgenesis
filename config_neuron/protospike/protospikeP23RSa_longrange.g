@@ -8,7 +8,7 @@
 **  GENESIS 2.0
 */
 
-function make_spk1_longrange
+function make_spk1longrange
         if ({exists spk1longrange})
                 return
         end
