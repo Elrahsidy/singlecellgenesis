@@ -28,11 +28,11 @@ ydex = { round {placer} }
 
 //echo ydex= {ydex}
 
-originxmin = ({mynode}-{ydex}*sqrtNnodes)*I23LTS_NX*I23LTS_SEPX
+originxmin = {regionoffsetx}+({mynode}-{ydex}*sqrtNnodes)*I23LTS_NX*I23LTS_SEPX
 
 //echo originxmin= {originxmin}
 
-originymin = {ydex}*I23LTS_NY*I23LTS_SEPY
+originymin = {regionoffsety}+{ydex}*I23LTS_NY*I23LTS_SEPY
 
 //echo originymin= {originymin}
 
@@ -88,7 +88,7 @@ echo Traub I23LTS!
 
                k=k+1
 
-               echo Position I23LTS {mynode} {i} {j} {originxmin} {originymin} {originxmin + I23LTS_SEPX*i} {originymin + I23LTS_SEPY*j} {randzpos}
+               echo Position I23LTS {mynode} {myregion} {i} {j} {originxmin} {originymin} {originxmin + I23LTS_SEPX*i} {originymin + I23LTS_SEPY*j} {randzpos} {randrotation}
 
           end
      end

@@ -25,11 +25,11 @@ ydex = { round {placer} }
 
 //echo ydex= {ydex}
 
-originxmin = ({mynode}-{ydex}*sqrtNnodes)*B5FS_NX*B5FS_SEPX
+originxmin = {regionoffsetx}+({mynode}-{ydex}*sqrtNnodes)*B5FS_NX*B5FS_SEPX
 
 //echo originxmin= {originxmin}
 
-originymin = {ydex}*B5FS_NY*B5FS_SEPY
+originymin = {regionoffsety}+{ydex}*B5FS_NY*B5FS_SEPY
 
 //echo originymin= {originymin}
 
@@ -85,7 +85,7 @@ echo Traub B5FS!
 
                k=k+1
 
-               echo Position B5FS {mynode} {i} {j} {originxmin} {originymin} {originxmin + B5FS_SEPX*i} {originymin + B5FS_SEPY*j} {randzpos}
+               echo Position B5FS {mynode} {myregion} {i} {j} {originxmin} {originymin} {originxmin + B5FS_SEPX*i} {originymin + B5FS_SEPY*j} {randzpos} {randrotation}
 
           end
      end

@@ -28,11 +28,11 @@ ydex = { round {placer} }
 
 //echo ydex= {ydex}
 
-originxmin = ({mynode}-{ydex}*sqrtNnodes)*TCR_NX*TCR_SEPX
+originxmin = {regionoffsetx}+({mynode}-{ydex}*sqrtNnodes)*TCR_NX*TCR_SEPX
 
 //echo originxmin= {originxmin}
 
-originymin = {ydex}*TCR_NY*TCR_SEPY
+originymin = {regionoffsety}+{ydex}*TCR_NY*TCR_SEPY
 
 //echo originymin= {originymin}
 
@@ -80,7 +80,7 @@ echo Traub TCR!
 
                k=k+1
 
-               echo Position TCR {mynode} {i} {j} {originxmin} {originymin} {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
+               echo Position TCR {mynode} {myregion} {i} {j} {originxmin} {originymin} {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb} {randrotation}
 
           end
      end

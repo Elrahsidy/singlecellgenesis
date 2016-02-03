@@ -30,11 +30,11 @@ ydex = { round {placer} }
 
 //echo ydex= {ydex}
 
-originxmin = ({mynode}-{ydex}*sqrtNnodes)*P23RSa_NX*P23RSa_SEPX
+originxmin = {regionoffsetx}+({mynode}-{ydex}*sqrtNnodes)*P23RSa_NX*P23RSa_SEPX
 
 //echo originxmin= {originxmin}
 
-originymin = {ydex}*P23RSa_NY*P23RSa_SEPY
+originymin = {regionoffsety}+{ydex}*P23RSa_NY*P23RSa_SEPY
 
 //echo originymin= {originymin}
 
@@ -67,7 +67,7 @@ for (j = 0; j < P23RSa_NY; j = j+1)
 
           k=k+1
 
-          echo Position P23RSa {mynode} {i} {j} {originxmin} {originymin} {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos} {randrotation}
+          echo Position P23RSa {mynode} {myregion} {i} {j} {originxmin} {originymin} {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos} {randrotation}
 
      end
 end

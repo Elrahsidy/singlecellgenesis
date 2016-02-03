@@ -29,11 +29,11 @@ ydex = { round {placer} }
 
 //echo ydex= {ydex}
 
-originxmin = ({mynode}-{ydex}*sqrtNnodes)*nRT_NX*nRT_SEPX
+originxmin = {regionoffsetx}+({mynode}-{ydex}*sqrtNnodes)*nRT_NX*nRT_SEPX
 
 //echo originxmin= {originxmin}
 
-originymin = {ydex}*nRT_NY*nRT_SEPY
+originymin = {regionoffsety}+{ydex}*nRT_NY*nRT_SEPY
 
 //echo originymin= {originymin}
 
@@ -81,7 +81,7 @@ echo Traub nRT!
 
                k=k+1
 
-               echo Position nRT {mynode} {i} {j} {originxmin} {originymin} {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
+               echo Position nRT {mynode} {myregion} {i} {j} {originxmin} {originymin} {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb} {randrotation}
 
           end
      end
