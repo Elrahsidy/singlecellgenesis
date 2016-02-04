@@ -1,7 +1,7 @@
 // genesis
 
 //Overall simulation parameters
-float tmax = 10
+float tmax = 20
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
@@ -24,7 +24,7 @@ float SEPY = 25e-6
 // I haven't really tested what happens when this isn't a square number; it
 // seems to work but might do weird things. Setting it greater than one will
 // enable long-range connections.
-int Nregions = 1
+int Nregions = 4
 
 // regionspacing controls the extra spacing between two different regions,
 // above and beyond {SEPX}. regionspacing = 0.0 means a separation of {SEPX}
@@ -366,6 +366,15 @@ end
 include config_neuron/spatiallayout/P23FRBa.g
 include config_neuron/spatiallayout/P5RSa.g
 
+if ({mynode}==0)
+	echo "Position2 cell node region x y z rotation"
+end
+barrierall
+str mysoma
+foreach mysoma ({el /#/#[]/soma })
+	echo Position2 {el {mysoma}/..} {mynode} {myregion} {getfield {mysoma}/.. x} {getfield {mysoma}/.. y} {getfield {mysoma}/.. z} {getfield {mysoma}/.. rotation}
+end
+
 // Revert to non-node-, typenum-, and minicolumn-dependent random seed (same
 // number across all cores). Adding one so that we're not re-using the same
 // random numbers (just to be safe, even though they were for different
@@ -454,10 +463,13 @@ if ( {output == 1} )
     // Vm files probedex
 
     // probedex and probedex2 ASCII file Vm and Spike writing
-    include config_dataoutput/ASCIIwrite.g
+    // include config_dataoutput/ASCIIwrite.g
 
     // Spike Class Output ASCII
-    include config_dataoutput/ASCIISpikeClasswrite.g
+    // include config_dataoutput/ASCIISpikeClasswrite.g
+
+    // Spike Class Output ASCII history (sparse; only writes timestamp when spiking)
+    include config_dataoutput/ASCIISpikeHistorywrite.g
 
     // Spike Class Output Binary
     //include config_dataoutput/BinarySpikeClasswrite.g
