@@ -8,7 +8,7 @@
     
     float CondmaxSPIKEAMPA=1.0e-9
 
-    float Ranrate=200 //Random injection frequency
+    float Ranrate={rand 1.0 10.0} //Random injection frequency
 
     for (i=1;i<=(P5RSa_NY);i=i+1)
 
@@ -21,7 +21,7 @@
                 dex=(i-1)*P5RSa_NY+(j-1)
 
                 if ({output}==1)
-                    echo P5RSa {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                    echo P5RSa {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac}) at {Ranrate} Hz
                 end
 
                 ce /P5RSanet/P5RSa[{dex}]/apdend3

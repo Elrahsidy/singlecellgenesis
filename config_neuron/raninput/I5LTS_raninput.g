@@ -10,7 +10,7 @@ if ({columntype == 0})
     
     float CondmaxSPIKEAMPA=1.0e-9
 
-    float Ranrate=200 //Random injection frequency
+    float Ranrate={rand 1.0 10.0} //Random injection frequency
 
     for (i=1;i<=(I5LTS_NY);i=i+1)
 
@@ -23,7 +23,7 @@ if ({columntype == 0})
                 dex=(i-1)*I5LTS_NY+(j-1)
 
                 if ({output}==1)
-                    echo I5LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                    echo I5LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac}) at {Ranrate} Hz
                 end
 
                 ce /I5LTSnet/I5LTS[{dex}]/distdendNlonga
@@ -61,7 +61,7 @@ if ({columntype == 1})
     
     float CondmaxSPIKEAMPA=1.0e-9
 
-    float Ranrate=200 //Random injection frequency
+    float Ranrate={rand 1.0 10.0} //Random injection frequency
 
     for (i=0;i<(I5LTS_NY);i=i+1)
 
@@ -74,7 +74,7 @@ if ({columntype == 1})
             if ( {randneur <= neuronfrac} )
 
                 if ({output}==1)
-                    echo I5LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac})
+                    echo I5LTS {mynode} {i} {j} is receiving random input (randneur=={randneur}<={neuronfrac}) at {Ranrate} Hz
                 end
 
                 ce /I5LTSnet/I5LTS[{k}]/distdendNlonga
