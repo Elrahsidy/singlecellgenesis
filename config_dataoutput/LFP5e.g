@@ -11,55 +11,31 @@ echo
 
 float xarrayres = 100e-6 //100 micron resolution
 
-float numelecsf
-
-int numelecs
-
-numelecsf = ({P23RSa_SEPX}*{P23RSa_NX}*{sqrtNnodes})/(2*{xarrayres})
-//                     25e-6   *   8       *   4           2 *100e-6 =  4
-//numelecs = {trunc {numelecsf}}
-numelecs = 4
-//            =4
-//echo numelecs = {numelecs}
-//echo P23RSa_SEPX = {P23RSa_SEPX}
-//echo P23RSa_NX = {P23RSa_NX}
-//echo sqrtNnodes = {sqrtNnodes}
-//echo xarrayres = {xarrayres}
+int numelecs = {{Nregions}+1}
 
 int j
 
-float LFPx = {P23RSa_SEPX}*(({P23RSa_NX}*{sqrtNnodes})-1)/2
-float LFPy = {P23RSa_SEPY}*(({P23RSa_NY}*{sqrtNnodes})-1)/2
-float LFPz = 2340e-6
-// This is 2.34 mm above the *BOTTOM* of the column
+//float LFPx = {{{sqrtNregions}-1}*regionspacing} + {SEPX}*(({NX}*{sqrtNnodes})-1)/2
+// Electrode centered above each region
+float LFPx = 0
+float LFPy = 0
+float LFPz = 3021e-6
+// This is 3021 um above the *BOTTOM* of the column and 150 um above the highest possible neuron
 
-// ayu: Instead of weird 100 micron scaling along x direction, put an LFP smack
-// dab in the middle and increment height at two 2500-micron (mm) increments. Min z
-// is then 2.34 mm, max is 7.34 mm.
-
-for (j=0; j<numelecs; j=j+1)
+for (j=0; j<{{numelecs}-1}; j=j+1)
+	 LFPx = {regionspacing+{{SEPX}*{NX}*{sqrtNnodesperregion}}}*{{j}%{sqrtNregions}} + {{SEPX*{{NX*sqrtNnodesperregion}-1}}/2}
+	 LFPy = {regionspacing+{{SEPY}*{NY}*{sqrtNnodesperregion}}}*{{j}/{sqrtNregions}} + {{SEPY*{{NY*sqrtNnodesperregion}-1}}/2}
      create efield LFP{j}
      setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
-     echo Position LFP {mynode} {myregion} NA NA NA NA {LFPx} {LFPy} {LFPz+(2500e-6*j)}
+     echo Position LFP {mynode} {j} NA NA NA NA {LFPx} {LFPy} {LFPz} 0
 end
-
-//                4
-// for (j=0;j<{numelecs};j=j+1)
-//      create efield LFP{j}
-//      setfield LFP{j} scale 0.335 x {LFPx+(xarrayres*j)} y {LFPy} z {LFPz} 
-// //                                  25e-6+ 
-// end
-
-
-//setfield LFP{0} scale 0.335 x {P23RSa_SEPX*P23RSa_NX} y {P23RSa_SEPY*P23RSa_NY} z {LFPz}
-//setfield LFP{1} scale 0.335 x {P23RSa_SEPX*P23RSa_NX*3} y {P23RSa_SEPY*P23RSa_NY} z {LFPz}
-//setfield LFP{2} scale 0.335 x {P23RSa_SEPX*P23RSa_NX*2} y {P23RSa_SEPY*P23RSa_NY*2} z {LFPz}
-//setfield LFP{3} scale 0.335 x {P23RSa_SEPX*P23RSa_NX} y {P23RSa_SEPY*P23RSa_NY*3} z {LFPz}
-//setfield LFP{4} scale 0.335 x {P23RSa_SEPX*P23RSa_NX*3} y {P23RSa_SEPY*P23RSa_NY*3} z {LFPz}
-
-
-
-
+// Last one is the central electrode
+j = {{numelecs}-1}
+create efield LFP{j}
+float LFPx = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPX}*(({NX}*{sqrtNnodes})-1)}}/2
+float LFPy = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPY}*(({NY}*{sqrtNnodes})-1)}}/2
+setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
+echo Position LFP {mynode} central NA NA NA NA {LFPx} {LFPy} {LFPz} 0
 
 str s
 
