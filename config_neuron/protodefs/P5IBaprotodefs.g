@@ -24,6 +24,7 @@ include config_neuron/synchans/synchansP5IBa.g
 
 /* file which makes a spike generator */
 include config_neuron/protospike/protospikeP5IBa.g
+include config_neuron/protospike/protospikeP5IBa_longrange.g
 
 // Make a "library element" to hold the prototypes which will be used
 // by the cell reader to add compartments and channels to the cell.
