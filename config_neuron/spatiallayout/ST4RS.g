@@ -44,6 +44,9 @@ create neutral /ST4RSnet
 float randrotation
 addfield /ST4RS rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 // CREATING THE PLANE OF ST4RS cells
 //createmap /ST4RS /ST4RSnet  \
 //	{ST4RS_NX} {ST4RS_NY} \
@@ -70,6 +73,8 @@ for (j = 0; j < ST4RS_NY; j = j+1)
               setfield /ST4RSnet/ST4RS[{k}] rotation {randrotation} // save for posterity
               rotcoord /ST4RSnet/ST4RS[{k}] {randrotation} -z -center {originxmin + ST4RS_SEPX*i} {originymin + ST4RS_SEPY*j} {randzpos}
           end
+
+          addmsg /ST4RSnet/ST4RS[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
           k=k+1
 

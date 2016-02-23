@@ -42,6 +42,9 @@ create neutral /C23FSnet
 float randrotation
 addfield /C23FS rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 if ({columntype == 0})
 
      for (j = 0; j < C23FS_NY; j = j+1)
@@ -54,6 +57,8 @@ if ({columntype == 0})
                copy /C23FS /C23FSnet/C23FS[{k}]
                position /C23FSnet/C23FS[{k}] \
                  {originxmin + C23FS_SEPX*i} {originymin + C23FS_SEPY*j} {randzpos}
+               addmsg /C23FSnet/C23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+
                k=k+1
 
           end
@@ -85,6 +90,8 @@ echo Traub C23FS!
                    setfield /C23FSnet/C23FS[{k}] rotation {randrotation} // save for posterity
                    rotcoord /C23FSnet/C23FS[{k}] {randrotation} -z -center {originxmin + C23FS_SEPX*i} {originymin + C23FS_SEPY*j} {randzpos}
                end
+
+               addmsg /C23FSnet/C23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
                k=k+1
 

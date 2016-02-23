@@ -47,6 +47,9 @@ create neutral /P23RSanet
 float randrotation
 addfield /P23RSa rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 for (j = 0; j < P23RSa_NY; j = j+1)
      for (i = 0; i < P23RSa_NX; i = i+1)
 
@@ -64,6 +67,8 @@ for (j = 0; j < P23RSa_NY; j = j+1)
               setfield /P23RSanet/P23RSa[{k}] rotation {randrotation} // save for posterity
               rotcoord /P23RSanet/P23RSa[{k}] {randrotation} -z -center {originxmin + P23RSa_SEPX*i} {originymin + P23RSa_SEPY*j} {randzpos}
           end
+
+          addmsg /P23RSanet/P23RSa[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
           k=k+1
 

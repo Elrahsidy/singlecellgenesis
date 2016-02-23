@@ -42,6 +42,9 @@ create neutral /TCRnet
 float randrotation
 addfield /TCR rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 if ({columntype == 0})
 
      for (j = 0; j < TCR_NY; j = j+1)
@@ -50,6 +53,8 @@ if ({columntype == 0})
                copy /TCR /TCRnet/TCR[{k}]
                position /TCRnet/TCR[{k}] \
                  {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
+               addmsg /TCRnet/TCR[{k}]/soma /Vmwrite{typenum} SAVE Vm
+
                k=k+1
 
           end
@@ -77,6 +82,8 @@ echo Traub TCR!
                    setfield /TCRnet/TCR[{k}] rotation {randrotation} // save for posterity
                    rotcoord /TCRnet/TCR[{k}] {randrotation} -z -center {originxmin + TCR_SEPX*i} {originymin + TCR_SEPY*j} {zposarb}
                end
+
+               addmsg /TCRnet/TCR[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
                k=k+1
 

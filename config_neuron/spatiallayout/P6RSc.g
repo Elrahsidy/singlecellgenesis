@@ -44,6 +44,9 @@ create neutral /P6RScnet
 float randrotation
 addfield /P6RSc rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 // CREATING THE PLANE OF P6RSc cells
 //createmap /P6RSc /P6RScnet  \
 //	{P6RSc_NX} {P6RSc_NY} \
@@ -70,6 +73,8 @@ for (j = 0; j < P6RSc_NY; j = j+1)
               setfield /P6RScnet/P6RSc[{k}] rotation {randrotation} // save for posterity
               rotcoord /P6RScnet/P6RSc[{k}] {randrotation} -z -center {originxmin + P6RSc_SEPX*i} {originymin + P6RSc_SEPY*j} {randzpos}
           end
+
+          addmsg /P6RScnet/P6RSc[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
           k=k+1
 

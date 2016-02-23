@@ -42,6 +42,9 @@ create neutral /I23LTSnet
 float randrotation
 addfield /I23LTS rotation
 
+create asc_file /Vmwrite{typenum}
+setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+
 if ({columntype == 0})
 
      for (j = 0; j < I23LTS_NY; j = j+1)
@@ -54,6 +57,8 @@ if ({columntype == 0})
                copy /I23LTS /I23LTSnet/I23LTS[{k}]
                position /I23LTSnet/I23LTS[{k}] \
                  {originxmin + I23LTS_SEPX*i} {originymin + I23LTS_SEPY*j} {randzpos}
+               addmsg /I23LTSnet/I23LTS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+
                k=k+1
 
           end
@@ -85,6 +90,8 @@ echo Traub I23LTS!
                    setfield /I23LTSnet/I23LTS[{k}] rotation {randrotation} // save for posterity
                    rotcoord /I23LTSnet/I23LTS[{k}] {randrotation} -z -center {originxmin + I23LTS_SEPX*i} {originymin + I23LTS_SEPY*j} {randzpos}
                end
+
+               addmsg /I23LTSnet/I23LTS[{k}]/soma /Vmwrite{typenum} SAVE Vm
 
                k=k+1
 
