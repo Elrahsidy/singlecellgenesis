@@ -1,6 +1,7 @@
 // genesis
 
 //Overall simulation parameters
+//float tmax = 20
 float tmax = 20
 float dt = 5.0e-5		// sec
 floatformat %g
@@ -18,6 +19,8 @@ float NY = 2
 // Spacing between minicolumns
 float SEPX = 25e-6
 float SEPY = 25e-6
+//float SEPX = 0.0
+//float SEPY = 0.0
 
 // Number of regions (separate cortical patches)
 //
@@ -25,12 +28,18 @@ float SEPY = 25e-6
 // seems to work but might do weird things. Setting it greater than one will
 // enable long-range connections.
 int Nregions = 4
+//int Nregions = 1
 
 // regionspacing controls the extra spacing between two different regions,
 // above and beyond {SEPX}. regionspacing = 0.0 means a separation of {SEPX}
 // between minicolumns in adjacent regions. regionspacing = {SEPX} means there
 // is 2*{SEPX} separation.
+//float regionspacing = {SEPX}*{NX}*100 //really far apart
+//float regionspacing = {SEPX}*{NX}*0 // next to each other
 float regionspacing = {SEPX}*{NX}*10
+
+// Weight scaling for long range connections between regions.
+float longrangeweightscale = 1.0
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
@@ -39,7 +48,7 @@ float regionspacing = {SEPX}*{NX}*10
 // the simulation.
 setrand -sprng // Use SPRNG instead of default Numerical Recipes
 int myrandseed = 34521
-randseed {myrandseed}
+randseed {{mynode} + {myrandseed} + 0}
 
 // Important flags
 int display = 0     // Display neurons and graphs?
@@ -91,7 +100,7 @@ echo Completed startup at {getdate}
 int probedex
 int probedex2
 int gridsize
-float neuronfrac // Percentage of neurons receiving background
+float neuronfrac = 1.0 // Percentage of neurons receiving background
 
 // Flags for minicolumnar architecture
 
@@ -379,7 +388,65 @@ end
 // number across all cores). Adding one so that we're not re-using the same
 // random numbers (just to be safe, even though they were for different
 // things).
-randseed { {myrandseed} + 1 }
+//randseed { {myrandseed} + 1 }
+
+
+
+
+
+disable /B23FS
+disable /B5FS
+disable /C23FS
+disable /C5FS
+disable /I23LTS
+disable /I5LTS
+disable /nRT
+disable /P23FRBa
+disable /P23RSa
+disable /P23RSb
+disable /P23RSc
+disable /P23RSd
+disable /P5IBa
+disable /P5IBb
+disable /P5IBc
+disable /P5IBd
+disable /P5RSa
+disable /P6RSa
+disable /P6RSb
+disable /P6RSc
+disable /P6RSd
+disable /ST4RS
+disable /TCR
+
+
+
+
+
+
+
+
+
+
+// WHY IS REGION00 more active????
+
+// looked at connections (doesn't seem to have more than usual)
+
+// looked at random spike counts
+
+// looked at spike counts (doesn't seem to have more than usual)
+
+// Fix randseed integer overflows. There are some columns that might have had identical spike trains?
+
+
+
+
+
+
+
+
+
+
+
 
 barrierall
 
@@ -389,9 +456,9 @@ barrierall
 // to 1 but then each connection script in config_neuron_x_neuron has its own
 // hardcoded multiplier (not sure where those numbers come from. Need to fix
 // this ASAP (check Traub for the correct values).
-//include synapticprobsbase.g
 barrierall
-include synapticprobsTraub.g
+//include synapticprobsTraub.g
+include synapticprobsbase.g
 barrierall
 
 barrierall
@@ -403,7 +470,7 @@ include axonaldelays.g
 barrierall
 
 //Establish Wiring
-
+randseed {{mynode} + {myrandseed} + 1}
 echo Starting: include netdefs.g at {getdate}
 include netdefs.g
 echo Finished: include netdefs.g at {getdate}
@@ -423,8 +490,10 @@ echo Made it past netdefs.g! {mynode}
 include synchansSPIKEs.g
 
 // Create Random Background Inputs
-neuronfrac=1
+// Need a per-node seed so that nodes don't end up with the same random spike train
+randseed {{mynode} + {myrandseed} + 2}
 include randominputdefs.g
+//randseed { {myrandseed} + 2 }
 
 // Output and diagnostics
 
@@ -497,9 +566,46 @@ end
 // Testing: turning off parallel to see what it does to connections
 //paroff
 
+//disable /B23FSnet
+//disable /B5FSnet
+//disable /C23FSnet
+//disable /C5FSnet
+//disable /I23LTSnet
+//disable /I5LTSnet
+//disable /nRTnet
+//disable /P23FRBanet
+//disable /P23RSanet
+//disable /P23RSbnet
+//disable /P23RScnet
+//disable /P23RSdnet
+//disable /P5IBanet
+//disable /P5IBbnet
+//disable /P5IBcnet
+//disable /P5IBdnet
+//disable /P5RSanet
+//disable /P6RSanet
+//disable /P6RSbnet
+//disable /P6RScnet
+//disable /P6RSdnet
+////disable /ST4RSnet
+//disable /TCRnet
+reset
+//int i
+//for (i=0; i<Nnodes; i=i+1)
+//	if ({{mynode} == i})
+//		le /P23RSanet
+//	end
+//	echo
+//end
+
+
+
+
+
 // Run the sim to time tmax
 echo Started running at {getdate}
 //step_tmax
+randseed {{mynode} + {myrandseed} + 3}
 while ({{getstat -time} < tmax}) 
 	//echo {getstat -time}
 	barrier
