@@ -26,7 +26,7 @@ str s
 
 str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
 
-str distantnodes = "3" // long range nodes
+//str distantnodes = "3" // long range nodes
 destlim = 1.0 // being lazy; should calculate based on model size instead
 
 foreach s ({arglist {locations}})
@@ -38,8 +38,8 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability 1.0
-          //-probability 0.02778*{P23RSa_P23RSa_prob}
+          -probability 0.25*0.02778*{P23RSa_P23RSa_prob}
+          //-probability 0.5 // high probability for testing
 
 end
 
@@ -60,9 +60,8 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability .5
-          //-probability 0.02778*{P23RSa_P23RSa_prob} 
-	      // Testing, make this a high probability
+          -probability 0.25*0.02778*{P23RSa_P23RSa_prob}
+          //-probability 0.5 // high probability for testing
 
 end
 
@@ -72,7 +71,7 @@ echo Setting weights and delays for P23RSa->P23RSa connections.
 /* 
  * Usage :
  * volumedelay path 
- * [-fixed delay]
+ * [-fixed {longrangeweightscale}*{delay]}
  * [-radial propagation_velocity] 
  * [-uniform range]   (not used here)
  * [-gaussian sd max] (not used here)
@@ -120,7 +119,7 @@ rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial  {P23RSa_P23RSa_axde
 /* 
  * Usage :
  *  volumeweight sourcepath 
- *          [-fixed weight]
+ *          [-fixed {longrangeweightscale}*{weight]}
  *          [-decay decay_rate max_weight min_weight]
  *          [-uniform range] 
  *          [-gaussian sd max] 
@@ -130,8 +129,9 @@ rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial  {P23RSa_P23RSa_axde
 
 barrierall //ayu
 //rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
-// Testing with high weight
-rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed 0.9
+// Using diagonal planar distance between furthest somata within a region.
+// Works out to be 0.3678794 for SEPX=SEPY=25e-6, NX=NY=2, and sqrtNnodesperregion=2
+rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed {longrangeweightscale}*{{P23RSmaxweight-P23RSminweight} * {exp{-1*{sqrt{{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}}}*P23RSdecayrate}} + {P23RSminweight}}
 
 
 
