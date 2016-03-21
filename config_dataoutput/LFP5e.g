@@ -9,8 +9,6 @@ echo
 echo Ion Channel Currents !!!!!!!!!!!!!!!!!!!!
 echo
 
-float xarrayres = 100e-6 //100 micron resolution
-
 int numelecs = {{Nregions}+1}
 
 int j
@@ -396,6 +394,4 @@ for (j=numelecs-1;j>=0;j=j-1)
      call LFP{j} RECALC
 
 end
-
-
 
