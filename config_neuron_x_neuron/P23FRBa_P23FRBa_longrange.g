@@ -3,7 +3,7 @@
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
-float destlim = {P23RSa_P23RSa_destlim}
+float destlim = {P23FRBa_P23FRBa_destlim}
 
 /*
  * Usage :
@@ -16,9 +16,9 @@ float destlim = {P23RSa_P23RSa_destlim}
  *		 [-probability p]
  */
 
-echo Making connections from the P23RSa cells to the P23RSa cells.
+echo Making connections from the P23FRBa cells to the P23FRBa cells.
 
-//P23RSa - P23RSa AMPA
+//P23FRBa - P23FRBa AMPA
 
 str s
 
@@ -32,18 +32,18 @@ destlim = 1.0 // being lazy; should calculate based on model size instead
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
-	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P23RSAMPA@{distantnodes}	    \
+    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
+	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P23FRBAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{P23RSa_P23RSa_prob}
+          -probability {longrangeprobscale}*0.02778*{P23FRBa_P23FRBa_prob}
           //-probability 0.5
 
 end
 
-//P23RSa - P23RSa NMDA
+//P23FRBa - P23FRBa NMDA
 
 str s
 
@@ -54,17 +54,17 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
-	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P23RSNMDA@{distantnodes}	    \
+    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
+	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P23FRBNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{P23RSa_P23RSa_prob} 
+          -probability {longrangeprobscale}*0.02778*{P23FRBa_P23FRBa_prob} 
 
 end
 
-echo Setting weights and delays for P23RSa->P23RSa connections.
+echo Setting weights and delays for P23FRBa->P23FRBa connections.
 // assigning delays using the volumedelay function
 
 /* 
@@ -79,16 +79,16 @@ echo Setting weights and delays for P23RSa->P23RSa connections.
  */
 
 barrierall //ayu
-rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial  {P23RSa_P23RSa_axdelayCV} -add
+rvolumedelay /P23FRBanet/P23FRBa[]/soma/spk22longrange -radial  {P23FRBa_P23FRBa_axdelayCV} -add
 
 // Testing with high weight
-float P23RSamaxweight = 1.0
-float P23RSaminweight = 0.0
-float P23RSadecayrate = 0.1
-float longrangeweight = {longrangeweightscale}*{{{P23RSamaxweight}-{P23RSaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P23RSadecayrate} } + {P23RSaminweight}}
-echo P23RSa_P23RSa longrangeweight is {longrangeweight}
+float P23FRBamaxweight = 1.0
+float P23FRBaminweight = 0.0
+float P23FRBadecayrate = 0.1
+float longrangeweight = {longrangeweightscale}*{{{P23FRBamaxweight}-{P23FRBaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P23FRBadecayrate} } + {P23FRBaminweight}}
+echo P23FRBa_P23FRBa longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed {longrangeweight}
+rvolumeweight /P23FRBanet/P23FRBa[]/soma/spk22longrange -fixed {longrangeweight}
 
 
 

@@ -3,7 +3,7 @@
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
-float destlim = {P23RSa_P23RSa_destlim}
+float destlim = {P23RSa_P5IBb_destlim}
 
 /*
  * Usage :
@@ -16,15 +16,15 @@ float destlim = {P23RSa_P23RSa_destlim}
  *		 [-probability p]
  */
 
-echo Making connections from the P23RSa cells to the P23RSa cells.
+echo Making connections from the P23RSa cells to the P5IBb cells.
 
-//P23RSa - P23RSa AMPA
+//P23RSa - P5IBb AMPA
 
 str s
 
 //Load synapse location array
 
-str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
+str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
 
 //str distantnodes = "3" // long range nodes
 destlim = 1.0 // being lazy; should calculate based on model size instead
@@ -33,38 +33,38 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
-	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P23RSAMPA@{distantnodes}	    \
+	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{P23RSa_P23RSa_prob}
+          -probability {longrangeprobscale}*0.02778*{P23RSa_P5IBb_prob}
           //-probability 0.5
 
 end
 
-//P23RSa - P23RSa NMDA
+//P23RSa - P5IBb NMDA
 
 str s
 
 //Load synapse location array
 
-str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
+str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
 
 foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
-	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P23RSNMDA@{distantnodes}	    \
+	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{P23RSa_P23RSa_prob} 
+          -probability {longrangeprobscale}*0.02778*{P23RSa_P5IBb_prob} 
 
 end
 
-echo Setting weights and delays for P23RSa->P23RSa connections.
+echo Setting weights and delays for P23RSa->P5IBb connections.
 // assigning delays using the volumedelay function
 
 /* 
@@ -79,14 +79,14 @@ echo Setting weights and delays for P23RSa->P23RSa connections.
  */
 
 barrierall //ayu
-rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial  {P23RSa_P23RSa_axdelayCV} -add
+rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial  {P23RSa_P5IBb_axdelayCV} -add
 
 // Testing with high weight
 float P23RSamaxweight = 1.0
 float P23RSaminweight = 0.0
 float P23RSadecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P23RSamaxweight}-{P23RSaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P23RSadecayrate} } + {P23RSaminweight}}
-echo P23RSa_P23RSa longrangeweight is {longrangeweight}
+echo P23RSa_P5IBb longrangeweight is {longrangeweight}
 barrierall //ayu
 rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed {longrangeweight}
 
