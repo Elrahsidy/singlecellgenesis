@@ -182,3 +182,17 @@ flexibility.
 
 ########################################
 
+2016-03-21 11:08
+Alfred Yu
+
+Implementing long range connections in excitatory cells.
+
+Pyramidal: fully connected to pyramidal and B, C, I cells in other columns
+
+ST4RS: only local connectivity. Rationale: Schubert, Kotter, Zilles, Luhmann, & Staiger (2003).
+
+TCR: I think the outputs are typically very focused onto a corresponding
+cortical column (think LGN) so not including any long-range connections other
+than the existing within column connections.
+
+########################################
