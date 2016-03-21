@@ -1,7 +1,6 @@
 // genesis
 
 //Overall simulation parameters
-//float tmax = 20
 float tmax = 20
 float dt = 5.0e-5		// sec
 floatformat %g
@@ -38,8 +37,15 @@ int Nregions = 4
 //float regionspacing = {SEPX}*{NX}*0 // next to each other
 float regionspacing = {SEPX}*{NX}*10
 
-// Weight scaling for long range connections between regions.
+// Scaling for short and long range connections between regions.
+float shortrangeprobscale = 1.0
+float longrangeprobscale = 1.0
 float longrangeweightscale = 1.0
+
+// shortrangeweightscale does not exist because I haven't decided on the best
+// way to scale these--multiply into only maxweight or both maxweight and
+// minweight in the decay function?
+//float shortrangeweightscale = 1.0
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
@@ -413,8 +419,6 @@ disable /P5IBd
 disable /P5RSa
 disable /P6RSa
 disable /P6RSb
-disable /P6RSc
-disable /P6RSd
 disable /ST4RS
 disable /TCR
 
@@ -585,8 +589,6 @@ end
 //disable /P5RSanet
 //disable /P6RSanet
 //disable /P6RSbnet
-//disable /P6RScnet
-//disable /P6RSdnet
 ////disable /ST4RSnet
 //disable /TCRnet
 reset

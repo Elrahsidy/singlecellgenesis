@@ -36,7 +36,7 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{%SRC%_%DEST%_prob}
+          -probability {longrangeprobscale}*{%SRC%_%DEST%_prob}
           //-probability 0.5
 
 end
@@ -55,9 +55,29 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{%SRC%_%DEST%_prob}
+          -probability {longrangeprobscale}*{%SRC%_%DEST%_prob}
 
 end
+
+// For inhibitory long range connections
+////%SRC% - %DEST% GABAa
+//str s
+////Load synapse location array
+//str locations = "basalLsuperb basalLsuperc basalLmidsuperb basalLmidsuperc basalLmiddeepb basalLmiddeepc basalLdeepb basalLdeepc basalRsuperb basalRsuperc basalRmidsuperb basalRmidsuperc basalRmiddeepb basalRmiddeepc basalRdeepb basalRdeepc apdend3 apdend4aR apdend4bR apdend4aL apdend4bL apdend5aLLL apdend5bLLL apdend5cLLL apdend5aLL apdend5bLL apdend5cLL apdend5aLR apdend5bLR apdend5cLR apdend5aLRR apdend5bLRR apdend5cLRR apdend5aRLL apdend5bRLL apdend5cRLL apdend5aRL apdend5bRL apdend5cRL apdend5aRR apdend5bRR apdend5cRR apdend5aRRR apdend5bRRR apdend5cRRR apobdistRb apobdistRc apobproxRb apobproxRc apobdistLb apobdistLc apobproxLb apobproxLc"
+//
+//foreach s ({arglist {locations}})
+//
+//    barrierall //ayu
+//    rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
+//	      /%DEST%net/%DEST%[]/{s}/Inh_ch%DESTNUM%%SHORTDEST%GABAa@{distantnodes}	    \
+//	      -relative			    \
+//	      -sourcemask box -1 -1  -1  1  1  1  \
+//	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+//	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
+//          -probability {longrangeprobscale}*{%SRC%_%DEST%_prob}
+//
+//end
+
 
 echo Setting weights and delays for %SRC%->%DEST% connections.
 
