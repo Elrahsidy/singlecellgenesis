@@ -7,7 +7,7 @@
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
 //float destlim = {%SRC%_%DEST%_destlim}
-float destlim = destlim = 1.0 // being lazy; should calculate based on model size instead
+float destlim = 1.0 // being lazy; should calculate based on model size instead
 
 /*
  * Usage :
@@ -55,7 +55,7 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {longrangeprobscale}*0.02778*{%SRC%_%DEST%_prob} 
+          -probability {longrangeprobscale}*0.02778*{%SRC%_%DEST%_prob}
 
 end
 
