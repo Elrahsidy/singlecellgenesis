@@ -24,7 +24,7 @@ for (j=0; j<{{numelecs}-1}; j=j+1)
 	 LFPx = {regionspacing+{{SEPX}*{NX}*{sqrtNnodesperregion}}}*{{j}%{sqrtNregions}} + {{SEPX*{{NX*sqrtNnodesperregion}-1}}/2}
 	 LFPy = {regionspacing+{{SEPY}*{NY}*{sqrtNnodesperregion}}}*{{j}/{sqrtNregions}} + {{SEPY*{{NY*sqrtNnodesperregion}-1}}/2}
      create efield LFP{j}
-     setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
+     setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz}
      echo Position LFP {mynode} {j} NA NA NA NA {LFPx} {LFPy} {LFPz} 0
 end
 // Last one is the central electrode
