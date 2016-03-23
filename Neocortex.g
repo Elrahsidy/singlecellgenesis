@@ -462,7 +462,8 @@ barrierall
 // this ASAP (check Traub for the correct values).
 barrierall
 //include synapticprobsTraub.g
-include synapticprobsbase.g
+//include synapticprobsbase.g
+include synapticprobsnew.g
 barrierall
 
 barrierall
@@ -562,7 +563,7 @@ barrierall
 
 // List all connections
 // Can take a long time to run!
-// Sometimes, it hangs when run non-interactively. Need to debug this.
+// Sometimes, it hangs/crashes when run non-interactively. Need to debug this.
 if ({{drawtree} == 1})
     include draw_tree.g
 end
