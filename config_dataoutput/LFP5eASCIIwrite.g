@@ -2,7 +2,7 @@
 // LFP5eASCIIwrite.g
 
 int j
-for (j=0;j<{{numelecs}-1};j=j+1)
+for (j=0; j<{{numelecs}-1}; j=j+1)
     do_asc_file ./data-latest/LFP5.region{j}.{myzeropadnode} LFP{j} field LFP{j}file
 end
 
