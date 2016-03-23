@@ -27,7 +27,7 @@ rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {shortrangeprobscale}*{C23FS_ST4RS_prob}
+          -probability {{shortrangeprobscale}*{C23FS_ST4RS_prob}}
 
 echo Setting weights and delays for C23FS->ST4RS connections.
 // assigning delays using the volumedelay function

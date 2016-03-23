@@ -35,7 +35,7 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {shortrangeprobscale}*{I5LTS_I5LTS_prob}
+          -probability {{shortrangeprobscale}*{I5LTS_I5LTS_prob}}
 
 end
 
