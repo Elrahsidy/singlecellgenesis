@@ -4,26 +4,27 @@ str mysource
 str mydest
 str outfile
 
-// // By synapse target:
-// // List source, dest coordinates and weight
-// foreach element ({el /#net/#[]/#/Inh_ch#,/#net/#[]/#/Ex_ch#})
-//    int syncount = {getsyncount {element}}
-//    outfile = {"data/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
-//    for (i=0; i<=syncount-1; i=i+1) 
-//       mysource = {getsynsrc {element} {i}}
-//       //if ({mysource} != "/post")
-//          echo {getsynsrc {element} {i}} {getfield {getsynsrc {element} {i}} x} {getfield {getsynsrc {element} {i}} y} {getfield {getsynsrc {element} {i}} z} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element} synapse[{i}].weight} >> {outfile}
-//       //end
-//    end
-// end
+// By synapse target:
+// List source, dest coordinates and weight
+//foreach element ({el /#net/#[]/#/Inh_ch#,/#net/#[]/#/Ex_ch#})
+//   int syncount = {getsyncount {element}}
+//   outfile = {"data/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
+//   for (i=0; i<=syncount-1; i=i+1) 
+//      mysource = {getsynsrc {element} {i}}
+//      //if ({mysource} != "/post")
+//         echo {getsynsrc {element} {i}} {getfield {getsynsrc {element} {i}} x} {getfield {getsynsrc {element} {i}} y} {getfield {getsynsrc {element} {i}} z} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element} synapse[{i}].weight} >> {outfile}
+//      //end
+//   end
+//end
 
-// By spike generator (soma):
-// List source, dest coordinates using rshowmsg
-// Using rshowmsg for efficiency (instead of personally iterating over each destination element)
+//// By spike generator (soma):
+//// List source, dest coordinates using rshowmsg
+//// Using rshowmsg for efficiency (instead of personally iterating over each destination element)
 int thisnode
 for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
     if ({thisnode} == {mynode})
 
+    barrierall
 		// Synaptic connections to other neurons
         echo Listing connections for node {mynode}
         foreach element ({el /#net/#[]/soma/spk#})
@@ -44,7 +45,7 @@ for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
 			//async rshowmsg {element} > /dev/null
 		end
     end
-    barrier
+    barrierall
 end
 
 // It's not currently possible to get the synaptic weight for remote
