@@ -1,9 +1,12 @@
 // genesis
 
+// grep "^[P]" ../neuron_type_list.txt | while read srcneuron srcspknum; do grep "^[PIBC]" ../neuron_type_list.txt | while read destneuron destspknum; do echo SRC=$srcneuron DEST=$destneuron; locations="`grep 'str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
+
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
-float destlim = {P23RSc_P23RSc_destlim}
+//float destlim = {P23RSc_P23RSc_destlim}
+float destlim = 1.0 // being lazy; should calculate based on model size instead
 
 /*
  * Usage :
@@ -19,15 +22,9 @@ float destlim = {P23RSc_P23RSc_destlim}
 echo Making connections from the P23RSc cells to the P23RSc cells.
 
 //P23RSc - P23RSc AMPA
-
 str s
-
 //Load synapse location array
-
 str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
-
-//str distantnodes = "3" // long range nodes
-destlim = 1.0 // being lazy; should calculate based on model size instead
 
 foreach s ({arglist {locations}})
 
@@ -44,11 +41,8 @@ foreach s ({arglist {locations}})
 end
 
 //P23RSc - P23RSc NMDA
-
 str s
-
 //Load synapse location array
-
 str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
 
 foreach s ({arglist {locations}})
@@ -64,24 +58,33 @@ foreach s ({arglist {locations}})
 
 end
 
+// For inhibitory long range connections
+////P23RSc - P23RSc GABAa
+//str s
+////Load synapse location array
+//str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdistLc apobproxRa apobproxRb apobproxRc apobdistRa apobdistRb apobdistRc basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmidsuperb basalLmidsuperc basalLmiddeepa basalLmiddeepb basalLmiddeepc basalLdeepa basalLdeepb basalLdeepc basalRsupera basalRsuperb basalRsuperc basalRmidsupera basalRmidsuperb basalRmidsuperc basalRmiddeepa basalRmiddeepb basalRmiddeepc basalRdeepa basalRdeepb basalRdeepc"
+//
+//foreach s ({arglist {locations}})
+//
+//    barrierall //ayu
+//    rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3longrange  \
+//	      /P23RScnet/P23RSc[]/{s}/Inh_ch3P23RSGABAa@{distantnodes}	    \
+//	      -relative			    \
+//	      -sourcemask box -1 -1  -1  1  1  1  \
+//	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+//	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
+//          -probability {{longrangeprobscale}*{P23RSc_P23RSc_prob}}
+//
+//end
+
+
 echo Setting weights and delays for P23RSc->P23RSc connections.
-// assigning delays using the volumedelay function
 
-/* 
- * Usage :
- * volumedelay path 
- * [-fixed {longrangeweightscale}*{delay]}
- * [-radial propagation_velocity] 
- * [-uniform range]   (not used here)
- * [-gaussian sd max] (not used here)
- * [-exp mid max]     (not used here)
- * [-absoluterandom]  (not used here)
- */
-
+// assigning delays
 barrierall //ayu
 rvolumedelay /P23RScnet/P23RSc[]/soma/spk3longrange -radial  {P23RSc_P23RSc_axdelayCV} -add
 
-// Testing with high weight
+// assigning weights
 float P23RScmaxweight = 1.0
 float P23RScminweight = 0.0
 float P23RScdecayrate = 0.1
@@ -89,7 +92,4 @@ float longrangeweight = {longrangeweightscale}*{{{P23RScmaxweight}-{P23RScminwei
 echo P23RSc_P23RSc longrangeweight is {longrangeweight}
 barrierall //ayu
 rvolumeweight /P23RScnet/P23RSc[]/soma/spk3longrange -fixed {longrangeweight}
-
-
-
 

@@ -1,9 +1,12 @@
 // genesis
 
+// grep "^[P]" ../neuron_type_list.txt | while read srcneuron srcspknum; do grep "^[PIBC]" ../neuron_type_list.txt | while read destneuron destspknum; do echo SRC=$srcneuron DEST=$destneuron; locations="`grep 'str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
+
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
-float destlim = {P5IBc_I5LTS_destlim}
+//float destlim = {P5IBc_I5LTS_destlim}
+float destlim = 1.0 // being lazy; should calculate based on model size instead
 
 /*
  * Usage :
@@ -19,21 +22,15 @@ float destlim = {P5IBc_I5LTS_destlim}
 echo Making connections from the P5IBc cells to the I5LTS cells.
 
 //P5IBc - I5LTS AMPA
-
 str s
-
 //Load synapse location array
-
 str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
-
-//str distantnodes = "3" // long range nodes
-destlim = 1.0 // being lazy; should calculate based on model size instead
 
 foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P5IBcnet/P5IBc[]/soma/spk8longrange  \
-	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19I5LTSAMPA@{distantnodes}	    \
+	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
@@ -44,18 +41,15 @@ foreach s ({arglist {locations}})
 end
 
 //P5IBc - I5LTS NMDA
-
 str s
-
 //Load synapse location array
-
 str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
 
 foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P5IBcnet/P5IBc[]/soma/spk8longrange  \
-	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19I5LTSNMDA@{distantnodes}	    \
+	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P5IBNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
@@ -64,24 +58,33 @@ foreach s ({arglist {locations}})
 
 end
 
+// For inhibitory long range connections
+////P5IBc - I5LTS GABAa
+//str s
+////Load synapse location array
+//str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distdendNshorta distdendNshortb distdendElongb distdendElongc distdendEmidb distdendEmidc distdendEshorta distdendEshortb distdendSlongb distdendSlongc distdendSmidb distdendSmidc distdendSshorta distdendSshortb distdendWlongb distdendWlongc distdendWmidb distdendWmidc distdendWshorta distdendWshortb"
+//
+//foreach s ({arglist {locations}})
+//
+//    barrierall //ayu
+//    rvolumeconnect /P5IBcnet/P5IBc[]/soma/spk8longrange  \
+//	      /I5LTSnet/I5LTS[]/{s}/Inh_ch19P5IBGABAa@{distantnodes}	    \
+//	      -relative			    \
+//	      -sourcemask box -1 -1  -1  1  1  1  \
+//	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+//	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
+//          -probability {{longrangeprobscale}*{P5IBc_I5LTS_prob}}
+//
+//end
+
+
 echo Setting weights and delays for P5IBc->I5LTS connections.
-// assigning delays using the volumedelay function
 
-/* 
- * Usage :
- * volumedelay path 
- * [-fixed {longrangeweightscale}*{delay]}
- * [-radial propagation_velocity] 
- * [-uniform range]   (not used here)
- * [-gaussian sd max] (not used here)
- * [-exp mid max]     (not used here)
- * [-absoluterandom]  (not used here)
- */
-
+// assigning delays
 barrierall //ayu
 rvolumedelay /P5IBcnet/P5IBc[]/soma/spk8longrange -radial  {P5IBc_I5LTS_axdelayCV} -add
 
-// Testing with high weight
+// assigning weights
 float P5IBcmaxweight = 1.0
 float P5IBcminweight = 0.0
 float P5IBcdecayrate = 0.1
@@ -89,7 +92,4 @@ float longrangeweight = {longrangeweightscale}*{{{P5IBcmaxweight}-{P5IBcminweigh
 echo P5IBc_I5LTS longrangeweight is {longrangeweight}
 barrierall //ayu
 rvolumeweight /P5IBcnet/P5IBc[]/soma/spk8longrange -fixed {longrangeweight}
-
-
-
 

@@ -1,7 +1,7 @@
 // genesis
 
 // ayu: I clone this file by doing this:
-//grep "^[P]" ../neuron_type_list.txt | while read srcneuron srcspknum; do grep "^[BCIP]" ../neuron_type_list.txt | while read destneuron destspknum; do echo SRC=$srcneuron DEST=$destneuron; locations="`grep 'str locations' ${srcneuron}_${destneuron}.g | head -n1 | sed 's/.* = .//; s/.$//'`"; shortdest="`echo $destneuron | sed 's/[abcd]$//'`"; sed "s/%SRC%/$srcneuron/g; s/%DEST%/$destneuron/g; s/%SRCNUM%/$srcspknum/g; s/%DESTNUM%/$destspknum/g; s/%SHORTDEST%/$shortdest/g; s/str locations.*/str locations = \"$locations\"/" genericsrc_genericdest_longrange.g > new/${srcneuron}_${destneuron}_longrange.g; done; done
+// grep "^[P]" ../neuron_type_list.txt | while read srcneuron srcspknum; do grep "^[PIBC]" ../neuron_type_list.txt | while read destneuron destspknum; do echo SRC=$srcneuron DEST=$destneuron; locations="`grep 'str locations' ${srcneuron}_${destneuron}.g | head -n1 | sed 's/.* = .//; s/.$//'`"; shortdest="`echo $destneuron | sed 's/[abcd]$//'`"; shortsrc="`echo $srcneuron | sed 's/[abcd]$//'`"; sed "s/%SRC%/$srcneuron/g; s/%DEST%/$destneuron/g; s/%SRCNUM%/$srcspknum/g; s/%DESTNUM%/$destspknum/g; s/%SHORTSRC%/$shortsrc/g; s/%SHORTDEST%/$shortdest/g; s/str locations.*/str locations = \"$locations\"/" genericsrc_genericdest_longrange.g | grep -v "^\/\/\( ayu: I\|grep\)" > new/${srcneuron}_${destneuron}_longrange.g; done; done
 
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
@@ -31,13 +31,12 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
-	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTDEST%AMPA@{distantnodes}	    \
+	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTSRC%AMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
           -probability {{longrangeprobscale}*{%SRC%_%DEST%_prob}}
-          //-probability 0.5
 
 end
 
@@ -50,7 +49,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
-	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTDEST%NMDA@{distantnodes}	    \
+	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTSRC%NMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
@@ -69,7 +68,7 @@ end
 //
 //    barrierall //ayu
 //    rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
-//	      /%DEST%net/%DEST%[]/{s}/Inh_ch%DESTNUM%%SHORTDEST%GABAa@{distantnodes}	    \
+//	      /%DEST%net/%DEST%[]/{s}/Inh_ch%DESTNUM%%SHORTSRC%GABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
 //	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

@@ -1,9 +1,12 @@
 // genesis
 
+// grep "^[P]" ../neuron_type_list.txt | while read srcneuron srcspknum; do grep "^[PIBC]" ../neuron_type_list.txt | while read destneuron destspknum; do echo SRC=$srcneuron DEST=$destneuron; locations="`grep 'str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
+
 // Setting the axonal propagation velocity
 float CABLE_VEL = 1	// scale factor = 1/(cable velocity) sec/meter
 
-float destlim = {P23RSc_P5IBb_destlim}
+//float destlim = {P23RSc_P5IBb_destlim}
+float destlim = 1.0 // being lazy; should calculate based on model size instead
 
 /*
  * Usage :
@@ -19,21 +22,15 @@ float destlim = {P23RSc_P5IBb_destlim}
 echo Making connections from the P23RSc cells to the P5IBb cells.
 
 //P23RSc - P5IBb AMPA
-
 str s
-
 //Load synapse location array
-
 str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
-
-//str distantnodes = "3" // long range nodes
-destlim = 1.0 // being lazy; should calculate based on model size instead
 
 foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3longrange  \
-	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBAMPA@{distantnodes}	    \
+	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P23RSAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
@@ -44,18 +41,15 @@ foreach s ({arglist {locations}})
 end
 
 //P23RSc - P5IBb NMDA
-
 str s
-
 //Load synapse location array
-
 str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
 
 foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3longrange  \
-	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBNMDA@{distantnodes}	    \
+	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P23RSNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
@@ -64,24 +58,33 @@ foreach s ({arglist {locations}})
 
 end
 
+// For inhibitory long range connections
+////P23RSc - P5IBb GABAa
+//str s
+////Load synapse location array
+//str locations = "apdend5 apdend6 apdend7 apdend8 apdend9 apdend10 apdend11 apdend12"
+//
+//foreach s ({arglist {locations}})
+//
+//    barrierall //ayu
+//    rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3longrange  \
+//	      /P5IBbnet/P5IBb[]/{s}/Inh_ch7P23RSGABAa@{distantnodes}	    \
+//	      -relative			    \
+//	      -sourcemask box -1 -1  -1  1  1  1  \
+//	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
+//	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
+//          -probability {{longrangeprobscale}*{P23RSc_P5IBb_prob}}
+//
+//end
+
+
 echo Setting weights and delays for P23RSc->P5IBb connections.
-// assigning delays using the volumedelay function
 
-/* 
- * Usage :
- * volumedelay path 
- * [-fixed {longrangeweightscale}*{delay]}
- * [-radial propagation_velocity] 
- * [-uniform range]   (not used here)
- * [-gaussian sd max] (not used here)
- * [-exp mid max]     (not used here)
- * [-absoluterandom]  (not used here)
- */
-
+// assigning delays
 barrierall //ayu
 rvolumedelay /P23RScnet/P23RSc[]/soma/spk3longrange -radial  {P23RSc_P5IBb_axdelayCV} -add
 
-// Testing with high weight
+// assigning weights
 float P23RScmaxweight = 1.0
 float P23RScminweight = 0.0
 float P23RScdecayrate = 0.1
@@ -89,7 +92,4 @@ float longrangeweight = {longrangeweightscale}*{{{P23RScmaxweight}-{P23RScminwei
 echo P23RSc_P5IBb longrangeweight is {longrangeweight}
 barrierall //ayu
 rvolumeweight /P23RScnet/P23RSc[]/soma/spk3longrange -fixed {longrangeweight}
-
-
-
 
