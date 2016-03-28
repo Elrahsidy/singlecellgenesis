@@ -18,8 +18,6 @@ float NY = 2
 // Spacing between minicolumns
 float SEPX = 25e-6
 float SEPY = 25e-6
-//float SEPX = 0.0
-//float SEPY = 0.0
 
 // Number of regions (separate cortical patches)
 //
@@ -27,7 +25,6 @@ float SEPY = 25e-6
 // seems to work but might do weird things. Setting it greater than one will
 // enable long-range connections.
 int Nregions = 4
-//int Nregions = 1
 
 // regionspacing controls the extra spacing between two different regions,
 // above and beyond {SEPX}. regionspacing = 0.0 means a separation of {SEPX}
@@ -191,87 +188,6 @@ function step_tmax
     step {tmax} -time
 end
 
-//function make_control(index)
-function make_control    
-    int index
-    create xform /control [50,50,300,145]
-    create xlabel /control/label -hgeom 50 -bg cyan -label "CONTROL PANEL"
-    create xbutton /control/RESET -wgeom 33%       -script reset
-    create xbutton /control/RUN  -xgeom 0:RESET -ygeom 0:label -wgeom 33% \
-         -script step_tmax
-    create xbutton /control/QUIT -xgeom 0:RUN -ygeom 0:label -wgeom 34% \
-        -script quit
-    create xdialog /control/Injection -label "Injection Central P23RSa(A)" \
-		-value 0.0 -script "set_inject <widget>"
-    xshow /control
-end
-
-function make_Vmgraph(class,xoffset,yoffset)
-    int yoffset = 210*yoffset
-    int xoffset = 575+190*xoffset
-    float vmin = -0.100
-    float vmax = 0.05
-    create xform /data{class} [{xoffset},{yoffset},175,175]
-    //create xlabel /data{class}/label -hgeom 10% 
-    create xgraph /data{class}/Vm{class}  -hgeom 90%  -title {class}
-    setfield ^ XUnits sec YUnits V
-    setfield ^ xmax {tmax} ymin {vmin} ymax {vmax}
-    xshow /data{class}
-end
-
-function make_raster(class,xoffset,yoffset)
-    int yoffset = 210*yoffset
-    int xoffset = 575+190*xoffset
-    float vmin = -0.010
-    float vmax = 0.02
-    create xform /data{class} [{xoffset},{yoffset},175,175]
-    //create xlabel /data{class}/label -hgeom 10% 
-    create xgraph /data{class}/spike{class}  -hgeom 90%  -title {class}
-    setfield ^ XUnits sec YUnits V
-    setfield ^ xmax {tmax} ymin {vmin} ymax {vmax}
-    xshow /data{class}
-end
-
-function make_rasterline(class,index)
-
-   int index
-   float vmin = -0.010
-   float vmax = 0.110
-  
-   create xgraph /rasterdata/spike{class} -hgeom 90%
-
-   setfield ^ XUnits sec YUnits V
-   setfield ^ xmax {tmax} ymin {vmin} ymax {vmax}
-
-   create xlabel /rasterdata/label{index} [0,0,30%,50%] \
-                 -label {class}                         \     
-                 -fg red
-
-end
-
-function make_MasterRaster(index,jdex)
-   int index
-   int jdex
-   int yoffset = 50
-   int xoffset = 0+({jdex}-1)*600
-   float vmin = -4.0
-   float vmax = 11.0
-   create xform /rasterdata{index} [{xoffset},{yoffset},600,1000]
-
-   create xgraph /rasterdata{index}/Spike{index} -hgeom 100%
-
-   setfield ^ XUnits sec YUnits V
-   setfield ^ xmax {tmax} ymin {vmin} ymax {vmax}
-
-   xshow /rasterdata{index}
-end
-
-
-function set_inject(dialog)
-        str dialog
-        setfield /P23RSanet/P23RSa[{probedex}]/apdend3 inject {getfield {dialog} value}
-end
-
 //===============================
 //          Data Out
 //===============================
@@ -296,26 +212,6 @@ function do_classasc_file(diskpath, srcpath, classdex, Nelements, field, fd)
 
         create asc_file /{fd}
         setfield /{fd} filename {diskpath} flush 1 leave_open 1 append 0 float_format %0.9g
-
-        for (i=1;i<={Nelements};i=i+1)
-
-            addmsg {srcpath}[{i-1}]/soma/spk{classdex} /{fd}  SAVE {field}
-        
-        end
-
-end
-
-//================================
-//    Spike Class  Data Out Binary
-//================================
-
-function do_classasc_filebin(diskpath, srcpath, classdex, Nelements, field, fd)
-
-        int Nelements, classdex
-        int i
-
-        create disk_out /{fd}
-        setfield /{fd} filename {diskpath} flush 1 leave_open 1 append 0
 
         for (i=1;i<={Nelements};i=i+1)
 
@@ -359,29 +255,23 @@ include config_neuron/spatiallayout/P5IBd.g
 include config_neuron/spatiallayout/B5FS.g
 include config_neuron/spatiallayout/P6RSa.g
 include config_neuron/spatiallayout/P6RSb.g
-
-if ({columntype == 0})
-
+if ({{columntype} == 0})
     include config_neuron/spatiallayout/P6RSc.g
     include config_neuron/spatiallayout/P6RSd.g
-
 end
-
 include config_neuron/spatiallayout/C23FS.g
 include config_neuron/spatiallayout/C5FS.g
 include config_neuron/spatiallayout/ST4RS.g
 include config_neuron/spatiallayout/I23LTS.g
 include config_neuron/spatiallayout/I5LTS.g
-
-if ({thalamocortical == 1})
+if ({{thalamocortical} == 1})
     include config_neuron/spatiallayout/TCR.g
     include config_neuron/spatiallayout/nRT.g
 end
- 
 include config_neuron/spatiallayout/P23FRBa.g
 include config_neuron/spatiallayout/P5RSa.g
 
-if ({mynode}==0)
+if ({{mynode}==0})
 	echo "Position2 cell node region x y z rotation"
 end
 barrierall
@@ -396,10 +286,7 @@ end
 // things).
 //randseed { {myrandseed} + 1 }
 
-
-
-
-
+// Disabling prototype cells
 disable /B23FS
 disable /B5FS
 disable /C23FS
@@ -419,38 +306,12 @@ disable /P5IBd
 disable /P5RSa
 disable /P6RSa
 disable /P6RSb
+if ({{columntype} == 0})
+	disable /P6RSc
+	disable /P6RSd
+end
 disable /ST4RS
 disable /TCR
-
-
-
-
-
-
-
-
-
-
-// WHY IS REGION00 more active????
-
-// looked at connections (doesn't seem to have more than usual)
-
-// looked at random spike counts
-
-// looked at spike counts (doesn't seem to have more than usual)
-
-// Fix randseed integer overflows. There are some columns that might have had identical spike trains?
-
-
-
-
-
-
-
-
-
-
-
 
 barrierall
 
@@ -502,32 +363,6 @@ include randominputdefs.g
 
 // Output and diagnostics
 
-// make the graphs to display 2 selected Minicolumns' somal Vm and pass messages to the graphs
-if ( {display == 1} && {{mynode} == 0} )
-    //echo {probedex}
-
-    int posdex=1
-    make_MasterRaster {probedex} {posdex}
-    if ({columntype == 0})
-         include gui/probedices.g
-    end
-    if ({columntype == 1})
-         include gui/probedicesTraub.g
-    end
-    include gui/rasterdefspos1.g
-    
-    posdex=2
-    make_MasterRaster {probedex2} {posdex}
-
-    if ({columntype == 0})
-         include gui/probedices2.g
-    end
-    if ({columntype == 1})
-         include gui/probedices2Traub.g
-    end
-    include gui/rasterdefspos2.g
-end
-
 //Setup messages for Data File writing
 if ( {output == 1} )
     // Local field potential
@@ -536,22 +371,8 @@ if ( {output == 1} )
 
     // Vm files probedex
 
-    // probedex and probedex2 ASCII file Vm and Spike writing
-    // include config_dataoutput/ASCIIwrite.g
-
-    // Spike Class Output ASCII
-    // include config_dataoutput/ASCIISpikeClasswrite.g
-
     // Spike Class Output ASCII history (sparse; only writes timestamp when spiking)
     include config_dataoutput/ASCIISpikeHistorywrite.g
-
-    // Spike Class Output Binary
-    //include config_dataoutput/BinarySpikeClasswrite.g
-end
-
-//Control Routines
-if ( {display == 1} && {{mynode} == 0} )
-    make_control
 end
 
 check
@@ -568,61 +389,16 @@ if ({{drawtree} == 1})
     include draw_tree.g
 end
 
-// Testing: turning off parallel to see what it does to connections
-//paroff
-
-//disable /B23FSnet
-//disable /B5FSnet
-//disable /C23FSnet
-//disable /C5FSnet
-//disable /I23LTSnet
-//disable /I5LTSnet
-//disable /nRTnet
-//disable /P23FRBanet
-//disable /P23RSanet
-//disable /P23RSbnet
-//disable /P23RScnet
-//disable /P23RSdnet
-//disable /P5IBanet
-//disable /P5IBbnet
-//disable /P5IBcnet
-//disable /P5IBdnet
-//disable /P5RSanet
-//disable /P6RSanet
-//disable /P6RSbnet
-////disable /ST4RSnet
-//disable /TCRnet
-reset
-//int i
-//for (i=0; i<Nnodes; i=i+1)
-//	if ({{mynode} == i})
-//		le /P23RSanet
-//	end
-//	echo
-//end
-
-
-
-
-
 // Run the sim to time tmax
 echo Started running at {getdate}
 //step_tmax
 randseed {{mynode} + {myrandseed} + 3}
 while ({{getstat -time} < tmax}) 
-	//echo {getstat -time}
-	barrier
+	barrierall
 	step
-	barrier
-//	//int newrandseed = {10000*{mynode+1}} + {{myrandseed} + {getstat -step}}
-//	//randseed newrandseed
-//	int newrandseed = {getstat -step}
-//	randseed {newrandseed}
-//	if ({mynode} == 0) 
-//		echo {newrandseed} steprand at {getstat -time} =	{rand 0 1}
-//		//echo steprand = {rand 0 1}
-//	end
 end
+
 echo Finished running at {getdate}
 
 paroff
+
