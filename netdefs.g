@@ -443,9 +443,9 @@ float P5RSa_I5LTS_destlim = {globaldestlim}
 float P5RSa_P23FRBa_destlim = {globaldestlim}
 float P5RSa_P5RSa_destlim = {globaldestlim}
 
-// Create network for P23RSa cells
 
-///////////////////////
+// Create long range connections
+//
 // CRITICAL: run longrange before the non-longrange one. The
 // syndelay code acts on the synapses and doesn't discriminate between short and
 // long range connections. It needs to run only once because it adds a fixed
@@ -456,10 +456,294 @@ float P5RSa_P5RSa_destlim = {globaldestlim}
 // destinations it has. I'll have to pull those out of the cell_cell specific
 // code and just run rvolumeweight/delay a single time for each originaing
 // cell.
-include config_neuron_x_neuron/P23RSa_P23RSa_longrange.g
-include config_neuron_x_neuron/P23RSb_P23RSb_longrange.g
-include config_neuron_x_neuron/P23RSc_P23RSc_longrange.g
-include config_neuron_x_neuron/P23RSd_P23RSd_longrange.g
+
+if ({Nregions>1})
+	include config_neuron_x_neuron/P23FRBa_B23FS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_B5FS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_C23FS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_C5FS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_I23LTS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_I5LTS_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P23RSa_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P23RSb_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P23RSc_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P23RSd_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P5IBa_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P5IBb_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P5IBc_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P5IBd_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P5RSa_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P6RSa_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P6RSb_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P6RSc_longrange.g
+	include config_neuron_x_neuron/P23FRBa_P6RSd_longrange.g
+	include config_neuron_x_neuron/P23RSa_B23FS_longrange.g
+	include config_neuron_x_neuron/P23RSa_B5FS_longrange.g
+	include config_neuron_x_neuron/P23RSa_C23FS_longrange.g
+	include config_neuron_x_neuron/P23RSa_C5FS_longrange.g
+	include config_neuron_x_neuron/P23RSa_I23LTS_longrange.g
+	include config_neuron_x_neuron/P23RSa_I5LTS_longrange.g
+	include config_neuron_x_neuron/P23RSa_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P23RSa_P23RSa_longrange.g
+	include config_neuron_x_neuron/P23RSa_P23RSb_longrange.g
+	include config_neuron_x_neuron/P23RSa_P23RSc_longrange.g
+	include config_neuron_x_neuron/P23RSa_P23RSd_longrange.g
+	include config_neuron_x_neuron/P23RSa_P5IBa_longrange.g
+	include config_neuron_x_neuron/P23RSa_P5IBb_longrange.g
+	include config_neuron_x_neuron/P23RSa_P5IBc_longrange.g
+	include config_neuron_x_neuron/P23RSa_P5IBd_longrange.g
+	include config_neuron_x_neuron/P23RSa_P5RSa_longrange.g
+	include config_neuron_x_neuron/P23RSa_P6RSa_longrange.g
+	include config_neuron_x_neuron/P23RSa_P6RSb_longrange.g
+	include config_neuron_x_neuron/P23RSa_P6RSc_longrange.g
+	include config_neuron_x_neuron/P23RSa_P6RSd_longrange.g
+	include config_neuron_x_neuron/P23RSb_B23FS_longrange.g
+	include config_neuron_x_neuron/P23RSb_B5FS_longrange.g
+	include config_neuron_x_neuron/P23RSb_C23FS_longrange.g
+	include config_neuron_x_neuron/P23RSb_C5FS_longrange.g
+	include config_neuron_x_neuron/P23RSb_I23LTS_longrange.g
+	include config_neuron_x_neuron/P23RSb_I5LTS_longrange.g
+	include config_neuron_x_neuron/P23RSb_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P23RSb_P23RSa_longrange.g
+	include config_neuron_x_neuron/P23RSb_P23RSb_longrange.g
+	include config_neuron_x_neuron/P23RSb_P23RSc_longrange.g
+	include config_neuron_x_neuron/P23RSb_P23RSd_longrange.g
+	include config_neuron_x_neuron/P23RSb_P5IBa_longrange.g
+	include config_neuron_x_neuron/P23RSb_P5IBb_longrange.g
+	include config_neuron_x_neuron/P23RSb_P5IBc_longrange.g
+	include config_neuron_x_neuron/P23RSb_P5IBd_longrange.g
+	include config_neuron_x_neuron/P23RSb_P5RSa_longrange.g
+	include config_neuron_x_neuron/P23RSb_P6RSa_longrange.g
+	include config_neuron_x_neuron/P23RSb_P6RSb_longrange.g
+	include config_neuron_x_neuron/P23RSb_P6RSc_longrange.g
+	include config_neuron_x_neuron/P23RSb_P6RSd_longrange.g
+	include config_neuron_x_neuron/P23RSc_B23FS_longrange.g
+	include config_neuron_x_neuron/P23RSc_B5FS_longrange.g
+	include config_neuron_x_neuron/P23RSc_C23FS_longrange.g
+	include config_neuron_x_neuron/P23RSc_C5FS_longrange.g
+	include config_neuron_x_neuron/P23RSc_I23LTS_longrange.g
+	include config_neuron_x_neuron/P23RSc_I5LTS_longrange.g
+	include config_neuron_x_neuron/P23RSc_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P23RSc_P23RSa_longrange.g
+	include config_neuron_x_neuron/P23RSc_P23RSb_longrange.g
+	include config_neuron_x_neuron/P23RSc_P23RSc_longrange.g
+	include config_neuron_x_neuron/P23RSc_P23RSd_longrange.g
+	include config_neuron_x_neuron/P23RSc_P5IBa_longrange.g
+	include config_neuron_x_neuron/P23RSc_P5IBb_longrange.g
+	include config_neuron_x_neuron/P23RSc_P5IBc_longrange.g
+	include config_neuron_x_neuron/P23RSc_P5IBd_longrange.g
+	include config_neuron_x_neuron/P23RSc_P5RSa_longrange.g
+	include config_neuron_x_neuron/P23RSc_P6RSa_longrange.g
+	include config_neuron_x_neuron/P23RSc_P6RSb_longrange.g
+	include config_neuron_x_neuron/P23RSc_P6RSc_longrange.g
+	include config_neuron_x_neuron/P23RSc_P6RSd_longrange.g
+	include config_neuron_x_neuron/P23RSd_B23FS_longrange.g
+	include config_neuron_x_neuron/P23RSd_B5FS_longrange.g
+	include config_neuron_x_neuron/P23RSd_C23FS_longrange.g
+	include config_neuron_x_neuron/P23RSd_C5FS_longrange.g
+	include config_neuron_x_neuron/P23RSd_I23LTS_longrange.g
+	include config_neuron_x_neuron/P23RSd_I5LTS_longrange.g
+	include config_neuron_x_neuron/P23RSd_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P23RSd_P23RSa_longrange.g
+	include config_neuron_x_neuron/P23RSd_P23RSb_longrange.g
+	include config_neuron_x_neuron/P23RSd_P23RSc_longrange.g
+	include config_neuron_x_neuron/P23RSd_P23RSd_longrange.g
+	include config_neuron_x_neuron/P23RSd_P5IBa_longrange.g
+	include config_neuron_x_neuron/P23RSd_P5IBb_longrange.g
+	include config_neuron_x_neuron/P23RSd_P5IBc_longrange.g
+	include config_neuron_x_neuron/P23RSd_P5IBd_longrange.g
+	include config_neuron_x_neuron/P23RSd_P5RSa_longrange.g
+	include config_neuron_x_neuron/P23RSd_P6RSa_longrange.g
+	include config_neuron_x_neuron/P23RSd_P6RSb_longrange.g
+	include config_neuron_x_neuron/P23RSd_P6RSc_longrange.g
+	include config_neuron_x_neuron/P23RSd_P6RSd_longrange.g
+	include config_neuron_x_neuron/P5IBa_B23FS_longrange.g
+	include config_neuron_x_neuron/P5IBa_B5FS_longrange.g
+	include config_neuron_x_neuron/P5IBa_C23FS_longrange.g
+	include config_neuron_x_neuron/P5IBa_C5FS_longrange.g
+	include config_neuron_x_neuron/P5IBa_I23LTS_longrange.g
+	include config_neuron_x_neuron/P5IBa_I5LTS_longrange.g
+	include config_neuron_x_neuron/P5IBa_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P5IBa_P23RSa_longrange.g
+	include config_neuron_x_neuron/P5IBa_P23RSb_longrange.g
+	include config_neuron_x_neuron/P5IBa_P23RSc_longrange.g
+	include config_neuron_x_neuron/P5IBa_P23RSd_longrange.g
+	include config_neuron_x_neuron/P5IBa_P5IBa_longrange.g
+	include config_neuron_x_neuron/P5IBa_P5IBb_longrange.g
+	include config_neuron_x_neuron/P5IBa_P5IBc_longrange.g
+	include config_neuron_x_neuron/P5IBa_P5IBd_longrange.g
+	include config_neuron_x_neuron/P5IBa_P5RSa_longrange.g
+	include config_neuron_x_neuron/P5IBa_P6RSa_longrange.g
+	include config_neuron_x_neuron/P5IBa_P6RSb_longrange.g
+	include config_neuron_x_neuron/P5IBa_P6RSc_longrange.g
+	include config_neuron_x_neuron/P5IBa_P6RSd_longrange.g
+	include config_neuron_x_neuron/P5IBb_B23FS_longrange.g
+	include config_neuron_x_neuron/P5IBb_B5FS_longrange.g
+	include config_neuron_x_neuron/P5IBb_C23FS_longrange.g
+	include config_neuron_x_neuron/P5IBb_C5FS_longrange.g
+	include config_neuron_x_neuron/P5IBb_I23LTS_longrange.g
+	include config_neuron_x_neuron/P5IBb_I5LTS_longrange.g
+	include config_neuron_x_neuron/P5IBb_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P5IBb_P23RSa_longrange.g
+	include config_neuron_x_neuron/P5IBb_P23RSb_longrange.g
+	include config_neuron_x_neuron/P5IBb_P23RSc_longrange.g
+	include config_neuron_x_neuron/P5IBb_P23RSd_longrange.g
+	include config_neuron_x_neuron/P5IBb_P5IBa_longrange.g
+	include config_neuron_x_neuron/P5IBb_P5IBb_longrange.g
+	include config_neuron_x_neuron/P5IBb_P5IBc_longrange.g
+	include config_neuron_x_neuron/P5IBb_P5IBd_longrange.g
+	include config_neuron_x_neuron/P5IBb_P5RSa_longrange.g
+	include config_neuron_x_neuron/P5IBb_P6RSa_longrange.g
+	include config_neuron_x_neuron/P5IBb_P6RSb_longrange.g
+	include config_neuron_x_neuron/P5IBb_P6RSc_longrange.g
+	include config_neuron_x_neuron/P5IBb_P6RSd_longrange.g
+	include config_neuron_x_neuron/P5IBc_B23FS_longrange.g
+	include config_neuron_x_neuron/P5IBc_B5FS_longrange.g
+	include config_neuron_x_neuron/P5IBc_C23FS_longrange.g
+	include config_neuron_x_neuron/P5IBc_C5FS_longrange.g
+	include config_neuron_x_neuron/P5IBc_I23LTS_longrange.g
+	include config_neuron_x_neuron/P5IBc_I5LTS_longrange.g
+	include config_neuron_x_neuron/P5IBc_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P5IBc_P23RSa_longrange.g
+	include config_neuron_x_neuron/P5IBc_P23RSb_longrange.g
+	include config_neuron_x_neuron/P5IBc_P23RSc_longrange.g
+	include config_neuron_x_neuron/P5IBc_P23RSd_longrange.g
+	include config_neuron_x_neuron/P5IBc_P5IBa_longrange.g
+	include config_neuron_x_neuron/P5IBc_P5IBb_longrange.g
+	include config_neuron_x_neuron/P5IBc_P5IBc_longrange.g
+	include config_neuron_x_neuron/P5IBc_P5IBd_longrange.g
+	include config_neuron_x_neuron/P5IBc_P5RSa_longrange.g
+	include config_neuron_x_neuron/P5IBc_P6RSa_longrange.g
+	include config_neuron_x_neuron/P5IBc_P6RSb_longrange.g
+	include config_neuron_x_neuron/P5IBc_P6RSc_longrange.g
+	include config_neuron_x_neuron/P5IBc_P6RSd_longrange.g
+	include config_neuron_x_neuron/P5IBd_B23FS_longrange.g
+	include config_neuron_x_neuron/P5IBd_B5FS_longrange.g
+	include config_neuron_x_neuron/P5IBd_C23FS_longrange.g
+	include config_neuron_x_neuron/P5IBd_C5FS_longrange.g
+	include config_neuron_x_neuron/P5IBd_I23LTS_longrange.g
+	include config_neuron_x_neuron/P5IBd_I5LTS_longrange.g
+	include config_neuron_x_neuron/P5IBd_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P5IBd_P23RSa_longrange.g
+	include config_neuron_x_neuron/P5IBd_P23RSb_longrange.g
+	include config_neuron_x_neuron/P5IBd_P23RSc_longrange.g
+	include config_neuron_x_neuron/P5IBd_P23RSd_longrange.g
+	include config_neuron_x_neuron/P5IBd_P5IBa_longrange.g
+	include config_neuron_x_neuron/P5IBd_P5IBb_longrange.g
+	include config_neuron_x_neuron/P5IBd_P5IBc_longrange.g
+	include config_neuron_x_neuron/P5IBd_P5IBd_longrange.g
+	include config_neuron_x_neuron/P5IBd_P5RSa_longrange.g
+	include config_neuron_x_neuron/P5IBd_P6RSa_longrange.g
+	include config_neuron_x_neuron/P5IBd_P6RSb_longrange.g
+	include config_neuron_x_neuron/P5IBd_P6RSc_longrange.g
+	include config_neuron_x_neuron/P5IBd_P6RSd_longrange.g
+	include config_neuron_x_neuron/P5RSa_B23FS_longrange.g
+	include config_neuron_x_neuron/P5RSa_B5FS_longrange.g
+	include config_neuron_x_neuron/P5RSa_C23FS_longrange.g
+	include config_neuron_x_neuron/P5RSa_C5FS_longrange.g
+	include config_neuron_x_neuron/P5RSa_I23LTS_longrange.g
+	include config_neuron_x_neuron/P5RSa_I5LTS_longrange.g
+	include config_neuron_x_neuron/P5RSa_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P5RSa_P23RSa_longrange.g
+	include config_neuron_x_neuron/P5RSa_P23RSb_longrange.g
+	include config_neuron_x_neuron/P5RSa_P23RSc_longrange.g
+	include config_neuron_x_neuron/P5RSa_P23RSd_longrange.g
+	include config_neuron_x_neuron/P5RSa_P5IBa_longrange.g
+	include config_neuron_x_neuron/P5RSa_P5IBb_longrange.g
+	include config_neuron_x_neuron/P5RSa_P5IBc_longrange.g
+	include config_neuron_x_neuron/P5RSa_P5IBd_longrange.g
+	include config_neuron_x_neuron/P5RSa_P5RSa_longrange.g
+	include config_neuron_x_neuron/P5RSa_P6RSa_longrange.g
+	include config_neuron_x_neuron/P5RSa_P6RSb_longrange.g
+	include config_neuron_x_neuron/P5RSa_P6RSc_longrange.g
+	include config_neuron_x_neuron/P5RSa_P6RSd_longrange.g
+	include config_neuron_x_neuron/P6RSa_B23FS_longrange.g
+	include config_neuron_x_neuron/P6RSa_B5FS_longrange.g
+	include config_neuron_x_neuron/P6RSa_C23FS_longrange.g
+	include config_neuron_x_neuron/P6RSa_C5FS_longrange.g
+	include config_neuron_x_neuron/P6RSa_I23LTS_longrange.g
+	include config_neuron_x_neuron/P6RSa_I5LTS_longrange.g
+	include config_neuron_x_neuron/P6RSa_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P6RSa_P23RSa_longrange.g
+	include config_neuron_x_neuron/P6RSa_P23RSb_longrange.g
+	include config_neuron_x_neuron/P6RSa_P23RSc_longrange.g
+	include config_neuron_x_neuron/P6RSa_P23RSd_longrange.g
+	include config_neuron_x_neuron/P6RSa_P5IBa_longrange.g
+	include config_neuron_x_neuron/P6RSa_P5IBb_longrange.g
+	include config_neuron_x_neuron/P6RSa_P5IBc_longrange.g
+	include config_neuron_x_neuron/P6RSa_P5IBd_longrange.g
+	include config_neuron_x_neuron/P6RSa_P5RSa_longrange.g
+	include config_neuron_x_neuron/P6RSa_P6RSa_longrange.g
+	include config_neuron_x_neuron/P6RSa_P6RSb_longrange.g
+	include config_neuron_x_neuron/P6RSa_P6RSc_longrange.g
+	include config_neuron_x_neuron/P6RSa_P6RSd_longrange.g
+	include config_neuron_x_neuron/P6RSb_B23FS_longrange.g
+	include config_neuron_x_neuron/P6RSb_B5FS_longrange.g
+	include config_neuron_x_neuron/P6RSb_C23FS_longrange.g
+	include config_neuron_x_neuron/P6RSb_C5FS_longrange.g
+	include config_neuron_x_neuron/P6RSb_I23LTS_longrange.g
+	include config_neuron_x_neuron/P6RSb_I5LTS_longrange.g
+	include config_neuron_x_neuron/P6RSb_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P6RSb_P23RSa_longrange.g
+	include config_neuron_x_neuron/P6RSb_P23RSb_longrange.g
+	include config_neuron_x_neuron/P6RSb_P23RSc_longrange.g
+	include config_neuron_x_neuron/P6RSb_P23RSd_longrange.g
+	include config_neuron_x_neuron/P6RSb_P5IBa_longrange.g
+	include config_neuron_x_neuron/P6RSb_P5IBb_longrange.g
+	include config_neuron_x_neuron/P6RSb_P5IBc_longrange.g
+	include config_neuron_x_neuron/P6RSb_P5IBd_longrange.g
+	include config_neuron_x_neuron/P6RSb_P5RSa_longrange.g
+	include config_neuron_x_neuron/P6RSb_P6RSa_longrange.g
+	include config_neuron_x_neuron/P6RSb_P6RSb_longrange.g
+	include config_neuron_x_neuron/P6RSb_P6RSc_longrange.g
+	include config_neuron_x_neuron/P6RSb_P6RSd_longrange.g
+	include config_neuron_x_neuron/P6RSc_B23FS_longrange.g
+	include config_neuron_x_neuron/P6RSc_B5FS_longrange.g
+	include config_neuron_x_neuron/P6RSc_C23FS_longrange.g
+	include config_neuron_x_neuron/P6RSc_C5FS_longrange.g
+	include config_neuron_x_neuron/P6RSc_I23LTS_longrange.g
+	include config_neuron_x_neuron/P6RSc_I5LTS_longrange.g
+	include config_neuron_x_neuron/P6RSc_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P6RSc_P23RSa_longrange.g
+	include config_neuron_x_neuron/P6RSc_P23RSb_longrange.g
+	include config_neuron_x_neuron/P6RSc_P23RSc_longrange.g
+	include config_neuron_x_neuron/P6RSc_P23RSd_longrange.g
+	include config_neuron_x_neuron/P6RSc_P5IBa_longrange.g
+	include config_neuron_x_neuron/P6RSc_P5IBb_longrange.g
+	include config_neuron_x_neuron/P6RSc_P5IBc_longrange.g
+	include config_neuron_x_neuron/P6RSc_P5IBd_longrange.g
+	include config_neuron_x_neuron/P6RSc_P5RSa_longrange.g
+	include config_neuron_x_neuron/P6RSc_P6RSa_longrange.g
+	include config_neuron_x_neuron/P6RSc_P6RSb_longrange.g
+	include config_neuron_x_neuron/P6RSc_P6RSc_longrange.g
+	include config_neuron_x_neuron/P6RSc_P6RSd_longrange.g
+	include config_neuron_x_neuron/P6RSd_B23FS_longrange.g
+	include config_neuron_x_neuron/P6RSd_B5FS_longrange.g
+	include config_neuron_x_neuron/P6RSd_C23FS_longrange.g
+	include config_neuron_x_neuron/P6RSd_C5FS_longrange.g
+	include config_neuron_x_neuron/P6RSd_I23LTS_longrange.g
+	include config_neuron_x_neuron/P6RSd_I5LTS_longrange.g
+	include config_neuron_x_neuron/P6RSd_P23FRBa_longrange.g
+	include config_neuron_x_neuron/P6RSd_P23RSa_longrange.g
+	include config_neuron_x_neuron/P6RSd_P23RSb_longrange.g
+	include config_neuron_x_neuron/P6RSd_P23RSc_longrange.g
+	include config_neuron_x_neuron/P6RSd_P23RSd_longrange.g
+	include config_neuron_x_neuron/P6RSd_P5IBa_longrange.g
+	include config_neuron_x_neuron/P6RSd_P5IBb_longrange.g
+	include config_neuron_x_neuron/P6RSd_P5IBc_longrange.g
+	include config_neuron_x_neuron/P6RSd_P5IBd_longrange.g
+	include config_neuron_x_neuron/P6RSd_P5RSa_longrange.g
+	include config_neuron_x_neuron/P6RSd_P6RSa_longrange.g
+	include config_neuron_x_neuron/P6RSd_P6RSb_longrange.g
+	include config_neuron_x_neuron/P6RSd_P6RSc_longrange.g
+	include config_neuron_x_neuron/P6RSd_P6RSd_longrange.g
+end
+
+// Short range connections
+
+// Create network for P23RSa cells
+
 include config_neuron_x_neuron/P23RSa_P23RSa.g
 include config_neuron_x_neuron/P23RSa_P23RSb.g
 include config_neuron_x_neuron/P23RSa_P23RSc.g
@@ -1113,6 +1397,4 @@ include config_neuron_x_neuron/P5RSa_I23LTS.g
 include config_neuron_x_neuron/P5RSa_I5LTS.g
 include config_neuron_x_neuron/P5RSa_P23FRBa.g
 include config_neuron_x_neuron/P5RSa_P5RSa.g
-
-
 
