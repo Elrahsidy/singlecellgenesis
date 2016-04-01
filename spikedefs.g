@@ -178,17 +178,17 @@ ce /
 // make_spk10longrange
 // addmsg /B5FS/soma /B5FS/soma/spk10longrange INPUT Vm
 // ce /
-// 
-// ce /P6RSa/soma
-// make_spk11longrange
-// addmsg /P6RSa/soma /P6RSa/soma/spk11longrange INPUT Vm
-// ce /
-// 
-// ce /P6RSb/soma
-// make_spk12longrange
-// addmsg /P6RSb/soma /P6RSb/soma/spk12longrange INPUT Vm
-// ce /
-// 
+
+ce /P6RSa/soma
+make_spk11longrange
+addmsg /P6RSa/soma /P6RSa/soma/spk11longrange INPUT Vm
+ce /
+
+ce /P6RSb/soma
+make_spk12longrange
+addmsg /P6RSb/soma /P6RSb/soma/spk12longrange INPUT Vm
+ce /
+ 
 // if ({columntype == 0})
 // 
 //      ce /P6RSc/soma
