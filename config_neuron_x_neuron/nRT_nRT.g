@@ -31,7 +31,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /nRTnet/nRT[]/soma/spk21  \
-	      /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa@all	    \
+	      /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

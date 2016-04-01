@@ -30,7 +30,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
-	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P6RSAMPA@all	    \
+	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P6RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
@@ -51,7 +51,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
-	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P6RSNMDA@all	    \
+	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P6RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

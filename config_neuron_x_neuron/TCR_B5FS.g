@@ -30,7 +30,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
-	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRAMPA@all	    \
+	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
@@ -51,7 +51,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
-	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRNMDA@all	    \
+	      /B5FSnet/B5FS[]/{s}/Ex_ch10TCRNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

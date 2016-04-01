@@ -30,7 +30,7 @@ foreach s ({arglist {locations}})
 
     barrierall //ayu
     rvolumeconnect /B5FSnet/B5FS[]/soma/spk10  \
-	      /P6RSanet/P6RSa[]/{s}/Inh_ch11B5FSGABAa@all	    \
+	      /P6RSanet/P6RSa[]/{s}/Inh_ch11B5FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

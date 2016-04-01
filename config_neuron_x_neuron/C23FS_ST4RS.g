@@ -22,7 +22,7 @@ echo Making connections from the C23FS cells to the ST4RS cells.
 
 barrierall //ayu
 rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
-	      /ST4RSnet/ST4RS[]/axona/Inh_ch17C23FSGABAa@all	    \
+	      /ST4RSnet/ST4RS[]/axona/Inh_ch17C23FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \

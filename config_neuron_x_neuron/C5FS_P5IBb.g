@@ -22,7 +22,7 @@ echo Making connections from the C5FS cells to the P5IBb cells.
 
 barrierall //ayu
 rvolumeconnect /C5FSnet/C5FS[]/soma/spk16  \
-	      /P5IBbnet/P5IBb[]/axona/Inh_ch7C5FSGABAa@all	    \
+	      /P5IBbnet/P5IBb[]/axona/Inh_ch7C5FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1 {destlim}  {destlim}  1   \
