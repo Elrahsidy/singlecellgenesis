@@ -71,11 +71,6 @@ echo "Running in $mydir; writing data to $mydirwithtime"
 if [[ "`find $mydirwithtime -type f 2>/dev/null`" ]]; then
     echo "Data directory already exists. Wait one second and run this script again."
     exit
-	# directory already exists and has files in it
-	#oldestfile=$(ls -td "$mydir/data/"* | tail -n1)
-	#oldesttime=$(find "$mydir/data" -path "$oldestfile" -printf '%TY%Tm%Td-%TH%TM')
-	#echo "Moving existing data to $mydir/data-$oldesttime"
-	#mv "$mydir/data" "$mydir/data-$oldesttime"
 fi
 if [[ ! -d "$mydirwithtime" ]]; then
 	mkdir -p "$mydirwithtime/connections"
@@ -89,23 +84,18 @@ logfile="$mydirwithtime/$(date +%Y%m%d-%H%M).log"
 echo "Running as $(whoami) at $(date +%Y%m%d-%H%M)" >> "$logfile"
 echo "$@" >> "$logfile"
 
-# Hardcode the data directory in all .g files.
-# I admit that this regexp is pretty damn ugly!
-# sed -i "s#\(.*do.*asc_file[a-z]*\) \([^ ]*\) \(.*\)#\1___\2___\3#; s#\(.*\)___\(.*\)/\(.*\)___\(.*\)#\1 $mydirwithtime/\3 \4#" $mydir/config_dataoutput/*write*.g
-
 # Checking node numbers
 # Assumes that Nnodes in Neocortex.g is correct
 export num_nodes="`grep "\sNnodes = " $mydir/Neocortex.g | sed 's/.* = //'`"
 echo "Running on $num_nodes nodes"
 
 # Create snapshot of all Genesis scripts and parameters
-#find "$mydir"  -path "data*" -prune -o -name "*.[pg]" -print | zip --quiet -@ "$mydirwithtime"/scripts_snapshot.zip 
-# This is horribly slow ^
-cp "$mydir/Neocortex.g" "$mydirwithtime/"
-
-# Create diff between the current model and an established baseline, which is
-# currently a symlink named /data2/data/Neocortex_sim/Baseline_model
-#diff -wu /data2/data/Neocortex_sim/Baseline_model "$mydir" > "$mydirwithtime"/diff_from_baseline.txt
+# Use static list of important files and copy to data-latest:
+if [[ "x`git status 2>/dev/null`" != "x" ]]; then
+    git ls-files > gitfiles.txt
+fi
+mkdir "$mydir/data-latest/scripts"
+tar c -T - < gitfiles.txt | tar x -C "${mydirwithtime}/scripts"
 
 # http://www.genesis-sim.org/GENESIS/Hyperdoc/Manual-25.html
 # Besides specifying the -nox option when starting genesis to avoid starting
@@ -121,8 +111,8 @@ cp "$mydir/Neocortex.g" "$mydirwithtime/"
 # modify it if you need to use a different selection of hosts).
 
 # Non-interactive (output redirected to log file)
-#/data2/software/genesis-2.4/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
-/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
+/data2/software/genesis-2.4/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
+#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
 
 # Interactive (no redirection)
 #/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox $mydir/Neocortex
