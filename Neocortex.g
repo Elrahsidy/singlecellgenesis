@@ -1,7 +1,7 @@
 // genesis
 
 //Overall simulation parameters
-float tmax = 20
+float tmax = 20.0
 float dt = 5.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
@@ -37,7 +37,7 @@ float regionspacing = {SEPX}*{NX}*10
 // Scaling for short and long range connections between regions.
 float shortrangeprobscale = 1.0
 float longrangeprobscale = 1.0
-float longrangeweightscale = 1.0
+float longrangeweightscale = 0.5
 
 // shortrangeweightscale does not exist because I haven't decided on the best
 // way to scale these--multiply into only maxweight or both maxweight and
@@ -150,9 +150,9 @@ for (thisregion = 0; thisregion < Nregions; thisregion = thisregion + 1)
 		for (i=minx; i<=maxx; i=i+1) 
 			for (j=miny; j<=maxy; j=j+1) 
 				if ({regionnodes}=="") // first regionnode
-					regionnodes = {{{j}*{sqrtNnodes}}+{i}}
+					regionnodes={{{j}*{sqrtNnodes}}+{i}}
 				else
-					regionnodes = {regionnodes} @ "," @ {{{j}*{sqrtNnodes}}+{i}}
+					regionnodes={regionnodes} @ "," @ {{{j}*{sqrtNnodes}}+{i}}
 				end
 			end
 		end
@@ -163,9 +163,9 @@ for (thisregion = 0; thisregion < Nregions; thisregion = thisregion + 1)
 			nodey = {{i} / {sqrtNnodes}}
 			if ({nodex < minx} | {nodex > maxx} | {nodey < miny} | {nodey > maxy})
 				if ({distantnodes}=="") // first distantnode
-					distantnodes = {i}
+					distantnodes={i}
 				else
-					distantnodes = {distantnodes} @ "," @ {i}
+					distantnodes={distantnodes} @ "," @ {i}
 				end
 			end
 		end
@@ -227,7 +227,7 @@ end
 
 //Table of synaptic conductances
 
-include syncond.g
+include syncond_traub.g
 
 // Load cell definitions
 
@@ -316,22 +316,14 @@ disable /TCR
 barrierall
 
 // Synaptic weight decay parameters and delays
-
-// ayu: In synapticprobsbase.g every neurontype_x_neurontype probability is set
-// to 1 but then each connection script in config_neuron_x_neuron has its own
-// hardcoded multiplier (not sure where those numbers come from. Need to fix
-// this ASAP (check Traub for the correct values).
-barrierall
 //include synapticprobsTraub.g
 //include synapticprobsbase.g
 include synapticprobsnew.g
 barrierall
 
-barrierall
 include synapticdelays.g
 barrierall
 
-barrierall
 include axonaldelays.g
 barrierall
 
