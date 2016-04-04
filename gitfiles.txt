@@ -962,6 +962,7 @@ config_neuron_x_neuron/genericsrc_genericdest_longrange.g
 config_neuron_x_neuron/nRT_TCR.g
 config_neuron_x_neuron/nRT_nRT.g
 draw_tree.g
+gitfiles.txt
 gui/Neoorient.g
 gui/Neoxconn.g
 gui/icons.g
@@ -984,7 +985,7 @@ spikedefs.g
 synapticdelays.g
 synapticprobsnew.g
 synchansSPIKEs.g
-syncond.g
+syncond_anderson.g
 syncond_traub.g
 vestigial/#B23FS_I23LTS.g#
 vestigial/#P5IBb_P5IBd_Gap.g#
