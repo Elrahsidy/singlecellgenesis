@@ -39,8 +39,10 @@ create neutral /B5FSnet
 float randrotation
 addfield /B5FS rotation
 
-create asc_file /Vmwrite{typenum}
-setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+     create asc_file /Vmwrite{typenum}
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+end
 
 if ({columntype == 0})
 
@@ -54,7 +56,9 @@ if ({columntype == 0})
                copy /B5FS /B5FSnet/B5FS[{k}]
                position /B5FSnet/B5FS[{k}] \
                  {originxmin + B5FS_SEPX*i} {originymin + B5FS_SEPY*j} {randzpos}
-               addmsg /B5FSnet/B5FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /B5FSnet/B5FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 
@@ -88,7 +92,9 @@ echo Traub B5FS!
                    rotcoord /B5FSnet/B5FS[{k}] {randrotation} -z -center {originxmin + B5FS_SEPX*i} {originymin + B5FS_SEPY*j} {randzpos}
                end
 
-               addmsg /B5FSnet/B5FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /B5FSnet/B5FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 

@@ -43,8 +43,10 @@ create neutral /nRTnet
 float randrotation
 addfield /nRT rotation
 
-create asc_file /Vmwrite{typenum}
-setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+     create asc_file /Vmwrite{typenum}
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+end
 
 if ({columntype == 0})
 
@@ -54,7 +56,9 @@ if ({columntype == 0})
                copy /nRT /nRTnet/nRT[{k}]
                position /nRTnet/nRT[{k}] \
                  {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
-               addmsg /nRTnet/nRT[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /nRTnet/nRT[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 
@@ -84,7 +88,9 @@ echo Traub nRT!
                    rotcoord /nRTnet/nRT[{k}] {randrotation} -z -center {originxmin + nRT_SEPX*i} {originymin + nRT_SEPY*j} {zposarb}
                end
 
-               addmsg /nRTnet/nRT[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /nRTnet/nRT[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 

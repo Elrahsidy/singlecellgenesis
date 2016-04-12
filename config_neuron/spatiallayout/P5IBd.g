@@ -44,8 +44,10 @@ create neutral /P5IBdnet
 float randrotation
 addfield /P5IBd rotation
 
-create asc_file /Vmwrite{typenum}
-setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+     create asc_file /Vmwrite{typenum}
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+end
 
 // CREATING THE PLANE OF P5IBd cells
 //createmap /P5IBd /P5IBdnet  \
@@ -74,7 +76,9 @@ for (j = 0; j < P5IBd_NY; j = j+1)
               rotcoord /P5IBdnet/P5IBd[{k}] {randrotation} -z -center {originxmin + P5IBd_SEPX*i} {originymin + P5IBd_SEPY*j} {randzpos}
           end
 
-          addmsg /P5IBdnet/P5IBd[{k}]/soma /Vmwrite{typenum} SAVE Vm
+          if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+               addmsg /P5IBdnet/P5IBd[{k}]/soma /Vmwrite{typenum} SAVE Vm
+          end
 
           k=k+1
 

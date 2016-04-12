@@ -42,8 +42,10 @@ create neutral /B23FSnet
 float randrotation
 addfield /B23FS rotation
 
-create asc_file /Vmwrite{typenum}
-setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+     create asc_file /Vmwrite{typenum}
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+end
 
 if ({columntype == 0})
 
@@ -56,7 +58,9 @@ if ({columntype == 0})
                copy /B23FS /B23FSnet/B23FS[{k}]
                position /B23FSnet/B23FS[{k}] \
                  {originxmin + B23FS_SEPX*i} {originymin + B23FS_SEPY*j} {randzpos}
-               addmsg /B23FSnet/B23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /B23FSnet/B23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 
@@ -97,7 +101,9 @@ echo Traub B23FS!
                    rotcoord /B23FSnet/B23FS[{k}] {randrotation} -z -center {originxmin + B23FS_SEPX*i} {originymin + B23FS_SEPY*j} {randzpos}
                end
 
-               addmsg /B23FSnet/B23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+                    addmsg /B23FSnet/B23FS[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               end
 
                k=k+1
 

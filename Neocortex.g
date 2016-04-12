@@ -56,6 +56,7 @@ randseed {{mynode} + {myrandseed} + 0}
 // Important flags
 int display = 0     // Display neurons and graphs?
 int output = 1      // Dump neural output to a file?
+int membranepotentialoutput = 0 // Log membrane potentials (you probably don't want this)
 int drawtree = 1    // Output connectivity info?
 
 // Enable/disable thalamocortical connections
@@ -358,7 +359,7 @@ include randominputdefs.g
 // Output and diagnostics
 
 //Setup messages for Data File writing
-if ( {output == 1} )
+if ( {{output} == 1} )
     // Local field potential
     include config_dataoutput/LFP5e.g
     include config_dataoutput/LFP5eASCIIwrite.g

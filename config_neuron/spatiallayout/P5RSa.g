@@ -44,8 +44,10 @@ create neutral /P5RSanet
 float randrotation
 addfield /P5RSa rotation
 
-create asc_file /Vmwrite{typenum}
-setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+     create asc_file /Vmwrite{typenum}
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+end
 
 // CREATING THE PLANE OF P5RSa cells
 //createmap /P5RSa /P5RSanet  \
@@ -74,7 +76,9 @@ for (j = 0; j < P5RSa_NY; j = j+1)
               rotcoord /P5RSanet/P5RSa[{k}] {randrotation} -z -center {originxmin + P5RSa_SEPX*i} {originymin + P5RSa_SEPY*j} {randzpos}
           end
 
-          addmsg /P5RSanet/P5RSa[{k}]/soma /Vmwrite{typenum} SAVE Vm
+          if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
+               addmsg /P5RSanet/P5RSa[{k}]/soma /Vmwrite{typenum} SAVE Vm
+          end
 
           k=k+1
 
