@@ -104,6 +104,8 @@ int probedex
 int probedex2
 int gridsize
 float neuronfrac = 1.0 // Percentage of neurons receiving background
+float ranrateoffset = 0.0 // Offset for Ranrate; when zero then 1.0 <= Ranrate <= 10.0
+float ranratescale = 1.0 // Scaling factor for Ranrate; when one then 1.0 <= Ranrate <= 10.0
 
 // Flags for minicolumnar architecture
 

@@ -8,7 +8,7 @@
     
     float CondmaxSPIKEAMPA=1.0e-9
 
-    float Ranrate={rand 1.0 10.0} //Random injection frequency
+    float Ranrate={{ranrateoffset} + {{ranratescale} * {rand 1.0 10.0}}} //Random injection frequency
 
     for (i=1;i<=(P23FRBa_NY);i=i+1)
 
