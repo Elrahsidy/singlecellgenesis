@@ -32,7 +32,7 @@ j = {{numelecs}-1}
 create efield LFP{j}
 float LFPx = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPX}*(({NX}*{sqrtNnodes})-1)}}/2
 float LFPy = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPY}*(({NY}*{sqrtNnodes})-1)}}/2
-setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz+(2500e-6*j)} 
+setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz} 
 echo Position LFP {mynode} central NA NA NA NA {LFPx} {LFPy} {LFPz} 0
 
 str s
