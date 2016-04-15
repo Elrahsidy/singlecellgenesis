@@ -82,7 +82,7 @@ logfile="$mydirwithtime/$(date +%Y%m%d-%H%M).log"
 
 # Echo any notes passed in on the command line to the log file
 echo "Running as $(whoami) at $(date +%Y%m%d-%H%M)" >> "$logfile"
-echo "$@" >> "$logfile"
+echo "Notes: $@" >> "$logfile"
 
 # Checking node numbers
 # Assumes that Nnodes in Neocortex.g is correct
@@ -111,7 +111,7 @@ tar c -T - < gitfiles.txt | tar x -C "${mydirwithtime}/scripts"
 # modify it if you need to use a different selection of hosts).
 
 # Non-interactive (output redirected to log file)
-/data2/software/genesis-2.4/pgenesis/bin/pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
+./pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
 #/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
 
 # Interactive (no redirection)
