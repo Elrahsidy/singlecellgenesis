@@ -393,6 +393,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
 
      call LFP{j} RECALC
 
-	rshowmsg LFP{j} >> ./data-latest/lfp{j}_{mynode}_incoming.txt
+	 // For debugging:
+	 //rshowmsg LFP{j} >> ./data-latest/lfp{j}_{mynode}_incoming.txt
 end
 
