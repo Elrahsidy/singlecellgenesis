@@ -44,6 +44,12 @@ float longrangeweightscale = 0.5
 // minweight in the decay function?
 //float shortrangeweightscale = 1.0
 
+// Excitatory and inhibitory weight scale + offset
+float excitatoryweightscale = 1.0
+float excitatoryweightoffset = 0.0
+float inhibitoryweightscale = 1.0
+float inhibitoryweightoffset = 1.0
+
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
 // 'random' patterns from one simulation to the next.   Seeding

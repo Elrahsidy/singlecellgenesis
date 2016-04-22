@@ -6,11 +6,12 @@
 
 //P23RSa spatial connection scales
 
-float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt
+float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt, P23RSbasewgt
 
 P23RSdecayrate = 10000 // 1/(100e-6) m^-1
-P23RSmaxwgt = 1.0
-P23RSminwgt = 0.0
+P23RSbasewgt = 1.0
+P23RSminwgt = {0.0 + {excitatoryweightoffset}}
+P23RSmaxwgt = {{{P23RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P23RSa_P23RSa_prob = 0.02778
 float P23RSa_P23RSb_prob = 0.02778
@@ -36,11 +37,12 @@ float P23RSa_P5RSa_prob = 0.12500
 
 //P23RSb spatial connection scales
 
-float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt
+float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt, P23RSbasewgt
 
 P23RSdecayrate = 10000 // 1/(100e-6) m^-1
-P23RSmaxwgt = 1.0
-P23RSminwgt = 0.0
+P23RSbasewgt = 1.0
+P23RSminwgt = {0.0 + {excitatoryweightoffset}}
+P23RSmaxwgt = {{{P23RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P23RSb_P23RSa_prob = 0.02778
 float P23RSb_P23RSb_prob = 0.02778
@@ -66,11 +68,12 @@ float P23RSb_P5RSa_prob = 0.12500
 
 //P23RSc spatial connection scales
 
-float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt
+float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt, P23RSbasewgt
 
 P23RSdecayrate = 10000 // 1/(100e-6) m^-1
-P23RSmaxwgt = 1.0
-P23RSminwgt = 0.0
+P23RSbasewgt = 1.0
+P23RSminwgt = {0.0 + {excitatoryweightoffset}}
+P23RSmaxwgt = {{{P23RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P23RSc_P23RSa_prob = 0.02778
 float P23RSc_P23RSb_prob = 0.02778
@@ -96,11 +99,12 @@ float P23RSc_P5RSa_prob = 0.12500
 
 //P23RSd spatial connection scales
 
-float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt
+float P23RSdecayrate, P23RSmaxwgt, P23RSminwgt, P23RSbasewgt
 
 P23RSdecayrate = 10000 // 1/(100e-6) m^-1
-P23RSmaxwgt = 1.0
-P23RSminwgt = 0.0
+P23RSbasewgt = 1.0
+P23RSminwgt = {0.0 + {excitatoryweightoffset}}
+P23RSmaxwgt = {{{P23RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P23RSd_P23RSa_prob = 0.02778
 float P23RSd_P23RSb_prob = 0.02778
@@ -126,11 +130,12 @@ float P23RSd_P5RSa_prob = 0.12500
 
 //B23FS spatial connection scales
 
-float B23FSdecayrate, B23FSmaxwgt, B23FSminwgt
+float B23FSdecayrate, B23FSmaxwgt, B23FSminwgt, B23FSbasewgt
 
 B23FSdecayrate = 10000 // 1/(100e-6) m^-1
-B23FSmaxwgt = 1.0
-B23FSminwgt = 0.0
+B23FSbasewgt = 1.0
+B23FSminwgt = {0.0 + {inhibitoryweightoffset}}
+B23FSmaxwgt = {{{B23FSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float B23FS_P23RSa_prob = 0.091
 float B23FS_P23RSb_prob = 0.091
@@ -144,11 +149,12 @@ float B23FS_P23FRBa_prob = 0.091
 
 //P5IBa spatial connection scales
 
-float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt
+float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt, P5IBbasewgt
 
 P5IBdecayrate = 10000 // 1/(100e-6) m^-1
-P5IBmaxwgt = 1.0
-P5IBminwgt = 0.0
+P5IBbasewgt = 1.0
+P5IBminwgt = {0.0 + {excitatoryweightoffset}}
+P5IBmaxwgt = {{{P5IBbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P5IBa_P23RSa_prob = 0.07692
 float P5IBa_P23RSb_prob = 0.07692
@@ -174,11 +180,12 @@ float P5IBa_P5RSa_prob = 0.02174
 
 //P5IBb spatial connection scales
 
-float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt
+float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt, P5IBbasewgt
 
 P5IBdecayrate = 10000 // 1/(100e-6) m^-1
-P5IBmaxwgt = 1.0
-P5IBminwgt = 0.0
+P5IBbasewgt = 1.0
+P5IBminwgt = {0.0 + {excitatoryweightoffset}}
+P5IBmaxwgt = {{{P5IBbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P5IBb_P23RSa_prob = 0.07692
 float P5IBb_P23RSb_prob = 0.07692
@@ -204,11 +211,12 @@ float P5IBb_P5RSa_prob = 0.02174
 
 //P5IBc spatial connection scales
 
-float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt
+float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt, P5IBbasewgt
 
 P5IBdecayrate = 10000 // 1/(100e-6) m^-1
-P5IBmaxwgt = 1.0
-P5IBminwgt = 0.0
+P5IBbasewgt = 1.0
+P5IBminwgt = {0.0 + {excitatoryweightoffset}}
+P5IBmaxwgt = {{{P5IBbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P5IBc_P23RSa_prob = 0.07692
 float P5IBc_P23RSb_prob = 0.07692
@@ -234,11 +242,12 @@ float P5IBc_P5RSa_prob = 0.02174
 
 //P5IBd spatial connection scales
 
-float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt
+float P5IBdecayrate, P5IBmaxwgt, P5IBminwgt, P5IBbasewgt
 
 P5IBdecayrate = 10000 // 1/(100e-6) m^-1
-P5IBmaxwgt = 1.0
-P5IBminwgt = 0.0
+P5IBbasewgt = 1.0
+P5IBminwgt = {0.0 + {excitatoryweightoffset}}
+P5IBmaxwgt = {{{P5IBbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P5IBd_P23RSa_prob = 0.07692
 float P5IBd_P23RSb_prob = 0.07692
@@ -264,11 +273,12 @@ float P5IBd_P5RSa_prob = 0.02174
 
 //B5FS spatial connection scales
 
-float B5FSdecayrate, B5FSmaxwgt, B5FSminwgt
+float B5FSdecayrate, B5FSmaxwgt, B5FSminwgt, B5FSbasewgt
 
 B5FSdecayrate = 10000 // 1/(100e-6) m^-1
-B5FSmaxwgt = 1.0
-B5FSminwgt = 0.0
+B5FSbasewgt = 1.0
+B5FSminwgt = {0.0 + {inhibitoryweightoffset}}
+B5FSmaxwgt = {{{B5FSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float B5FS_P5IBa_prob = 0.12500
 float B5FS_P5IBb_prob = 0.12500
@@ -286,11 +296,12 @@ float B5FS_P5RSa_prob = 0.12500
 
 //P6RSa spatial connection scales
 
-float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt
+float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt, P6RSbasewgt
 
 P6RSdecayrate = 10000 // 1/(100e-6) m^-1
-P6RSmaxwgt = 1.0
-P6RSminwgt = 0.0
+P6RSbasewgt = 1.0
+P6RSminwgt = {0.0 + {excitatoryweightoffset}}
+P6RSmaxwgt = {{{P6RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P6RSa_P23RSa_prob = 0.25000
 float P6RSa_P23RSb_prob = 0.25000
@@ -318,11 +329,12 @@ float P6RSa_P5RSa_prob = 0.02174
 
 //P6RSb spatial connection scales
 
-float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt
+float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt, P6RSbasewgt
 
 P6RSdecayrate = 10000 // 1/(100e-6) m^-1
-P6RSmaxwgt = 1.0
-P6RSminwgt = 0.0
+P6RSbasewgt = 1.0
+P6RSminwgt = {0.0 + {excitatoryweightoffset}}
+P6RSmaxwgt = {{{P6RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P6RSb_P23RSa_prob = 0.25000
 float P6RSb_P23RSb_prob = 0.25000
@@ -350,11 +362,12 @@ float P6RSb_P5RSa_prob = 0.02174
 
 //P6RSc spatial connection scales
 
-float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt
+float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt, P6RSbasewgt
 
 P6RSdecayrate = 10000 // 1/(100e-6) m^-1
-P6RSmaxwgt = 1.0
-P6RSminwgt = 0.0
+P6RSbasewgt = 1.0
+P6RSminwgt = {0.0 + {excitatoryweightoffset}}
+P6RSmaxwgt = {{{P6RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P6RSc_P23RSa_prob = 0.25000
 float P6RSc_P23RSb_prob = 0.25000
@@ -382,11 +395,12 @@ float P6RSc_P5RSa_prob = 0.02174
 
 //P6RSd spatial connection scales
 
-float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt
+float P6RSdecayrate, P6RSmaxwgt, P6RSminwgt, P6RSbasewgt
 
 P6RSdecayrate = 10000 // 1/(100e-6) m^-1
-P6RSmaxwgt = 1.0
-P6RSminwgt = 0.0
+P6RSbasewgt = 1.0
+P6RSminwgt = {0.0 + {excitatoryweightoffset}}
+P6RSmaxwgt = {{{P6RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P6RSd_P23RSa_prob = 0.25000
 float P6RSd_P23RSb_prob = 0.25000
@@ -414,11 +428,12 @@ float P6RSd_P5RSa_prob = 0.02174
 
 //C23FS spatial connection scales
 
-float C23FSdecayrate, C23FSmaxwgt, C23FSminwgt
+float C23FSdecayrate, C23FSmaxwgt, C23FSminwgt, C23FSbasewgt
 
 C23FSdecayrate = 10000 // 1/(100e-6) m^-1
-C23FSmaxwgt = 1.0
-C23FSminwgt = 0.0
+C23FSbasewgt = 1.0
+C23FSminwgt = {0.0 + {inhibitoryweightoffset}}
+C23FSmaxwgt = {{{C23FSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float C23FS_P23RSa_prob = 1.0
 float C23FS_P23RSb_prob = 1.0
@@ -438,11 +453,12 @@ float C23FS_P5RSa_prob = 1.0
 
 //C5FS spatial connection scales
 
-float C5FSdecayrate, C5FSmaxwgt, C5FSminwgt
+float C5FSdecayrate, C5FSmaxwgt, C5FSminwgt, C5FSbasewgt
 
 C5FSdecayrate = 10000 // 1/(100e-6) m^-1
-C5FSmaxwgt = 1.0
-C5FSminwgt = 0.0
+C5FSbasewgt = 1.0
+C5FSminwgt = {0.0 + {inhibitoryweightoffset}}
+C5FSmaxwgt = {{{C5FSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float C5FS_P23RSa_prob = 1.0
 float C5FS_P23RSb_prob = 1.0
@@ -462,11 +478,12 @@ float C5FS_P5RSa_prob = 1.0
 
 //ST4RS spatial connection scales
 
-float ST4RSdecayrate, ST4RSmaxwgt, ST4RSminwgt
+float ST4RSdecayrate, ST4RSmaxwgt, ST4RSminwgt, ST4RSbasewgt
 
 ST4RSdecayrate = 10000 // 1/(100e-6) m^-1
-ST4RSmaxwgt = 1.0
-ST4RSminwgt = 0.0
+ST4RSbasewgt = 1.0
+ST4RSminwgt = {0.0 + {excitatoryweightoffset}}
+ST4RSmaxwgt = {{{ST4RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float ST4RS_P23RSa_prob = 0.04167
 float ST4RS_P23RSb_prob = 0.04167
@@ -492,11 +509,12 @@ float ST4RS_P5RSa_prob = 0.08333
 
 //I23LTS spatial connection scales
 
-float I23LTSdecayrate, I23LTSmaxwgt, I23LTSminwgt
+float I23LTSdecayrate, I23LTSmaxwgt, I23LTSminwgt, I23LTSbasewgt
 
 I23LTSdecayrate = 10000 // 1/(100e-6) m^-1
-I23LTSmaxwgt = 1.0
-I23LTSminwgt = 0.0
+I23LTSbasewgt = 1.0
+I23LTSminwgt = {0.0 + {inhibitoryweightoffset}}
+I23LTSmaxwgt = {{{I23LTSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float I23LTS_P23RSa_prob = 0.01887
 float I23LTS_P23RSb_prob = 0.01887
@@ -522,11 +540,12 @@ float I23LTS_P5RSa_prob = 0.02500
 
 //I5LTS spatial connection scales
 
-float I5LTSdecayrate, I5LTSmaxwgt, I5LTSminwgt
+float I5LTSdecayrate, I5LTSmaxwgt, I5LTSminwgt, I5LTSbasewgt
 
 I5LTSdecayrate = 10000 // 1/(100e-6) m^-1
-I5LTSmaxwgt = 1.0
-I5LTSminwgt = 0.0
+I5LTSbasewgt = 1.0
+I5LTSminwgt = {0.0 + {inhibitoryweightoffset}}
+I5LTSmaxwgt = {{{I5LTSbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float I5LTS_P23RSa_prob = 0.01887
 float I5LTS_P23RSb_prob = 0.01887
@@ -552,11 +571,12 @@ float I5LTS_P5RSa_prob = 0.02500
 
 //TCR spatial connection scales
 
-float TCRdecayrate, TCRmaxwgt, TCRminwgt
+float TCRdecayrate, TCRmaxwgt, TCRminwgt, TCRbasewgt
 
 TCRdecayrate = 10000 // 1/(100e-6) m^-1
-TCRmaxwgt = 1.0
-TCRminwgt = 0.0
+TCRbasewgt = 1.0
+TCRminwgt = {0.0 + {excitatoryweightoffset}}
+TCRmaxwgt = {{{TCRbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float TCR_P23RSa_prob = 0.04167
 float TCR_P23RSb_prob = 0.04167
@@ -581,22 +601,24 @@ float TCR_P5RSa_prob = 0.11111
 
 //nRT spatial connection scales
 
-float nRTdecayrate, nRTmaxwgt, nRTminwgt
+float nRTdecayrate, nRTmaxwgt, nRTminwgt, nRTbasewgt
 
 nRTdecayrate = 10000 // 1/(100e-6) m^-1
-nRTmaxwgt = 1.0
-nRTminwgt = 0.0
+nRTbasewgt = 1.0
+nRTminwgt = {0.0 + {inhibitoryweightoffset}}
+nRTmaxwgt = {{{nRTbasewgt}*{inhibitoryweightscale}} + {inhibitoryweightoffset}}
 
 float nRT_TCR_prob = 0.01111
 float nRT_nRT_prob = 0.02083
 
 //P23FRBa spatial connection scales
 
-float P23FRBdecayrate, P23FRBmaxwgt, P23FRBminwgt
+float P23FRBdecayrate, P23FRBmaxwgt, P23FRBminwgt, P23FRBbasewgt
 
 P23FRBdecayrate = 10000 // 1/(100e-6) m^-1
-P23FRBmaxwgt = 1.0
-P23FRBminwgt = 0.0
+P23FRBbasewgt = 1.0
+P23FRBminwgt = {0.0 + {excitatoryweightoffset}}
+P23FRBmaxwgt = {{{P23FRBbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P23FRBa_P23RSa_prob = 0.02778
 float P23FRBa_P23RSb_prob = 0.02778
@@ -622,11 +644,12 @@ float P23FRBa_P5RSa_prob = 0.12500
 
 //P5RSa spatial connection scales
 
-float P5RSdecayrate, P5RSmaxwgt, P5RSminwgt
+float P5RSdecayrate, P5RSmaxwgt, P5RSminwgt, P5RSbasewgt
 
 P5RSdecayrate = 10000 // 1/(100e-6) m^-1
-P5RSmaxwgt = 1.0
-P5RSminwgt = 0.0
+P5RSbasewgt = 1.0
+P5RSminwgt = {0.0 + {excitatoryweightoffset}}
+P5RSmaxwgt = {{{P5RSbasewgt}*{excitatoryweightscale}} + {excitatoryweightoffset}}
 
 float P5RSa_P23RSa_prob = 0.07692
 float P5RSa_P23RSb_prob = 0.07692
