@@ -366,12 +366,12 @@ end
 
 // Run the sim to time tmax
 echo Started running at {getdate}
-//step_tmax
 randseed {{mynode} + {myrandseed} + 3}
-while ({{getstat -time} < tmax}) 
-	barrierall
-	step
-end
+step_tmax
+//while ({{getstat -time} < tmax}) 
+//	barrierall
+//	step
+//end
 
 echo Finished running at {getdate}
 
