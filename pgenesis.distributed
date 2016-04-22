@@ -583,28 +583,9 @@ endif
 if ($USE_MPI) then
   if ( x$debug == x) then
     echo Going to run on $num_nodes nodes: $exec $nargv
-# MPI_CMD
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host doppel,schwarz,kolsch,eisbock -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host doppel,stout,gruit,bock,schwarz,ale,kolsch,hef,ipa,pilsner,lambic,porter,rauchbier,lager,marzen,dunkel -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host doppel,porter,lambic,rauchbier -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host bock,porter -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host doppel,schwarz -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host ipa,eisbock -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host kolsch,gruit -np $num_nodes $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host gruit,saison,doppel,schwarz -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host trappist,bock,stout,dunkel,lager,pilsner,rauchbier,saison,doppel,ipa,kolsch,lambic,hef,porter,barley,schwarz,sahti,marzen,maibock,gruit,eisbock,chhaang,ale -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host trappist,bock,stout,dunkel,lager,pilsner,rauchbier,saison,doppel,ipa,lambic,hef,porter,barley,schwarz,sahti,marzen,maibock,gruit,eisbock,chhaang,ale -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host schwarz,eisbock,saison,gruit -np $num_nodes nice -n10 $exec $nargv
 
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host porter,bock -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host marzen,rauchbier -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host sahti,doppel -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host eisbock,gruit -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host kolsch,maibock -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host saison,schwarz -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host chhaang,dunkel -np $num_nodes nice -n10 $exec $nargv
-#mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host stout,trappist -np $num_nodes nice -n10 $exec $nargv
-mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host bock,marzen -np $num_nodes nice -n10 $exec $nargv
+# MPI_CMD
+mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host %HOSTS% -np $num_nodes nice -n10 $exec $nargv
 
   else
     echo Going to debug on $num_nodes nodes: $exec $nargv

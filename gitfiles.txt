@@ -979,6 +979,7 @@ gui/rasterdefspos2.g
 netdefs.g
 netparams.g
 neuron_type_list.txt
+pgenesis.distributed
 randominputdefs.g
 run_Neocortex
 spikedefs.g
