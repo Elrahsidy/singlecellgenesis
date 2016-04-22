@@ -205,26 +205,6 @@ function do_asc_file(diskpath, srcpath, field, fd)
 end
 
 //===============================
-//    Spike Class  Data Out ASCII
-//===============================
-
-function do_classasc_file(diskpath, srcpath, classdex, Nelements, field, fd)
-
-        int Nelements, classdex
-        int i
-
-        create asc_file /{fd}
-        setfield /{fd} filename {diskpath} flush 1 leave_open 1 append 0 float_format %0.9g
-
-        for (i=1;i<={Nelements};i=i+1)
-
-            addmsg {srcpath}[{i-1}]/soma/spk{classdex} /{fd}  SAVE {field}
-        
-        end
-
-end
-
-//===============================
 //      Set up Network
 //===============================
 
