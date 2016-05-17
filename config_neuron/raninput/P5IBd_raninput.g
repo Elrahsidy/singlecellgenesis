@@ -37,7 +37,7 @@
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeP5IBd{dex} /P5IBdnet/P5IBd[{dex}]/apdend3/Ex_chSPIKEAMPA SPIKE
 
-                setfield /P5IBdnet/P5IBd[{dex}]/apdend3/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /P5IBdnet/P5IBd[{dex}]/apdend3/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 

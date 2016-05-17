@@ -39,7 +39,7 @@ if ({columntype == 0})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeC23FS{dex} /C23FSnet/C23FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /C23FSnet/C23FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /C23FSnet/C23FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 
@@ -90,7 +90,7 @@ if ({columntype == 1})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeC23FS{k} /C23FSnet/C23FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /C23FSnet/C23FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /C23FSnet/C23FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
    

@@ -39,7 +39,7 @@ if ({columntype == 0})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeI5LTS{dex} /I5LTSnet/I5LTS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /I5LTSnet/I5LTS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /I5LTSnet/I5LTS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 
@@ -90,7 +90,7 @@ if ({columntype == 1})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeI5LTS{k} /I5LTSnet/I5LTS[{k}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /I5LTSnet/I5LTS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /I5LTSnet/I5LTS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
    

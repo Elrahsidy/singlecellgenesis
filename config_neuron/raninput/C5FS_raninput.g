@@ -39,7 +39,7 @@ if ({columntype == 0})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeC5FS{dex} /C5FSnet/C5FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /C5FSnet/C5FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /C5FSnet/C5FS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 
@@ -90,7 +90,7 @@ if ({columntype == 1})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeC5FS{k} /C5FSnet/C5FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /C5FSnet/C5FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /C5FSnet/C5FS[{k}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
    

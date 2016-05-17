@@ -37,7 +37,7 @@
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeST4RS{dex} /ST4RSnet/ST4RS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA SPIKE
 
-                setfield /ST4RSnet/ST4RS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /ST4RSnet/ST4RS[{dex}]/distdendNlonga/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 

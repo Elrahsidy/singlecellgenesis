@@ -39,7 +39,7 @@ if ({columntype == 0})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeTCR{dex} /TCRnet/TCR[{dex}]/proxdendNNW31/Ex_chSPIKEAMPA SPIKE
 
-                setfield /TCRnet/TCR[{dex}]/proxdendNNW31/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /TCRnet/TCR[{dex}]/proxdendNNW31/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
 
@@ -90,7 +90,7 @@ if ({columntype == 1})
                 setfield ^ min_amp 1.0 max_amp 1.0 rate {Ranrate} reset 1 reset_value 0
                 addmsg /randomspikeTCR{k} /TCRnet/TCR[{k}]/proxdendNNW31/Ex_chSPIKEAMPA SPIKE
 
-                setfield /TCRnet/TCR[{k}]/proxdendNNW31/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight 1
+                setfield /TCRnet/TCR[{k}]/proxdendNNW31/Ex_chSPIKEAMPA synapse[0].delay 0 synapse[0].weight {randominputweight}
 
             end
    
