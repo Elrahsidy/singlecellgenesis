@@ -48,7 +48,7 @@ float longrangeweightscale = 0.5
 float excitatoryweightscale = 1.0
 float excitatoryweightoffset = 0.0
 float inhibitoryweightscale = 1.0
-float inhibitoryweightoffset = 1.0
+float inhibitoryweightoffset = 0.0
 
 // Seeding the random number generator used later in the input pattern.
 // Seeding with a defined number (integer) allows one to reproduce
