@@ -82,7 +82,7 @@ echo Setting weights and delays for %SRC%->%DEST% connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -radial  {%SRC%_%DEST%_axdelayCV} -add
+rvolumedelay /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -radial {{%SRC%_%DEST%_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float %SRC%decayrate = 0.1

@@ -38,6 +38,7 @@ float regionspacing = {SEPX}*{NX}*10
 float shortrangeprobscale = 1.0
 float longrangeprobscale = 1.0
 float longrangeweightscale = 0.5
+float longrangeCVscale = .01
 
 // shortrangeweightscale does not exist because I haven't decided on the best
 // way to scale these--multiply into only maxweight or both maxweight and

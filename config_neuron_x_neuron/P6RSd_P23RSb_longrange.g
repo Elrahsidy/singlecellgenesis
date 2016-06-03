@@ -82,7 +82,7 @@ echo Setting weights and delays for P6RSd->P23RSb connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P6RSdnet/P6RSd[]/soma/spk14longrange -radial  {P6RSd_P23RSb_axdelayCV} -add
+rvolumedelay /P6RSdnet/P6RSd[]/soma/spk14longrange -radial {{P6RSd_P23RSb_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P6RSdmaxweight = 1.0

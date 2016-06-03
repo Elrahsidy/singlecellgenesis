@@ -82,7 +82,7 @@ echo Setting weights and delays for P5IBb->B5FS connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P5IBbnet/P5IBb[]/soma/spk7longrange -radial  {P5IBb_B5FS_axdelayCV} -add
+rvolumedelay /P5IBbnet/P5IBb[]/soma/spk7longrange -radial {{P5IBb_B5FS_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P5IBbmaxweight = 1.0
