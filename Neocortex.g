@@ -38,7 +38,8 @@ float regionspacing = {SEPX}*{NX}*10
 float shortrangeprobscale = 1.0
 float longrangeprobscale = 1.0
 float longrangeweightscale = 0.5
-float longrangeCVscale = .01
+//float longrangeCVscale = .01
+float longrangeCVscale = 1.0
 
 // shortrangeweightscale does not exist because I haven't decided on the best
 // way to scale these--multiply into only maxweight or both maxweight and
@@ -111,7 +112,7 @@ echo Completed startup at {getdate}
 int probedex
 int probedex2
 int gridsize
-float neuronfrac = 1.0 // Percentage of neurons receiving background
+float neuronfrac = 1.0 // Proportion of neurons receiving background noise (1.0 == all neurons)
 float ranrateoffset = 0.0 // Offset for Ranrate; when zero then 1.0 <= Ranrate <= 10.0
 float ranratescale = 1.0 // Scaling factor for Ranrate; when one then 1.0 <= Ranrate <= 10.0
 float randominputweight = 1.0
