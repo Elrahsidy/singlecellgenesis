@@ -4,7 +4,7 @@
 ** The 1991 Traub set of voltage and concentration dependent channels
 ** Implemented as tabchannels by : Dave Beeman
 **      R.D.Traub, R. K. S. Wong, R. Miles, and H. Michelson
-**	Journal of Neurophysiology, Vol. 66, p. 635 (1991)
+**    Journal of Neurophysiology, Vol. 66, p. 635 (1991)
 **
 ** This file depends on functions and constants defined in defaults.g
 ** As it is also intended as an example of the use of the tabchannel
@@ -69,7 +69,7 @@ function make_NaF20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call NaF20  TABCREATE X {xdivs} {xmin} {xmax}
+    call NaF20  TABCREATE X {xdivs} {xmin} {xmax}
     call NaF20  TABCREATE Y {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
@@ -94,7 +94,7 @@ function make_NaF20
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield NaF20  X_A->table[{i}] {y}
@@ -119,7 +119,7 @@ function make_NaF20
             y = y2/y1
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield NaF20  Y_A->table[{i}] {y}
@@ -161,7 +161,7 @@ function make_NaP20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call NaP20 TABCREATE X {xdivs} {xmin} {xmax}
+    call NaP20 TABCREATE X {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
         int i
@@ -185,7 +185,7 @@ function make_NaP20
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield NaP20 X_A->table[{i}] {y}
@@ -224,7 +224,7 @@ function make_AR20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call AR20 TABCREATE X {xdivs} {xmin} {xmax}
+    call AR20 TABCREATE X {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
         int i
@@ -236,13 +236,13 @@ function make_AR20
             // alpha
 
             y1 = 0.001/{ {exp {-14.6 - 86.0*x}} + {exp {-1.87 + 70.0*x}} }
-
+            z1=y1
             y2 = 1.0+{exp {181.8*(x+0.075)}}
 
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield AR20 X_A->table[{i}] {y}
@@ -282,7 +282,7 @@ function make_KDR20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call KDR20 TABCREATE X {xdivs} {xmin} {xmax}
+    call KDR20 TABCREATE X {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
         int i
@@ -306,7 +306,7 @@ function make_KDR20
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield KDR20 X_A->table[{i}] {y}
@@ -345,7 +345,7 @@ function make_KA20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call KA20 TABCREATE X {xdivs} {xmin} {xmax}
+    call KA20 TABCREATE X {xdivs} {xmin} {xmax}
     call KA20 TABCREATE Y {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
@@ -368,7 +368,7 @@ function make_KA20
             y = 1/(y2*y1) //
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield KA20 X_A->table[{i}] {y}
@@ -400,7 +400,7 @@ function make_KA20
             y = y2/y1
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield KA20 Y_A->table[{i}] {y}
@@ -443,7 +443,7 @@ function make_K220
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call K220 TABCREATE X {xdivs} {xmin} {xmax}
+    call K220 TABCREATE X {xdivs} {xmin} {xmax}
     call K220 TABCREATE Y {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
@@ -463,7 +463,7 @@ function make_K220
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield K220 X_A->table[{i}] {y}
@@ -488,7 +488,7 @@ function make_K220
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield K220 Y_A->table[{i}] {y}
@@ -530,7 +530,7 @@ function make_KM20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call KM20 TABCREATE X {xdivs} {xmin} {xmax}
+    call KM20 TABCREATE X {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
         int i
@@ -548,7 +548,7 @@ function make_KM20
             y = y1
 
             // alpha+beta
-	   
+
             z=y1+y2
 
             setfield KM20 X_A->table[{i}] {y}
@@ -588,7 +588,7 @@ function make_CaL20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call CaL20 TABCREATE X {xdivs} {xmin} {xmax}
+    call CaL20 TABCREATE X {xdivs} {xmin} {xmax}
     call CaL20 TABCREATE Y {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
@@ -608,7 +608,7 @@ function make_CaL20
             y = 1/(y2*y1)
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield CaL20 X_A->table[{i}] {y}
@@ -633,7 +633,7 @@ function make_CaL20
             y = y2/y1
 
             // alpha+beta
-	   
+
             z=1/z1
 
             setfield CaL20 Y_A->table[{i}] {y}
@@ -675,7 +675,7 @@ function make_CaH20
         float   xmax = 0.10      // normally  0.05
         int     xdivs = 79
 
-	call CaH20 TABCREATE X {xdivs} {xmin} {xmax}
+    call CaH20 TABCREATE X {xdivs} {xmin} {xmax}
 
 // Fill the X_A table with alpha values and the X_B table with (alpha+beta)
         int i
@@ -694,7 +694,7 @@ function make_CaH20
             y = y1
 
             // alpha+beta
-	   
+
             z=y1+y2
 
             setfield CaH20 X_A->table[{i}] {y}
@@ -853,7 +853,7 @@ function make_KCs20
         for (i = 0 ; i <= {xdivs} ; i = i + 1)
             if (x < -0.010)
                 alpha = 53.0*{exp { {90.91*(x + 0.050)} - {37.04*(x + 0.0535)} } }
-                beta = 2000.0*{exp {37.04*(x - 0.0535)}} - alpha
+                beta = 2000.0*{exp {37.04*(-x - 0.0535)}} - alpha
             else
                 alpha = 2000.0*{exp {37.04*(-x - 0.0535)}}
                 beta = 0.0
@@ -942,7 +942,7 @@ function make_KCd20
         for (i = 0 ; i <= {xdivs} ; i = i + 1)
             if (x < -0.010)
                 alpha = 53.0*{exp { {90.91*(x + 0.050)} - {37.04*(x + 0.0535)} } }
-                beta = 2000.0*{exp {37.04*(x - 0.0535)}} - alpha
+                beta = 2000.0*{exp {37.04*(-x - 0.0535)}} - alpha
             else
                 alpha = 2000.0*{exp {37.04*(-x - 0.0535)}}
                 beta = 0.0
@@ -978,11 +978,11 @@ function make_KCd20
             else
                 y = 1.0
             end
-          
+
             /* activation will be computed as Z_A/Z_B */
             setfield KCd20 Z_A->table[{i}] {y}
             setfield KCd20 Z_B->table[{i}] 1.0
-            
+
            /* activation will be computed as Z_A/Z_B */
             //setfield KCd20 Z_A->table[{i}] {y/2}
             //setfield KCd20 Z_B->table[{i}] 0.5
