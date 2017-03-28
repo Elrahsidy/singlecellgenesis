@@ -17,8 +17,8 @@ int j
 // Electrode centered above each region
 float LFPx = 0
 float LFPy = 0
-float LFPz = 3021e-6
-// This is 3021 um above the *BOTTOM* of the column and 150 um above the highest possible neuron
+float LFPz = 9021e-6
+// This is 9021 um above the *BOTTOM* of the column and 6150 um above the highest possible soma
 
 for (j=0; j<{{numelecs}-1}; j=j+1)
 	 LFPx = {regionspacing+{{SEPX}*{NX}*{sqrtNnodesperregion}}}*{{j}%{sqrtNregions}} + {{SEPX*{{NX*sqrtNnodesperregion}-1}}/2}
@@ -30,6 +30,7 @@ end
 // Last one is the central electrode
 j = {{numelecs}-1}
 create efield LFP{j}
+float LFPz = 9021e-6
 float LFPx = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPX}*(({NX}*{sqrtNnodes})-1)}}/2
 float LFPy = {{{regionspacing}*({sqrtNregions}-1)} + {{SEPY}*(({NY}*{sqrtNnodes})-1)}}/2
 setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz} 
@@ -393,7 +394,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
 
      call LFP{j} RECALC
 
-	 // For debugging:
-	 //rshowmsg LFP{j} >> ./data-latest/lfp{j}_{mynode}_incoming.txt
+    // For debugging:
+    //rshowmsg LFP{j} >> ./data-latest/lfp{j}_{mynode}_incoming.txt
 end
 
