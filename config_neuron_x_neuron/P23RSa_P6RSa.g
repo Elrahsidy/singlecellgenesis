@@ -36,7 +36,7 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {{shortrangeprobscale}*{P23RSa_P6RSa_prob}}
+          -probability {{shortrangeP23probscale}*{P23RSa_P6RSa_prob}}
 
 end
 
@@ -57,7 +57,7 @@ foreach s ({arglist {locations}})
 	      -sourcemask box -1 -1  -1  1  1  1   \
 	      -destmask   box -{destlim} -{destlim}  -1  {destlim}  {destlim}  1   \
 	      -desthole   box -0.000001 -0.000001 -0.000001 0.000001 0.000001 0.000001 \
-          -probability {{shortrangeprobscale}*{P23RSa_P6RSa_prob}}
+          -probability {{shortrangeP23probscale}*{P23RSa_P6RSa_prob}}
 
 end
 
