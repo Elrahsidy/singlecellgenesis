@@ -8,7 +8,7 @@ str outfile
 // List source, dest coordinates and weight
 //foreach element ({el /#net/#[]/#/Inh_ch#,/#net/#[]/#/Ex_ch#})
 //   int syncount = {getsyncount {element}}
-//   outfile = {"data/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
+//   outfile = {"./data-latest/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
 //   for (i=0; i<=syncount-1; i=i+1) 
 //      mysource = {getsynsrc {element} {i}}
 //      //if ({mysource} != "/post")
@@ -28,7 +28,7 @@ for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
 		// Synaptic connections to other neurons
         echo Listing connections for node {mynode}
         foreach element ({el /#net/#[]/soma/spk#})
-            outfile = {"data-latest/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
+            outfile = {"./data-latest/connections/" @ {myzeropadnode} @ {strsub {element} / _ -all} @ ".txt"}
             echo {mynode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} >> {outfile}
             rshowmsg {element} >> {outfile}
             //echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} > /dev/null
@@ -38,7 +38,7 @@ for (thisnode=0; {thisnode < {Nnodes}}; thisnode={{thisnode}+1})
 		// Get random spike connections too
 		echo Listing random connections for node {mynode}
 		foreach element ({el /randomspike#})
-			outfile = {"data-latest/connections/" @ {myzeropadnode} @ {strsub {strsub {element} randomspike randomspike_ -all} / _ -all} @ ".txt"}
+			outfile = {"./data-latest/connections/" @ {myzeropadnode} @ {strsub {strsub {element} randomspike randomspike_ -all} / _ -all} @ ".txt"}
 			echo {getsyndest {element} 0} {getfield {getsyndest {element} 0}/../.. x} {getfield {getsyndest {element} 0}/../.. y} {getfield {getsyndest {element} 0}/../.. z} {element} {getfield {getsyndest {element} 0} synapse[0].weight} >> {outfile}
 			rshowmsg {element} >> {outfile}
 			//echo {thisnode} {element} {getfield {element} x} {getfield {element} y} {getfield {element} z} {getfield {element}/../.. rotation} > /dev/null
