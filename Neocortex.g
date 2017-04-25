@@ -36,10 +36,12 @@ float regionspacing = {SEPX}*{NX}*10
 
 // Scaling for short and long range connections between regions.
 float shortrangeprobscale = 1.0
+float shortrangeP23probscale = 1.0
 float longrangeprobscale = 1.0
 float longrangeweightscale = 0.5
 //float longrangeCVscale = .01
 float longrangeCVscale = 1.0
+float inhibitorytargetscale = 1.0
 
 // shortrangeweightscale does not exist because I haven't decided on the best
 // way to scale these--multiply into only maxweight or both maxweight and
@@ -49,7 +51,7 @@ float longrangeCVscale = 1.0
 // Excitatory and inhibitory weight scale + offset
 float excitatoryweightscale = 1.0
 float excitatoryweightoffset = 0.0
-float inhibitoryweightscale = 1.0
+float inhibitoryweightscale = 10.0
 float inhibitoryweightoffset = 0.0
 
 // Seeding the random number generator used later in the input pattern.
@@ -66,6 +68,10 @@ int display = 0     // Display neurons and graphs?
 int output = 1      // Dump neural output to a file?
 int membranepotentialoutput = 0 // Log membrane potentials (you probably don't want this)
 int drawtree = 1    // Output connectivity info?
+
+// Be strict about genesis syntax; bail if there's an error!
+maxerrors 0
+maxwarnings 0
 
 // Enable/disable thalamocortical connections
 int thalamocortical = 1
