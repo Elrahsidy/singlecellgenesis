@@ -53,16 +53,36 @@
 
 date
 
+myrundate="`date "+%Y%m%d-%H%M%S"`"
+
 # Check binary paths
 if [[ ! "`which mpirun 2> /dev/null && which pgenesis`" ]]; then
 	echo "mpirun and/or pgenesis not found. Trying to set the right path for you."
 	export PATH="$PATH:/data2/software/gentoo/usr/bin:/data2/software/genesis-2.4/genesis:/data2/software/genesis-2.4/pgenesis/bin"
 fi
 
+myhosts="`hostname -s`"
+if [[ "`echo "$1" | grep "^[a-z]"`" ]]; then
+	myhosts="`echo $1 | sed 's/localhost/$(hostname -s)/g' | tr ' ' ','`"
+fi
+echo "Running on: $myhosts"
+
 # Checking output paths
 #mydir="`dirname "$0"`"
 mydir="`pwd | sed 's/\/home/\/barleyhome/'`"
-mydirwithtime="$mydir/data-`date "+%Y%m%d-%H%M%S.%N" | cut -b1-19`"
+if [[ "`grep "membranepotentialoutput\s*=\s*1" Neocortex.g`" ]]; then # high I/O needs; use /dev/shm on each host for data
+    remotedata=1
+    mydirwithtime="/dev/shm/data-$myrundate"
+
+    # Create output directories in /dev/shm on all hosts
+    parallel ssh -x {} mkdir "$mydirwithtime" ::: `echo $myhosts | tr ',' ' '`
+else # low I/O needs
+    mydirwithtime="$mydir/data-$myrundate"
+    mkdir "$mydirwithtime"
+fi
+commondir="$mydir/data-$myrundate"
+
+# Update symlinks for latest output directory
 rm "$mydir/data-nextlatest"
 cp -P "$mydir/data-latest" "$mydir/data-nextlatest" 
 rm "$mydir/data-latest"
@@ -72,17 +92,17 @@ if [[ "`find $mydirwithtime -type f 2>/dev/null`" ]]; then
     echo "Data directory already exists. Wait one second and run this script again."
     exit
 fi
-if [[ ! -d "$mydirwithtime" ]]; then
-	mkdir -p "$mydirwithtime/connections"
-	mkdir -p "$mydir/data/connections" 2>/dev/null
-fi
+
+mkdir -p "$mydirwithtime/connections" # need to fix this for multi-host high I/O mode
+mkdir -p "$mydir/data/connections"
+mkdir -p "$commondir"
 
 # Output log file
-logfile="$mydirwithtime/$(date +%Y%m%d-%H%M).log"
+logfile="$commondir/${myrundate}.log"
 
 # Echo any notes passed in on the command line to the log file
-echo "Running as $(whoami) at $(date +%Y%m%d-%H%M)" >> "$logfile"
-echo "Notes: $@" >> "$logfile"
+echo "Running as $(whoami) at $myrundate on $myhosts" | tee -a "$logfile"
+echo "Notes: $@" | tee -a "$logfile"
 
 # Checking node numbers
 # Assumes that Nnodes in Neocortex.g is correct
@@ -111,18 +131,20 @@ tar c -T - < gitfiles.txt | tar x -C "${mydirwithtime}/scripts"
 # modify it if you need to use a different selection of hosts).
 
 # Non-interactive (output redirected to log file)
-myhosts="`hostname -s`"
-if [[ "`echo "$1" | grep "^[a-z]"`" ]]; then
-	myhosts="`echo $1 | tr ' ' ','`"
-	echo "Running on: $myhosts"
-fi
+# Edit pgenesis.distributed to use selected hosts
 sed -i "s/--host %HOSTS%/--host $myhosts/; s/--host [a-z,]*/--host $myhosts/" ./pgenesis.distributed
-./pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
-#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g >> "$logfile" 2>&1
+./pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g > >(tee -a "$logfile") 2> >(tee -a "$logfile.errors" >&2)
+#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g | tee -a "$logfile" 2>&1
 
 # Interactive (no redirection)
 #/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox $mydir/Neocortex
 
+# Retrieve datafiles from localhost and hosts
+if [[ "$remotedata" ]]; then
+    /data2/data/Neocortex_sim/Scripts/retrieve_data.sh "$mydirwithtime"
+fi
+
+# no longer necessary
 # Move tree to data file
-mv "$mydir/data/connections/"* "$mydirwithtime/connections/" 2>/dev/null
+#mv "$mydir/data/connections/"* "$mydirwithtime/connections/" 2>/dev/null
 
