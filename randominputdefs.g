@@ -22,8 +22,8 @@ include config_neuron/raninput/P6RSb_raninput.g
 
 if ({columntype == 0})
 
-     include config_neuron/raninput/P6RSc_raninput.g
-     include config_neuron/raninput/P6RSd_raninput.g
+    include config_neuron/raninput/P6RSc_raninput.g
+    include config_neuron/raninput/P6RSd_raninput.g
 
 end
 
@@ -37,8 +37,8 @@ include config_neuron/raninput/I5LTS_raninput.g
 
 if ({thalamocortical == 1})
  
-     include config_neuron/raninput/TCR_raninput.g
-     include config_neuron/raninput/nRT_raninput.g
+    include config_neuron/raninput/TCR_raninput.g
+    include config_neuron/raninput/nRT_raninput.g
 
 end
 
