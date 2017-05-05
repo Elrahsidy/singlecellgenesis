@@ -14,6 +14,7 @@ float originymin
 
 // Unique number for each cell type (same as spike number)
 int typenum = 22
+str typename = "P23FRBa"
 
 int ydex
 float placer
@@ -46,7 +47,7 @@ addfield /P23FRBa rotation
 
 if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
      create asc_file /Vmwrite{typenum}
-     setfield /Vmwrite{typenum} filename ./data-latest/membrane.celltype{typenum}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
+     setfield /Vmwrite{typenum} filename ./data-latest/membrane.{typename}.{myzeropadnode} flush 1 leave_open 1 append 0 float_format %0.9g
 end
 
 // CREATING THE PLANE OF P23FRBa cells
