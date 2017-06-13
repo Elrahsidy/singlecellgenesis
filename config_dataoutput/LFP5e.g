@@ -21,11 +21,11 @@ float LFPz = 9021e-6
 // This is 9021 um above the *BOTTOM* of the column and 6150 um above the highest possible soma
 
 for (j=0; j<{{numelecs}-1}; j=j+1)
-	 LFPx = {regionspacing+{{SEPX}*{NX}*{sqrtNnodesperregion}}}*{{j}%{sqrtNregions}} + {{SEPX*{{NX*sqrtNnodesperregion}-1}}/2}
-	 LFPy = {regionspacing+{{SEPY}*{NY}*{sqrtNnodesperregion}}}*{{j}/{sqrtNregions}} + {{SEPY*{{NY*sqrtNnodesperregion}-1}}/2}
-     create efield LFP{j}
-     setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz}
-     echo Position LFP {mynode} {j} NA NA NA NA {LFPx} {LFPy} {LFPz} 0
+    LFPx = {regionspacing+{{SEPX}*{NX}*{sqrtNnodesperregion}}}*{{j}%{sqrtNregions}} + {{SEPX*{{NX*sqrtNnodesperregion}-1}}/2}
+    LFPy = {regionspacing+{{SEPY}*{NY}*{sqrtNnodesperregion}}}*{{j}/{sqrtNregions}} + {{SEPY*{{NY*sqrtNnodesperregion}-1}}/2}
+    create efield LFP{j}
+    setfield LFP{j} scale 0.335 x {LFPx} y {LFPy} z {LFPz}
+    echo Position LFP {mynode} {j} NA NA NA NA {LFPx} {LFPy} {LFPz} 0
 end
 // Last one is the central electrode
 j = {{numelecs}-1}
@@ -51,18 +51,20 @@ str locationsP23RS = "soma apdend1 apdend2 apdend3 apdend4aL apdend4bL apdend5aL
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsP23RS}})
+        foreach s ({arglist {locationsP23RS}})
 
-               addmsg /P23RSanet/P23RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P23RSbnet/P23RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P23RScnet/P23RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P23RSdnet/P23RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /P23RSanet/P23RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+                addmsg /P23RSbnet/P23RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+                addmsg /P23RScnet/P23RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+                addmsg /P23RSdnet/P23RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
 
-          end
+        end
 
-     end
+    end
 
 end
 
@@ -70,13 +72,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = B23FS_NX*B23FS_NY-1
+    kmax = B23FS_NX*B23FS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {B23FS_NX/2}*B23FS_NY-1
+    kmax = {B23FS_NX/2}*B23FS_NY-1
 
 end
 
@@ -87,15 +89,17 @@ str locationsB23FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlong
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsB23FS}})
+        foreach s ({arglist {locationsB23FS}})
 
-               addmsg /B23FSnet/B23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /B23FSnet/B23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
 
-          end
+        end
 
-     end
+    end
 
 end
 
@@ -110,18 +114,19 @@ str locationsP5IB = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsP5IB}})
+        foreach s ({arglist {locationsP5IB}})
 
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
                addmsg /P5IBanet/P5IBa[{k}]/{s} LFP{j} CURRENT Im 0.0
                addmsg /P5IBbnet/P5IBb[{k}]/{s} LFP{j} CURRENT Im 0.0
                addmsg /P5IBcnet/P5IBc[{k}]/{s} LFP{j} CURRENT Im 0.0
                addmsg /P5IBdnet/P5IBd[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -129,13 +134,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = B5FS_NX*B5FS_NY-1
+    kmax = B5FS_NX*B5FS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {B5FS_NX/2}*B5FS_NY-1
+    kmax = {B5FS_NX/2}*B5FS_NY-1
 
 end
 
@@ -146,15 +151,17 @@ str locationsB5FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsB5FS}})
+        foreach s ({arglist {locationsB5FS}})
 
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
                addmsg /B5FSnet/B5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
 
-          end
+        end
 
-     end
+    end
 
 end
 
@@ -169,23 +176,26 @@ str locationsP6RS = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsP6RS}})
+        foreach s ({arglist {locationsP6RS}})
 
-               addmsg /P6RSanet/P6RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P6RSbnet/P6RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /P6RSanet/P6RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+                addmsg /P6RSbnet/P6RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
 
-               if ({columntype == 0})
+            if ({columntype == 0})
 
-                    addmsg /P6RScnet/P6RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
-                    addmsg /P6RSdnet/P6RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
-          
-               end
+                if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                   addmsg /P6RScnet/P6RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+                   addmsg /P6RSdnet/P6RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+                end
+            end
 
-          end
+        end
 
-     end
+    end
 
 end
 
@@ -193,13 +203,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = C23FS_NX*C23FS_NY-1
+    kmax = C23FS_NX*C23FS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {C23FS_NX/2}*C23FS_NY-1
+    kmax = {C23FS_NX/2}*C23FS_NY-1
 
 end
 
@@ -210,15 +220,17 @@ str locationsC23FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlong
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsC23FS}})
+        foreach s ({arglist {locationsC23FS}})
 
-               addmsg /C23FSnet/C23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /C23FSnet/C23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
 
-          end
+        end
 
-     end
+    end
 
 end
 
@@ -226,13 +238,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = C5FS_NX*C5FS_NY-1
+    kmax = C5FS_NX*C5FS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {C5FS_NX/2}*C5FS_NY-1
+    kmax = {C5FS_NX/2}*C5FS_NY-1
 
 end
 
@@ -243,15 +255,16 @@ str locationsC5FS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlonga
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsC5FS}})
+        foreach s ({arglist {locationsC5FS}})
 
-               addmsg /C5FSnet/C5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /C5FSnet/C5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -266,15 +279,16 @@ str locationsST4RS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlong
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsST4RS}})
+        foreach s ({arglist {locationsST4RS}})
 
-               addmsg /ST4RSnet/ST4RS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /ST4RSnet/ST4RS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -282,13 +296,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = I23LTS_NX*I23LTS_NY-1
+    kmax = I23LTS_NX*I23LTS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {I23LTS_NX/2}*I23LTS_NY-1
+    kmax = {I23LTS_NX/2}*I23LTS_NY-1
 
 end
 
@@ -299,15 +313,16 @@ str locationsI23LTS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlon
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsI23LTS}})
+        foreach s ({arglist {locationsI23LTS}})
 
-               addmsg /I23LTSnet/I23LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /I23LTSnet/I23LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -315,13 +330,13 @@ end
 
 if ({columntype == 0})
 
-     kmax = I5LTS_NX*I5LTS_NY-1
+    kmax = I5LTS_NX*I5LTS_NY-1
 
 end
 
 if ({columntype == 1})
 
-     kmax = {I5LTS_NX/2}*I5LTS_NY-1
+    kmax = {I5LTS_NX/2}*I5LTS_NY-1
 
 end
 
@@ -332,15 +347,16 @@ str locationsI5LTS = "soma proxdendN proxdendE proxdendS proxdendW distdendNlong
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsI5LTS}})
+        foreach s ({arglist {locationsI5LTS}})
 
-               addmsg /I5LTSnet/I5LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /I5LTSnet/I5LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -355,15 +371,16 @@ str locationsP23FRB = "soma apdend1 apdend2 apdend3 apdend4aL apdend4bL apdend5a
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsP23FRB}})
+        foreach s ({arglist {locationsP23FRB}})
 
-               addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
@@ -378,21 +395,22 @@ str locationsP5RS = "soma apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     for (k=0;k<={kmax};k=k+1)
+    for (k=0;k<={kmax};k=k+1)
 
-          foreach s ({arglist {locationsP5RS}})
+        foreach s ({arglist {locationsP5RS}})
 
-               addmsg /P5RSanet/P5RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+            if ({{j} == {myregion} || {j} == {{numelecs}-1}})
+                addmsg /P5RSanet/P5RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+            end
+        end
 
-          end
-
-     end
+    end
 
 end
 
 for (j=0; j<={{numelecs}-1}; j=j+1)
 
-     call LFP{j} RECALC
+    call LFP{j} RECALC
 
     // For debugging:
     //rshowmsg LFP{j} >> ./data-latest/lfp{j}_{mynode}_incoming.txt
