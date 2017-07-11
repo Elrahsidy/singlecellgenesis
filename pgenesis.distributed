@@ -80,10 +80,10 @@
 #---------------------------------------------------------------------------*
 
 #     PGENESIS_SRC: the location of vanilla PGENESIS source
-setenv PGENESIS_SRC /data2/software/genesis-2.4-openmpi-1.8.8/pgenesis
+setenv PGENESIS_SRC /data2/software/genesis-2.4/pgenesis
 
 #     PGENESIS_INST: the location of vanilla PGENESIS installation (libs, bins)
-setenv PGENESIS_INST /data2/software/genesis-2.4-openmpi-1.8.8/pgenesis
+setenv PGENESIS_INST /data2/software/genesis-2.4/pgenesis
 
 #     PGENESIS_EXTSRC: the location of extended PGENESIS source
 setenv PGENESIS_EXTSRC _extpgenesis-src_
@@ -95,7 +95,7 @@ setenv PGENESIS_EXTLIBS _extpgenesis-libs_
 setenv PGENESIS_EXTINST _extpgenesis-inst_
 
 #     GENESIS_DEFAULT: the location for serial genesis
-setenv GENESIS_DEFAULT	/data2/software/genesis-2.4-openmpi-1.8.8/genesis
+setenv GENESIS_DEFAULT	/data2/software/genesis-2.4/genesis
 
 #     USE_MPI: set to 1 if we are using MPI
 setenv USE_MPI          01
@@ -104,7 +104,7 @@ setenv USE_MPI          01
 setenv USE_PVM          0
 
 #     PVM_DEFAULT: the PVM root directory on the local machine
-setenv PVM_DEFAULT	/data2/software/genesis-2.4-openmpi-1.8.8/pgenesis
+setenv PVM_DEFAULT	/data2/software/genesis-2.4/pgenesis
 
 #     PVM_ARCH: the PVM architecture type
 setenv PVM_ARCH		Linux
@@ -585,7 +585,7 @@ if ($USE_MPI) then
     echo Going to run on $num_nodes nodes: $exec $nargv
 
 # MPI_CMD
-mpirun --verbose --mca plm_rsh_agent "/usr/bin/ssh" --host %HOSTS% -np $num_nodes nice -n10 $exec $nargv
+mpirun --verbose --map-by socket:OVERSUBSCRIBE --host kolsch,ipa -np $num_nodes nice -n10 $exec $nargv
 
   else
     echo Going to debug on $num_nodes nodes: $exec $nargv
