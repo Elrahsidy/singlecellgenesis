@@ -3,7 +3,9 @@
 
 int j
 for (j=0; j<{{numelecs}-1}; j=j+1)
-    do_asc_file ./data-latest/LFP5.region{j}.{myzeropadnode} LFP{j} field LFP{j}file
+    if ({{j} == {myregion}})
+        do_asc_file ./data-latest/LFP5.region{j}.{myzeropadnode} LFP{j} field LFP{j}file
+    end
 end
 
 // Last one is the central electrode
