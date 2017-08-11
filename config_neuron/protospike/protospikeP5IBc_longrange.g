@@ -16,6 +16,6 @@ function make_spk8longrange
         create spikegen spk8longrange
         setfield spk8longrange \
                 thresh  0.00 \         // V
-                abs_refract     10e-3 \ // sec
+                abs_refract     10e-4 \ // sec
                 output_amp      1
 end

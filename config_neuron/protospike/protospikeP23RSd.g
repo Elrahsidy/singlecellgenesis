@@ -16,6 +16,6 @@ function make_spk4
         create spikegen spk4
         setfield spk4 \
                 thresh  0.00 \         // V
-                abs_refract     10e-3 \ // sec
+                abs_refract     10e-4 \ // sec
                 output_amp      1
 end
