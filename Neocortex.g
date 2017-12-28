@@ -353,6 +353,9 @@ randseed {{mynode} + {myrandseed} + 2}
 include randominputdefs.g
 //randseed { {myrandseed} + 2 }
 
+// Create manually-defined spiking inputs
+include spikegenerator.g
+
 // Output and diagnostics
 
 //Setup messages for Data File writing
