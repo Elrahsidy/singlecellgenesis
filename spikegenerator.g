@@ -3,7 +3,8 @@ float pulse_delay = 0          // delay before start of pulse
 float pulse_interval = {tmax}  // interval before next pulse
 float spikefreq = 110 // Hz.   // initial value of frequency
 
-str path = /P23RSanet/P23RSa/soma
+str path
+path = "/P23RSanet/P23RSa/soma"
 
 create pulsegen {path}/spikepulse // Make a periodic pulse to control spikes
 // make a spikegen to deliver the spikes
@@ -16,4 +17,9 @@ echo "Using simple pulsed spiketrain input"
 // set the spikegen refractory period = 1/freq
 setfield {path}/spikepulse/spike abs_refract {1.0/spikefreq}
 addmsg {path}/spikepulse {path}/spikepulse/spike INPUT output
+
+addmsg /P23RSanet/P23RSa/soma {path}/spikepulse/spike INPUT Vm
+
+addmsg {path}/spikepulse/spike /P23RSanet/P23RSa/soma/Ex_ch1P23RSAMPA SPIKE
+setfield /P23RSanet/P23RSa/soma/Ex_ch1P23RSAMPA synapse[0].weight 10 synapse[0].delay 0.005
 
