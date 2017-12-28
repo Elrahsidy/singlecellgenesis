@@ -15,3 +15,11 @@ foreach spkgen ({el /random#[] })
 	addmsg {spkgen} spikehistrandom SPIKESAVE
 end
 
+// Save history for manual spikes as well
+create spikehistory spikehistmanual
+setfield spikehistmanual filename ./data-latest/manualspikehist.{myzeropadnode} initialize 1 leave_open 1 flush 1 ident_toggle 1
+foreach spkgen ({el /P23RSanet/P23RSa/soma/spikepulse/spike })
+	echo "Saving manual spike history for" {spkgen} "@" {mynode}
+	addmsg {spkgen} spikehistmanual SPIKESAVE
+end
+
