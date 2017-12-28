@@ -235,7 +235,7 @@ basalRsuperb	basalRsupera	42.6	24.6	-8.7	1.0	Ca_d1	-133.14e12	NaF1	125	NaP1	0.08
 basalRsuperc	basalRsuperb	42.6	24.6	-8.7	1.0	Ca_d1	-133.14e12	NaF1	125	NaP1	0.08	KDR1	62.5	KA1	20	K21	1	KM1	75	CaL1	1	CaH1	10	KCd1	120	AR1	2.5	KAHPd1	0.4
 
 //		Specifying constants for axonal compartment RMCM=0.0024 (0.0009)
-*set_compt_param	RM	0.10   //(0.1)
+*set_compt_param	RM	0.02   //(0.1)
 *set_compt_param	RA	1.00   //(1.00)
 *set_compt_param	CM	0.009  //(0.009)(0.024)
 //*set_compt_param     EREST_ACT	-0.07
