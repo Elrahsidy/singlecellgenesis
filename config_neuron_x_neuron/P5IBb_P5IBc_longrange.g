@@ -29,7 +29,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
+    volumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
 	      /P5IBcnet/P5IBc[]/{s}/Ex_ch8P5IBAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
+    volumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
 	      /P5IBcnet/P5IBc[]/{s}/Ex_ch8P5IBNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
+//    volumeconnect /P5IBbnet/P5IBb[]/soma/spk7longrange  \
 //	      /P5IBcnet/P5IBc[]/{s}/Inh_ch8P5IBGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P5IBb->P5IBc connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P5IBbnet/P5IBb[]/soma/spk7longrange -radial {{P5IBb_P5IBc_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P5IBbnet/P5IBb[]/soma/spk7longrange -radial {{P5IBb_P5IBc_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P5IBbmaxweight = 1.0
@@ -91,5 +91,5 @@ float P5IBbdecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P5IBbmaxweight}-{P5IBbminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P5IBbdecayrate} } + {P5IBbminweight}}
 echo P5IBb_P5IBc longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P5IBbnet/P5IBb[]/soma/spk7longrange -fixed {longrangeweight}
+volumeweight /P5IBbnet/P5IBb[]/soma/spk7longrange -fixed {longrangeweight}
 

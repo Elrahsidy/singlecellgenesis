@@ -29,7 +29,7 @@ str locations = "soma basalLsupera basalLmida basalRsupera basalRmida basaldeepa
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /B5FSnet/B5FS[]/soma/spk10  \
+    volumeconnect /B5FSnet/B5FS[]/soma/spk10  \
 	      /P5IBanet/P5IBa[]/{s}/Inh_ch6B5FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -54,7 +54,7 @@ echo Setting weights and delays for B5FS->P5IBa connections.
  */
 
 barrierall //ayu
-rvolumedelay /B5FSnet/B5FS[]/soma/spk10 -radial  {B5FS_P5IBa_axdelayCV} -add
+volumedelay /B5FSnet/B5FS[]/soma/spk10 -radial  {B5FS_P5IBa_axdelayCV} -add
 
 //B5FS - P5IBa GABAa
 
@@ -85,7 +85,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /B5FSnet/B5FS[]/soma/spk10 -decay {B5FSdecayrate} {B5FSmaxwgt} {B5FSminwgt}
+volumeweight /B5FSnet/B5FS[]/soma/spk10 -decay {B5FSdecayrate} {B5FSmaxwgt} {B5FSminwgt}
 
 
 

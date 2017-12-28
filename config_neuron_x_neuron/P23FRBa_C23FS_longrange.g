@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
+    volumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P23FRBAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
+    volumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P23FRBNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
+//    volumeconnect /P23FRBanet/P23FRBa[]/soma/spk22longrange  \
 //	      /C23FSnet/C23FS[]/{s}/Inh_ch15P23FRBGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P23FRBa->C23FS connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P23FRBanet/P23FRBa[]/soma/spk22longrange -radial {{P23FRBa_C23FS_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P23FRBanet/P23FRBa[]/soma/spk22longrange -radial {{P23FRBa_C23FS_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P23FRBamaxweight = 1.0
@@ -91,5 +91,5 @@ float P23FRBadecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P23FRBamaxweight}-{P23FRBaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P23FRBadecayrate} } + {P23FRBaminweight}}
 echo P23FRBa_C23FS longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P23FRBanet/P23FRBa[]/soma/spk22longrange -fixed {longrangeweight}
+volumeweight /P23FRBanet/P23FRBa[]/soma/spk22longrange -fixed {longrangeweight}
 

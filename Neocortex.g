@@ -2,18 +2,20 @@
 
 //Overall simulation parameters
 float tmax = 20.0
-float dt = 5.0e-5		// sec
+float dt = 1.0e-5		// sec
 floatformat %g
 float refresh_factor = 10.0
 
+int mynode = 0
+
 // Number of CPU nodes (= same as number of cortical columns)
-int Nnodes = 16
+int Nnodes = 1
 int sqrtNnodes = {sqrt {Nnodes}}
 
 // Number of minicolumns per cortical column.
 // Each CPU node will simulate NX*NY minicolumns.
-float NX = 2
-float NY = 2
+float NX = 1
+float NY = 1
 
 // Spacing between minicolumns
 float SEPX = 25e-6
@@ -24,7 +26,7 @@ float SEPY = 25e-6
 // I haven't really tested what happens when this isn't a square number; it
 // seems to work but might do weird things. Setting it greater than one will
 // enable long-range connections.
-int Nregions = 4
+int Nregions = 1
 
 // regionspacing controls the extra spacing between two different regions,
 // above and beyond {SEPX}. regionspacing = 0.0 means a separation of {SEPX}
@@ -66,8 +68,8 @@ randseed {{mynode} + {myrandseed} + 0}
 // Important flags
 int display = 0     // Display neurons and graphs?
 int output = 1      // Dump neural output to a file?
-int membranepotentialoutput = 0 // Log membrane potentials (you probably don't want this)
-int drawtree = 1    // Output connectivity info?
+int membranepotentialoutput = 1 // Log membrane potentials (you probably don't want this)
+int drawtree = 0    // Output connectivity info?
 
 // Be strict about genesis syntax; bail if there's an error!
 maxerrors 0
@@ -93,10 +95,10 @@ echo ""
 //////////////////////////////////////////////////////////////////////
 
 // START UP
-paron -parallel -silent 0 -nodes {Nnodes} -nice 10 -output genesis_o.out \
-	-executable pgenesis
-barrier
-setfield /post remote_info 0 // save remote message info (see BoG, pg. 377)
+//paron -parallel -silent 0 -nodes {Nnodes} -nice 10 -output genesis_o.out \
+	//-executable pgenesis
+//barrier
+//setfield /post remote_info 0 // save remote message info (see BoG, pg. 377)
 //setfield /post msg_hang_time 100000	// set a very long timeout in case
 					// we need to do debugging
 
@@ -239,40 +241,40 @@ include spikedefs.g
 
 // Network definitions
 
-barrierall
+//barrierall
 
 include config_neuron/spatiallayout/P23RSa.g
-include config_neuron/spatiallayout/P23RSb.g
-include config_neuron/spatiallayout/P23RSc.g
-include config_neuron/spatiallayout/P23RSd.g
-include config_neuron/spatiallayout/B23FS.g
-include config_neuron/spatiallayout/P5IBa.g
-include config_neuron/spatiallayout/P5IBb.g
-include config_neuron/spatiallayout/P5IBc.g
-include config_neuron/spatiallayout/P5IBd.g
-include config_neuron/spatiallayout/B5FS.g
-include config_neuron/spatiallayout/P6RSa.g
-include config_neuron/spatiallayout/P6RSb.g
-if ({{columntype} == 0})
-    include config_neuron/spatiallayout/P6RSc.g
-    include config_neuron/spatiallayout/P6RSd.g
-end
-include config_neuron/spatiallayout/C23FS.g
-include config_neuron/spatiallayout/C5FS.g
-include config_neuron/spatiallayout/ST4RS.g
-include config_neuron/spatiallayout/I23LTS.g
-include config_neuron/spatiallayout/I5LTS.g
-if ({{thalamocortical} == 1})
-    include config_neuron/spatiallayout/TCR.g
-    include config_neuron/spatiallayout/nRT.g
-end
-include config_neuron/spatiallayout/P23FRBa.g
-include config_neuron/spatiallayout/P5RSa.g
+//include config_neuron/spatiallayout/P23RSb.g
+//include config_neuron/spatiallayout/P23RSc.g
+//include config_neuron/spatiallayout/P23RSd.g
+//include config_neuron/spatiallayout/B23FS.g
+//include config_neuron/spatiallayout/P5IBa.g
+//include config_neuron/spatiallayout/P5IBb.g
+//include config_neuron/spatiallayout/P5IBc.g
+//include config_neuron/spatiallayout/P5IBd.g
+//include config_neuron/spatiallayout/B5FS.g
+//include config_neuron/spatiallayout/P6RSa.g
+//include config_neuron/spatiallayout/P6RSb.g
+//if ({{columntype} == 0})
+//    include config_neuron/spatiallayout/P6RSc.g
+//    include config_neuron/spatiallayout/P6RSd.g
+//end
+//include config_neuron/spatiallayout/C23FS.g
+//include config_neuron/spatiallayout/C5FS.g
+//include config_neuron/spatiallayout/ST4RS.g
+//include config_neuron/spatiallayout/I23LTS.g
+//include config_neuron/spatiallayout/I5LTS.g
+//if ({{thalamocortical} == 1})
+//    include config_neuron/spatiallayout/TCR.g
+//    include config_neuron/spatiallayout/nRT.g
+//end
+//include config_neuron/spatiallayout/P23FRBa.g
+//include config_neuron/spatiallayout/P5RSa.g
 
 if ({{mynode}==0})
 	echo "Position2 cell node region x y z rotation"
 end
-barrierall
+//barrierall
 str mysoma
 foreach mysoma ({el /#/#[]/soma })
 	echo Position2 {el {mysoma}/..} {mynode} {myregion} {getfield {mysoma}/.. x} {getfield {mysoma}/.. y} {getfield {mysoma}/.. z} {getfield {mysoma}/.. rotation}
@@ -285,53 +287,53 @@ end
 //randseed { {myrandseed} + 1 }
 
 // Disabling prototype cells
-disable /B23FS
-disable /B5FS
-disable /C23FS
-disable /C5FS
-disable /I23LTS
-disable /I5LTS
-disable /nRT
-disable /P23FRBa
+//disable /B23FS
+//disable /B5FS
+//disable /C23FS
+//disable /C5FS
+//disable /I23LTS
+//disable /I5LTS
+//disable /nRT
+//disable /P23FRBa
 disable /P23RSa
-disable /P23RSb
-disable /P23RSc
-disable /P23RSd
-disable /P5IBa
-disable /P5IBb
-disable /P5IBc
-disable /P5IBd
-disable /P5RSa
-disable /P6RSa
-disable /P6RSb
-if ({{columntype} == 0})
-	disable /P6RSc
-	disable /P6RSd
-end
-disable /ST4RS
-disable /TCR
+//disable /P23RSb
+//disable /P23RSc
+//disable /P23RSd
+//disable /P5IBa
+//disable /P5IBb
+//disable /P5IBc
+//disable /P5IBd
+//disable /P5RSa
+//disable /P6RSa
+//disable /P6RSb
+//if ({{columntype} == 0})
+//	disable /P6RSc
+//	disable /P6RSd
+//end
+//disable /ST4RS
+//disable /TCR
 
-barrierall
+//barrierall
 
 // Synaptic weight decay parameters and delays
 //include synapticprobsTraub.g
 //include synapticprobsbase.g
 include synapticprobsnew.g
-barrierall
+//barrierall
 
 include synapticdelays.g
-barrierall
+//barrierall
 
 include axonaldelays.g
-barrierall
+//barrierall
 
 //Establish Wiring
 randseed {{mynode} + {myrandseed} + 1}
 echo Starting: include netdefs.g at {getdate}
-include netdefs.g
+//include netdefs.g
 echo Finished: include netdefs.g at {getdate}
 
-barrierall
+//barrierall
 
 echo Made it past netdefs.g! {mynode}
 
@@ -370,7 +372,7 @@ reset // This initialises and gets everything ready to go.
 
 echo Completed model setup at {getdate}
 
-barrierall
+//barrierall
 
 // List all connections
 // Can take a long time to run!

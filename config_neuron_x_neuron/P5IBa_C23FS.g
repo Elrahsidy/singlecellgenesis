@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
+    volumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P5IBAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
+    volumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15P5IBNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for P5IBa->C23FS connections.
  */
 
 barrierall //ayu
-rvolumedelay /P5IBanet/P5IBa[]/soma/spk6 -radial  {P5IBa_C23FS_axdelayCV} -add
+volumedelay /P5IBanet/P5IBa[]/soma/spk6 -radial  {P5IBa_C23FS_axdelayCV} -add
 
 // P5IBa - C23FS AMPA
 
@@ -121,7 +121,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /P5IBanet/P5IBa[]/soma/spk6 -decay {P5IBdecayrate} {P5IBmaxwgt} {P5IBminwgt}
+volumeweight /P5IBanet/P5IBa[]/soma/spk6 -decay {P5IBdecayrate} {P5IBmaxwgt} {P5IBminwgt}
 //volumeweight /P5IBanet/P5IBa[]/soma/spk6 -fixed 0.50
 
 

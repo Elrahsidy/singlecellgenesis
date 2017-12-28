@@ -454,7 +454,7 @@ float P5RSa_P5RSa_destlim = {globaldestlim}
 // It may be more dire than I thought. It seems like the volumedelay is added
 // multiple times for each originating cell, depending on the number of
 // destinations it has. I'll have to pull those out of the cell_cell specific
-// code and just run rvolumeweight/delay a single time for each originaing
+// code and just run volumeweight/delay a single time for each originaing
 // cell.
 
 if ({Nregions>1})

@@ -57,9 +57,9 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
                 addmsg /P23RSanet/P23RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
-                addmsg /P23RSbnet/P23RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
-                addmsg /P23RScnet/P23RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
-                addmsg /P23RSdnet/P23RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+//                addmsg /P23RSbnet/P23RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+//                addmsg /P23RScnet/P23RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+//                addmsg /P23RSdnet/P23RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
 
         end
@@ -94,7 +94,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsB23FS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /B23FSnet/B23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /B23FSnet/B23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
 
         end
@@ -119,10 +119,10 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsP5IB}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-               addmsg /P5IBanet/P5IBa[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P5IBbnet/P5IBb[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P5IBcnet/P5IBc[{k}]/{s} LFP{j} CURRENT Im 0.0
-               addmsg /P5IBdnet/P5IBd[{k}]/{s} LFP{j} CURRENT Im 0.0
+               //addmsg /P5IBanet/P5IBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+               //addmsg /P5IBbnet/P5IBb[{k}]/{s} LFP{j} CURRENT Im 0.0
+               //addmsg /P5IBcnet/P5IBc[{k}]/{s} LFP{j} CURRENT Im 0.0
+               //addmsg /P5IBdnet/P5IBd[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -156,7 +156,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsB5FS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-               addmsg /B5FSnet/B5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+               //addmsg /B5FSnet/B5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
 
         end
@@ -181,15 +181,15 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsP6RS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /P6RSanet/P6RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
-                addmsg /P6RSbnet/P6RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /P6RSanet/P6RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /P6RSbnet/P6RSb[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
 
             if ({columntype == 0})
 
                 if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                   addmsg /P6RScnet/P6RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
-                   addmsg /P6RSdnet/P6RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
+                   //addmsg /P6RScnet/P6RSc[{k}]/{s} LFP{j} CURRENT Im 0.0
+                   //addmsg /P6RSdnet/P6RSd[{k}]/{s} LFP{j} CURRENT Im 0.0
                 end
             end
 
@@ -225,7 +225,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsC23FS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /C23FSnet/C23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /C23FSnet/C23FS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
 
         end
@@ -260,7 +260,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsC5FS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /C5FSnet/C5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /C5FSnet/C5FS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -284,7 +284,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsST4RS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /ST4RSnet/ST4RS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /ST4RSnet/ST4RS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -318,7 +318,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsI23LTS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /I23LTSnet/I23LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /I23LTSnet/I23LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -352,7 +352,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsI5LTS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /I5LTSnet/I5LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /I5LTSnet/I5LTS[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -376,7 +376,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsP23FRB}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /P23FRBanet/P23FRBa[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 
@@ -400,7 +400,7 @@ for (j=0; j<={{numelecs}-1}; j=j+1)
         foreach s ({arglist {locationsP5RS}})
 
             if ({{j} == {myregion} || {j} == {{numelecs}-1}})
-                addmsg /P5RSanet/P5RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
+                //addmsg /P5RSanet/P5RSa[{k}]/{s} LFP{j} CURRENT Im 0.0
             end
         end
 

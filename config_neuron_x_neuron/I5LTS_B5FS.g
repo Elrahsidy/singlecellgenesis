@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /I5LTSnet/I5LTS[]/soma/spk19  \
+    volumeconnect /I5LTSnet/I5LTS[]/soma/spk19  \
 	      /B5FSnet/B5FS[]/{s}/Inh_ch10I5LTSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -54,7 +54,7 @@ echo Setting weights and delays for I5LTS->B5FS connections.
  */
 
 barrierall //ayu
-rvolumedelay /I5LTSnet/I5LTS[]/soma/spk19 -radial  {I5LTS_B5FS_axdelayCV} -add
+volumedelay /I5LTSnet/I5LTS[]/soma/spk19 -radial  {I5LTS_B5FS_axdelayCV} -add
 
 //I5LTS - B5FS GABAa
 
@@ -85,7 +85,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /I5LTSnet/I5LTS[]/soma/spk19 -decay {I5LTSdecayrate} {I5LTSmaxwgt} {I5LTSminwgt}
+volumeweight /I5LTSnet/I5LTS[]/soma/spk19 -decay {I5LTSdecayrate} {I5LTSmaxwgt} {I5LTSminwgt}
 
 
 

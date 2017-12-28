@@ -29,7 +29,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
+    volumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15TCRAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "proxdendN distdendNlonga distdendNmida proxdendE distdendElonga
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /TCRnet/TCR[]/soma/spk20  \
+    volumeconnect /TCRnet/TCR[]/soma/spk20  \
 	      /C23FSnet/C23FS[]/{s}/Ex_ch15TCRNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for TCR->C23FS connections.
  */
 
 barrierall //ayu
-rvolumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_C23FS_axdelayCV} -add
+volumedelay /TCRnet/TCR[]/soma/spk20 -radial  {TCR_C23FS_axdelayCV} -add
 
 // TCR - C23FS AMPA
 
@@ -121,4 +121,4 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}
+volumeweight /TCRnet/TCR[]/soma/spk20 -decay {TCRdecayrate} {TCRmaxwgt} {TCRminwgt}

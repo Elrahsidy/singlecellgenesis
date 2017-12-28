@@ -69,17 +69,9 @@ echo "Running on: $myhosts"
 
 # Checking output paths
 #mydir="`dirname "$0"`"
-mydir="`pwd | sed 's/\/home/\/barleyhome/'`"
-if [[ "`grep "membranepotentialoutput\s*=\s*1" Neocortex.g`" ]]; then # high I/O needs; use /dev/shm on each host for data
-    remotedata=1
-    mydirwithtime="/dev/shm/data-$myrundate"
-
-    # Create output directories in /dev/shm on all hosts
-    parallel ssh -x {} mkdir "$mydirwithtime" ::: `echo $myhosts | tr ',' ' '`
-else # low I/O needs
-    mydirwithtime="$mydir/data-$myrundate"
-    mkdir "$mydirwithtime"
-fi
+mydir="`pwd`"
+mydirwithtime="$mydir/data-$myrundate"
+mkdir "$mydirwithtime"
 commondir="$mydir/data-$myrundate"
 
 # Update symlinks for latest output directory
@@ -132,17 +124,15 @@ tar c -T - < gitfiles.txt | tar x -C "${mydirwithtime}/scripts"
 
 # Non-interactive (output redirected to log file)
 # Edit pgenesis.distributed to use selected hosts
-sed -i "s/--host %HOSTS%/--host $myhosts/; s/--host [a-z,]*/--host $myhosts/" ./pgenesis.distributed
-./pgenesis.distributed -nox -notty -batch $mydir/Neocortex.g > >(tee -a "$logfile") 2> >(tee -a "$logfile.errors" >&2)
-#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox -notty -batch $mydir/Neocortex.g | tee -a "$logfile" 2>&1
+genesis -nox -notty -batch $mydir/Neocortex.g > >(tee -a "$logfile") 2> >(tee -a "$logfile.errors" >&2)
 
 # Interactive (no redirection)
-#/data2/software/genesis-2.4/pgenesis/bin/pgenesis -nox $mydir/Neocortex
+#genesis -nox $mydir/Neocortex.g
 
 # Retrieve datafiles from localhost and hosts
-if [[ "$remotedata" ]]; then
-    /data2/data/Neocortex_sim/Scripts/retrieve_data.sh "$mydirwithtime"
-fi
+#if [[ "$remotedata" ]]; then
+#    /data2/data/Neocortex_sim/Scripts/retrieve_data.sh "$mydirwithtime"
+#fi
 
 # no longer necessary
 # Move tree to data file

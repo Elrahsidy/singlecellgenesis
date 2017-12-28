@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
+    volumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /I23LTSnet/I23LTS[]/{s}/Ex_ch18ST4RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
+    volumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /I23LTSnet/I23LTS[]/{s}/Ex_ch18ST4RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for ST4RS->I23LTS connections.
  */
 
 barrierall //ayu
-rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_I23LTS_axdelayCV} -add
+volumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_I23LTS_axdelayCV} -add
 
 // ST4RS - I23LTS AMPA
 
@@ -121,4 +121,4 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}
+volumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}

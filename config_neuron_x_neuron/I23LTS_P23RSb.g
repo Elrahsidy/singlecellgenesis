@@ -30,7 +30,7 @@ str locations = "basalLsuperb basalLsuperc basalLmidsuperb basalLmidsuperc basal
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /I23LTSnet/I23LTS[]/soma/spk18  \
+    volumeconnect /I23LTSnet/I23LTS[]/soma/spk18  \
 	      /P23RSbnet/P23RSb[]/{s}/Inh_ch2I23LTSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -55,7 +55,7 @@ echo Setting weights and delays for I23LTS->P23RSb connections.
  */
 
 barrierall //ayu
-rvolumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_P23RSb_axdelayCV} -add
+volumedelay /I23LTSnet/I23LTS[]/soma/spk18 -radial  {I23LTS_P23RSb_axdelayCV} -add
 
 //I23LTS - P23RSb GABAa
 
@@ -86,7 +86,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /I23LTSnet/I23LTS[]/soma/spk18 -decay {I23LTSdecayrate} {I23LTSmaxwgt} {I23LTSminwgt}
+volumeweight /I23LTSnet/I23LTS[]/soma/spk18 -decay {I23LTSdecayrate} {I23LTSmaxwgt} {I23LTSminwgt}
 
 
 

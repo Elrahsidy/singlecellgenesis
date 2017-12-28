@@ -30,7 +30,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBdnet/P5IBd[]/soma/spk9  \
+    volumeconnect /P5IBdnet/P5IBd[]/soma/spk9  \
 	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -51,7 +51,7 @@ str locations = "apdend1 apdend2 apdend3 apdend4 apdend5 apdend6 apdend7 apdend8
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBdnet/P5IBd[]/soma/spk9  \
+    volumeconnect /P5IBdnet/P5IBd[]/soma/spk9  \
 	      /P5IBbnet/P5IBb[]/{s}/Ex_ch7P5IBNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \

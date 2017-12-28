@@ -29,7 +29,7 @@ str locations = "apdend4aL apdend4bL apdend4aR apdend4bR"
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
+    volumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
 	      /P23RScnet/P23RSc[]/{s}/Ex_ch3P6RSAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "apdend4aL apdend4bL apdend4aR apdend4bR"
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
+    volumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
 	      /P23RScnet/P23RSc[]/{s}/Ex_ch3P6RSNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
+//    volumeconnect /P6RSdnet/P6RSd[]/soma/spk14longrange  \
 //	      /P23RScnet/P23RSc[]/{s}/Inh_ch3P6RSGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P6RSd->P23RSc connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P6RSdnet/P6RSd[]/soma/spk14longrange -radial {{P6RSd_P23RSc_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P6RSdnet/P6RSd[]/soma/spk14longrange -radial {{P6RSd_P23RSc_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P6RSdmaxweight = 1.0
@@ -91,5 +91,5 @@ float P6RSddecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P6RSdmaxweight}-{P6RSdminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P6RSddecayrate} } + {P6RSdminweight}}
 echo P6RSd_P23RSc longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P6RSdnet/P6RSd[]/soma/spk14longrange -fixed {longrangeweight}
+volumeweight /P6RSdnet/P6RSd[]/soma/spk14longrange -fixed {longrangeweight}
 

@@ -21,7 +21,7 @@ echo Making connections from the C23FS cells to the P6RSc cells.
 // C23FS - P6RSc GABAa
 
 barrierall //ayu
-rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
+volumeconnect /C23FSnet/C23FS[]/soma/spk15  \
 	      /P6RScnet/P6RSc[]/axona/Inh_ch13C23FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -44,7 +44,7 @@ echo Setting weights and delays for C23FS->P6RSc connections.
  */
 
 barrierall //ayu
-rvolumedelay /C23FSnet/C23FS[]/soma/spk15 -radial  {C23FS_P6RSc_axdelayCV} -add
+volumedelay /C23FSnet/C23FS[]/soma/spk15 -radial  {C23FS_P6RSc_axdelayCV} -add
 
 //C23FS - P6RSc GABAa
 
@@ -65,7 +65,7 @@ syndelay    /P6RScnet/P6RSc[]/axona/Inh_ch13C23FSGABAa {C23FS_P6RSc_syndelay} -a
  */
 
 barrierall //ayu
-rvolumeweight /C23FSnet/C23FS[]/soma/spk15 -decay {C23FSdecayrate} {C23FSmaxwgt} {C23FSminwgt}
+volumeweight /C23FSnet/C23FS[]/soma/spk15 -decay {C23FSdecayrate} {C23FSmaxwgt} {C23FSminwgt}
 
 
 

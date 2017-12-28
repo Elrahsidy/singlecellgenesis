@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
+    volumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
 	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P6RSAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
+    volumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
 	      /I5LTSnet/I5LTS[]/{s}/Ex_ch19P6RSNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
+//    volumeconnect /P6RSanet/P6RSa[]/soma/spk11longrange  \
 //	      /I5LTSnet/I5LTS[]/{s}/Inh_ch19P6RSGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P6RSa->I5LTS connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P6RSanet/P6RSa[]/soma/spk11longrange -radial {{P6RSa_I5LTS_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P6RSanet/P6RSa[]/soma/spk11longrange -radial {{P6RSa_I5LTS_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P6RSamaxweight = 1.0
@@ -91,5 +91,5 @@ float P6RSadecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P6RSamaxweight}-{P6RSaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P6RSadecayrate} } + {P6RSaminweight}}
 echo P6RSa_I5LTS longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P6RSanet/P6RSa[]/soma/spk11longrange -fixed {longrangeweight}
+volumeweight /P6RSanet/P6RSa[]/soma/spk11longrange -fixed {longrangeweight}
 

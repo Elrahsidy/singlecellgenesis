@@ -29,7 +29,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
+    volumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
 	      /P23RScnet/P23RSc[]/{s}/Ex_ch3P23RSAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
+    volumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
 	      /P23RScnet/P23RSc[]/{s}/Ex_ch3P23RSNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
+//    volumeconnect /P23RSanet/P23RSa[]/soma/spk1longrange  \
 //	      /P23RScnet/P23RSc[]/{s}/Inh_ch3P23RSGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P23RSa->P23RSc connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial {{P23RSa_P23RSc_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P23RSanet/P23RSa[]/soma/spk1longrange -radial {{P23RSa_P23RSc_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P23RSamaxweight = 1.0
@@ -91,5 +91,5 @@ float P23RSadecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P23RSamaxweight}-{P23RSaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P23RSadecayrate} } + {P23RSaminweight}}
 echo P23RSa_P23RSc longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed {longrangeweight}
+volumeweight /P23RSanet/P23RSa[]/soma/spk1longrange -fixed {longrangeweight}
 

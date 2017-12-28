@@ -30,7 +30,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
+    volumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
 	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTSRC%AMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
+    volumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
 	      /%DEST%net/%DEST%[]/{s}/Ex_ch%DESTNUM%%SHORTSRC%NMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
+//    volumeconnect /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange  \
 //	      /%DEST%net/%DEST%[]/{s}/Inh_ch%DESTNUM%%SHORTSRC%GABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,12 +82,12 @@ echo Setting weights and delays for %SRC%->%DEST% connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -radial {{%SRC%_%DEST%_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -radial {{%SRC%_%DEST%_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float %SRC%decayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{%SHORTSRC%maxwgt}-{%SHORTSRC%minwgt}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*%SRC%decayrate} } + {%SHORTSRC%minwgt}}
 echo %SRC%_%DEST% longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -fixed {longrangeweight}
+volumeweight /%SRC%net/%SRC%[]/soma/spk%SRCNUM%longrange -fixed {longrangeweight}
 

@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
+    volumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P23RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
+    volumeconnect /P23RScnet/P23RSc[]/soma/spk3  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P23RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for P23RSc->ST4RS connections.
  */
 
 barrierall //ayu
-rvolumedelay /P23RScnet/P23RSc[]/soma/spk3 -radial  {P23RSc_ST4RS_axdelayCV} -add
+volumedelay /P23RScnet/P23RSc[]/soma/spk3 -radial  {P23RSc_ST4RS_axdelayCV} -add
 
 // P23RSc - ST4RS AMPA
 
@@ -121,7 +121,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /P23RScnet/P23RSc[]/soma/spk3 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
+volumeweight /P23RScnet/P23RSc[]/soma/spk3 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 //volumeweight /P23RSanet/P23RSa[]/soma/spk1 -fixed 0.50
 
 

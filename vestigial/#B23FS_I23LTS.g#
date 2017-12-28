@@ -28,7 +28,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 
 foreach s ({arglist {locations}})
 
-    rvolumeconnect /B23FSnet/B23FS[]/soma/spk5  \
+    volumeconnect /B23FSnet/B23FS[]/soma/spk5  \
 	      /I23LTSnet/I23LTS[]/{s}/Inh_ch18B23FSGABAa@all	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  1  1  0  0   \

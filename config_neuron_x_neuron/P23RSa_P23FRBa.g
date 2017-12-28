@@ -29,7 +29,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
+    volumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P23RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -50,7 +50,7 @@ str locations = "apobproxLa apobproxLb apobproxLc apobdistLa apobdistLb apobdist
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
+    volumeconnect /P23RSanet/P23RSa[]/soma/spk1  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22P23RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for P23RSa->P23FRBa connections.
  */
 
 barrierall //ayu
-rvolumedelay /P23RSanet/P23RSa[]/soma/spk1 -radial  {P23RSa_P23FRBa_axdelayCV} -add
+volumedelay /P23RSanet/P23RSa[]/soma/spk1 -radial  {P23RSa_P23FRBa_axdelayCV} -add
 
 //P23RSa - P23FRBa AMPA
 
@@ -121,7 +121,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /P23RSanet/P23RSa[]/soma/spk1 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
+volumeweight /P23RSanet/P23RSa[]/soma/spk1 -decay {P23RSdecayrate} {P23RSmaxwgt} {P23RSminwgt}
 
 
 

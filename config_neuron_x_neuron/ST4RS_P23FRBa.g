@@ -30,7 +30,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
+    volumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22ST4RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -51,7 +51,7 @@ str locations = "basalLsupera basalLsuperb basalLsuperc basalLmidsupera basalLmi
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
+    volumeconnect /ST4RSnet/ST4RS[]/soma/spk17  \
 	      /P23FRBanet/P23FRBa[]/{s}/Ex_ch22ST4RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -76,7 +76,7 @@ echo Setting weights and delays for ST4RS->P23FRBa connections.
  */
 
 barrierall //ayu
-rvolumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23FRBa_axdelayCV} -add
+volumedelay /ST4RSnet/ST4RS[]/soma/spk17 -radial  {ST4RS_P23FRBa_axdelayCV} -add
 
 //ST4RS - P23FRBa AMPA
 
@@ -122,7 +122,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}
+volumeweight /ST4RSnet/ST4RS[]/soma/spk17 -decay {ST4RSdecayrate} {ST4RSmaxwgt} {ST4RSminwgt}
 
 
 

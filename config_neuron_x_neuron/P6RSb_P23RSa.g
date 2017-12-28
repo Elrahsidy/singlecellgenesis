@@ -29,7 +29,7 @@ str locations = "apdend4aL apdend4bL apdend4aR apdend4bR"
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
+    volumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
 	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P6RSAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -50,7 +50,7 @@ str locations = "apdend4aL apdend4bL apdend4aR apdend4bR"
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
+    volumeconnect /P6RSbnet/P6RSb[]/soma/spk12  \
 	      /P23RSanet/P23RSa[]/{s}/Ex_ch1P6RSNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -75,7 +75,7 @@ echo Setting weights and delays for P6RSb->P23RSa connections.
  */
 
 barrierall //ayu
-rvolumedelay /P6RSbnet/P6RSb[]/soma/spk12 -radial  {P6RSb_P23RSa_axdelayCV} -add
+volumedelay /P6RSbnet/P6RSb[]/soma/spk12 -radial  {P6RSb_P23RSa_axdelayCV} -add
 
 //P6RSb - P23RSa AMPA
 
@@ -121,7 +121,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /P6RSbnet/P6RSb[]/soma/spk12 -decay {P6RSdecayrate} {P6RSmaxwgt} {P6RSminwgt}
+volumeweight /P6RSbnet/P6RSb[]/soma/spk12 -decay {P6RSdecayrate} {P6RSmaxwgt} {P6RSminwgt}
 
 
 

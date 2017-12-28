@@ -21,7 +21,7 @@ echo Making connections from the C5FS cells to the P5RSa cells.
 // C5FS - P5RSa GABAa
 
 barrierall //ayu
-rvolumeconnect /C5FSnet/C5FS[]/soma/spk16  \
+volumeconnect /C5FSnet/C5FS[]/soma/spk16  \
 	      /P5RSanet/P5RSa[]/axona/Inh_ch23C5FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -44,7 +44,7 @@ echo Setting weights and delays for C5FS->P5RSa connections.
  */
 
 barrierall //ayu
-rvolumedelay /C5FSnet/C5FS[]/soma/spk16 -radial  {C5FS_P5RSa_axdelayCV} -add
+volumedelay /C5FSnet/C5FS[]/soma/spk16 -radial  {C5FS_P5RSa_axdelayCV} -add
 
 //C5FS - P5RSa GABAa
 
@@ -65,7 +65,7 @@ syndelay    /P5RSanet/P5RSa[]/axona/Inh_ch23C5FSGABAa {C5FS_P5RSa_syndelay} -add
  */
 
 barrierall //ayu
-rvolumeweight /C5FSnet/C5FS[]/soma/spk16 -decay {C5FSdecayrate} {C5FSmaxwgt} {C5FSminwgt}
+volumeweight /C5FSnet/C5FS[]/soma/spk16 -decay {C5FSdecayrate} {C5FSmaxwgt} {C5FSminwgt}
 
 
 

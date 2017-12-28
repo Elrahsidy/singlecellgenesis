@@ -21,7 +21,7 @@ echo Making connections from the C23FS cells to the P5IBb cells.
 // C23FS - P5IBb GABAa
 
 barrierall //ayu
-rvolumeconnect /C23FSnet/C23FS[]/soma/spk15  \
+volumeconnect /C23FSnet/C23FS[]/soma/spk15  \
 	      /P5IBbnet/P5IBb[]/axona/Inh_ch7C23FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \

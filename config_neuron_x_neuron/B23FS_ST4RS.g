@@ -29,7 +29,7 @@ str locations = "soma proxdendN proxdendE proxdendS proxdendW"
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /B23FSnet/B23FS[]/soma/spk5  \
+    volumeconnect /B23FSnet/B23FS[]/soma/spk5  \
 	      /ST4RSnet/ST4RS[]/{s}/Inh_ch17B23FSGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -54,7 +54,7 @@ echo Setting weights and delays for B23FS->ST4RS connections.
  */
 
 barrierall //ayu
-rvolumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_ST4RS_axdelayCV} -add
+volumedelay /B23FSnet/B23FS[]/soma/spk5 -radial  {B23FS_ST4RS_axdelayCV} -add
 
 // B23FS - ST4RS GABAa
 
@@ -84,7 +84,7 @@ end
  *          [-absoluterandom]
  */
 barrierall //ayu
-rvolumeweight /B23FSnet/B23FS[]/soma/spk5 -decay {B23FSdecayrate} {B23FSmaxwgt} {B23FSminwgt}
+volumeweight /B23FSnet/B23FS[]/soma/spk5 -decay {B23FSdecayrate} {B23FSmaxwgt} {B23FSminwgt}
 //volumeweight /B23FSnet/B23FS[]/soma/spk5 -fixed 0.50
 
 

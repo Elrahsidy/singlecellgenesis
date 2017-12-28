@@ -585,7 +585,7 @@ if ($USE_MPI) then
     echo Going to run on $num_nodes nodes: $exec $nargv
 
 # MPI_CMD
-mpirun --verbose --map-by socket:OVERSUBSCRIBE --host kolsch,ipa -np $num_nodes nice -n10 $exec $nargv
+mpirun --verbose --map-by socket:OVERSUBSCRIBE --host eaghan-VirtualBox-VirtualBox-VirtualBox-VirtualBox -np $num_nodes nice -n10 $exec $nargv
 
   else
     echo Going to debug on $num_nodes nodes: $exec $nargv

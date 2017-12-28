@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
+    volumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
+    volumeconnect /P5IBanet/P5IBa[]/soma/spk6  \
 	      /ST4RSnet/ST4RS[]/{s}/Ex_ch17P5IBNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \

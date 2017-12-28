@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
+    volumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
 	      /B23FSnet/B23FS[]/{s}/Ex_ch5P5RSAMPA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -48,7 +48,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
+    volumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
 	      /B23FSnet/B23FS[]/{s}/Ex_ch5P5RSNMDA@{distantnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1    \
@@ -67,7 +67,7 @@ end
 //foreach s ({arglist {locations}})
 //
 //    barrierall //ayu
-//    rvolumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
+//    volumeconnect /P5RSanet/P5RSa[]/soma/spk23longrange  \
 //	      /B23FSnet/B23FS[]/{s}/Inh_ch5P5RSGABAa@{distantnodes}	    \
 //	      -relative			    \
 //	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -82,7 +82,7 @@ echo Setting weights and delays for P5RSa->B23FS connections.
 
 // assigning delays
 barrierall //ayu
-rvolumedelay /P5RSanet/P5RSa[]/soma/spk23longrange -radial {{P5RSa_B23FS_axdelayCV}*{longrangeCVscale}} -add
+volumedelay /P5RSanet/P5RSa[]/soma/spk23longrange -radial {{P5RSa_B23FS_axdelayCV}*{longrangeCVscale}} -add
 
 // assigning weights
 float P5RSamaxweight = 1.0
@@ -91,5 +91,5 @@ float P5RSadecayrate = 0.1
 float longrangeweight = {longrangeweightscale}*{{{P5RSamaxweight}-{P5RSaminweight}} * {exp {-1*{sqrt {{NX}^2*{SEPX}^2*{sqrtNnodesperregion}+{NY}^2*{SEPY}^2*{sqrtNnodesperregion}} }*P5RSadecayrate} } + {P5RSaminweight}}
 echo P5RSa_B23FS longrangeweight is {longrangeweight}
 barrierall //ayu
-rvolumeweight /P5RSanet/P5RSa[]/soma/spk23longrange -fixed {longrangeweight}
+volumeweight /P5RSanet/P5RSa[]/soma/spk23longrange -fixed {longrangeweight}
 

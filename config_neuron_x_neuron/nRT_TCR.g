@@ -29,7 +29,7 @@ str locations = "proxdendNNW31 proxdendNNW32 proxdendNNW33 proxdendNNE31 proxden
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /nRTnet/nRT[]/soma/spk21  \
+    volumeconnect /nRTnet/nRT[]/soma/spk21  \
 	      /TCRnet/TCR[]/{s}/Inh_ch20nRTGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -54,7 +54,7 @@ echo Setting weights and delays for nRT->TCR connections.
  */
 
 barrierall //ayu
-rvolumedelay /nRTnet/nRT[]/soma/spk21 -fixed  {nRT_TCR_axdelayCV} -add
+volumedelay /nRTnet/nRT[]/soma/spk21 -fixed  {nRT_TCR_axdelayCV} -add
 
 // nRT - TCR GABAa
 
@@ -85,7 +85,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
+volumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
 //volumeweight /nRTnet/nRT[]/soma/spk21 -fixed 0.50
 
 

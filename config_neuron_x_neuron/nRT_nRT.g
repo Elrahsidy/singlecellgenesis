@@ -30,7 +30,7 @@ str locations = "distdendNlonga distdendNlongb distdendNlongc distdendNlongd dis
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /nRTnet/nRT[]/soma/spk21  \
+    volumeconnect /nRTnet/nRT[]/soma/spk21  \
 	      /nRTnet/nRT[]/{s}/Inh_ch21nRTGABAa@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1  \
@@ -55,7 +55,7 @@ echo Setting weights and delays for nRT->nRT connections.
  */
 
 barrierall //ayu
-rvolumedelay /nRTnet/nRT[]/soma/spk21 -radial  {nRT_nRT_axdelayCV} -add
+volumedelay /nRTnet/nRT[]/soma/spk21 -radial  {nRT_nRT_axdelayCV} -add
 
 //nRT - nRT GABAa
 
@@ -87,7 +87,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
+volumeweight /nRTnet/nRT[]/soma/spk21 -decay {nRTdecayrate} {nRTmaxwgt} {nRTminwgt}
 
 
 

@@ -29,7 +29,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
+    volumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
 	      /C5FSnet/C5FS[]/{s}/Ex_ch16P23FRBAMPA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -50,7 +50,7 @@ str locations = "distdendNlongb distdendNlongc distdendNmidb distdendNmidc distd
 foreach s ({arglist {locations}})
 
     barrierall //ayu
-    rvolumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
+    volumeconnect /P23FRBanet/P23FRBa[]/soma/spk22  \
 	      /C5FSnet/C5FS[]/{s}/Ex_ch16P23FRBNMDA@{regionnodes}	    \
 	      -relative			    \
 	      -sourcemask box -1 -1  -1  1  1  1   \
@@ -75,7 +75,7 @@ echo Setting weights and delays for P23FRBa->C5FS connections.
  */
 
 barrierall //ayu
-rvolumedelay /P23FRBanet/P23FRBa[]/soma/spk22 -radial  {P23FRBa_C5FS_axdelayCV} -add
+volumedelay /P23FRBanet/P23FRBa[]/soma/spk22 -radial  {P23FRBa_C5FS_axdelayCV} -add
 
 // P23FRBa - C5FS AMPA
 
@@ -121,7 +121,7 @@ end
  */
 
 barrierall //ayu
-rvolumeweight /P23FRBanet/P23FRBa[]/soma/spk22 -decay {P23FRBdecayrate} {P23FRBmaxwgt} {P23FRBminwgt}
+volumeweight /P23FRBanet/P23FRBa[]/soma/spk22 -decay {P23FRBdecayrate} {P23FRBmaxwgt} {P23FRBminwgt}
 //planarweight /P23FRBanet/P23FRBa[]/soma/spk22 -fixed 0.50
 
 

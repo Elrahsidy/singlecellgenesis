@@ -73,6 +73,9 @@ for (j = 0; j < P23RSa_NY; j = j+1)
 
           if ({{{output} == 1} & {{membranepotentialoutput} == 1}})
                addmsg /P23RSanet/P23RSa[{k}]/soma /Vmwrite{typenum} SAVE Vm
+               addmsg /P23RSanet/P23RSa[{k}]/apdend3 /Vmwrite{typenum} SAVE Vm
+               addmsg /P23RSanet/P23RSa[{k}]/axonLa /Vmwrite{typenum} SAVE Vm
+               addmsg /P23RSanet/P23RSa[{k}]/basalLmiddeepa /Vmwrite{typenum} SAVE Vm
           end
 
           k=k+1
