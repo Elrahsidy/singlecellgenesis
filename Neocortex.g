@@ -120,7 +120,7 @@ echo Completed startup at {getdate}
 int probedex
 int probedex2
 int gridsize
-float neuronfrac = 1.0 // Proportion of neurons receiving background noise (1.0 == all neurons)
+float neuronfrac = 0.0 // Proportion of neurons receiving background noise (1.0 == all neurons)
 float ranrateoffset = 0.0 // Offset for Ranrate; when zero then 1.0 <= Ranrate <= 10.0
 float ranratescale = 1.0 // Scaling factor for Ranrate; when one then 1.0 <= Ranrate <= 10.0
 float randominputweight = 1.0
@@ -329,9 +329,9 @@ include axonaldelays.g
 
 //Establish Wiring
 randseed {{mynode} + {myrandseed} + 1}
-echo Starting: include netdefs.g at {getdate}
+//echo Starting: include netdefs.g at {getdate}
 //include netdefs.g
-echo Finished: include netdefs.g at {getdate}
+//echo Finished: include netdefs.g at {getdate}
 
 //barrierall
 
@@ -353,9 +353,6 @@ randseed {{mynode} + {myrandseed} + 2}
 include randominputdefs.g
 //randseed { {myrandseed} + 2 }
 
-// Create manually-defined spiking inputs
-include spikegenerator.g
-
 // Output and diagnostics
 
 //Setup messages for Data File writing
@@ -369,6 +366,9 @@ if ( {{output} == 1} )
     // Spike Class Output ASCII history (sparse; only writes timestamp when spiking)
     include config_dataoutput/ASCIISpikeHistorywrite.g
 end
+
+// Create manually-defined spiking inputs
+include spikegenerator.g
 
 check
 reset // This initialises and gets everything ready to go.
